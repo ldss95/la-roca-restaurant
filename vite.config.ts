@@ -9,7 +9,6 @@ export default defineConfig({
 	  less: {
 		modifyVars: {
 		  'primary-color': '#c07b31',
-		//   'heading-color': '#f00',
 		},
 		javascriptEnabled: true,
 	  },

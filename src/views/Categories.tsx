@@ -4,7 +4,7 @@ import { Row } from 'antd';
 
 import NavbarContext from '../context/navbar/context';
 
-function UsersView () {
+function CategoriesView () {
 	const { toggle: toggleNavBar } = useContext(NavbarContext);
 
 	return (
@@ -23,7 +23,7 @@ function UsersView () {
 					<MenuOutlined />
 				</button>
 
-				<h3 style={{ margin: 0 }}>Users</h3>
+				<h3 style={{ margin: 0 }}>Categories</h3>
 
 				<button style={{ background: 'none', border: 'none', fontSize: 24, paddingRight: 0 }}>
 					<SearchOutlined />
@@ -34,4 +34,4 @@ function UsersView () {
 	)
 }
 
-export default UsersView;
+export default CategoriesView;

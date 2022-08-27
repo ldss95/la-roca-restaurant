@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import { EditOutlined, MenuOutlined, SearchOutlined } from '@ant-design/icons';
-import { Row, Button } from 'antd';
+import { useContext, useState } from 'react';
+import { EditOutlined, MenuOutlined, SearchOutlined, LoadingOutlined } from '@ant-design/icons';
+import { Row, Button, Spin } from 'antd';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
+import NavbarContext from '../context/navbar/context';
 import { db } from '../firebase';
 import ModalProduct from '../components/ModalProduct';
+import RenderIf from '../components/RenderIf';
 
 interface ProductProps {
 	id: string;
@@ -15,14 +17,25 @@ interface ProductProps {
 }
 
 function MenuView () {
-	const [products] = useCollection(collection(db, 'products'));
+	const { toggle: toggleNavBar } = useContext(NavbarContext);
+
+	const [products, isLoading] = useCollection(collection(db, 'products'));
 	const [showModal, setShowModal] = useState(false);
 	const [productToModify, setProductToModify] = useState<ProductProps>({} as ProductProps);
 
 	return (
 		<div>
 			<Row justify='space-between' align='middle'>
-				<button style={{ background: 'none', border: 'none', fontSize: 24, paddingLeft: 0 }}>
+				<button
+					style={{
+						background: 'none',
+						border: 'none',
+						fontSize: 24,
+						paddingLeft: 0,
+						cursor: 'pointer'
+					}}
+					onClick={toggleNavBar}
+				>
 					<MenuOutlined />
 				</button>
 
@@ -49,6 +62,12 @@ function MenuView () {
 			</Button>
 			<br />
 			<br />
+
+			<RenderIf condition={isLoading}>
+				<Row justify='center'>
+					<Spin indicator={<LoadingOutlined />} size='large' />
+				</Row>
+			</RenderIf>
 
 			{products?.docs.map((doc) => {
 				const { id } = doc;
@@ -79,7 +98,12 @@ function MenuView () {
 									height: 50,
 									borderRadius: 25,
 									border: 'none',
-									cursor: 'pointer'
+									cursor: 'pointer',
+									background: 'none',
+									borderWidth: 1,
+									borderColor: '#c07b31',
+									color: '#c07b31',
+									borderStyle: 'solid'
 								}}
 								onClick={() => {
 									setProductToModify({
