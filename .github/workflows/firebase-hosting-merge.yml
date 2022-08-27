@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npm run build
+      - run: npm i
+      - run: npm run build
         env:
           VITE_FB_API_KEY: '${{ secrets.FB_API_KEY }}'
           VITE_DB_AUTH_DOMAIN: '${{ secrets.FB_AUTH_DOMAIN }}'
