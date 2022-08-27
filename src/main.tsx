@@ -8,9 +8,9 @@ import 'moment/dist/locale/es';
 import es from 'antd/lib/locale/es_ES';
 
 import Router from './router';
-import 'antd/dist/antd.min.css';
+import 'antd/dist/antd.less';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import './index.scss';
+import './main.scss';
 import UnexpectedError from './views/Error';
 
 Sentry.init({

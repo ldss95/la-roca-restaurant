@@ -2,7 +2,7 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Layout } from 'antd';
 import moment from 'moment';
 
-// import NavBar from './layout/Navbar/NavBar';
+import NavBar from './layout/NavBar';
 // import Header from './layout/Header/Header';
 
 import Landing from './views/Landing';
@@ -30,9 +30,7 @@ const Router = () => {
 	}
 
 	return (
-		<Layout style={{ minHeight: '100vh', background: '#f5f5fd' }}>
-			{/* <NavBar /> */}
-
+		<Layout style={{ minHeight: '100vh', background: '#EEE1D4' }}>
 			<Layout className='site-layout'>
 				{/* <Header path={path} /> */}
 
@@ -46,6 +44,8 @@ const Router = () => {
 					La Roca Restaurant ©{moment().format('YYYY')} All rights reserved
 				</Footer>
 			</Layout>
+
+			<NavBar />
 		</Layout>
 	);
 };

@@ -95,6 +95,7 @@ const styles = {
 	},
 	form: {
 		width: 350,
+		maxWidth: '90%',
 		padding: 30,
 		borderRadius: 10,
 		background: '#fff'
