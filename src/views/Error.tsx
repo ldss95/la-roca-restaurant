@@ -1,6 +1,8 @@
 
 import { Button } from 'antd';
-import { AlertOutlined } from '@ant-design/icons'
+import { AlertOutlined } from '@ant-design/icons';
+
+import '../styles/error.scss';
 
 const ErrorView = () => {
 	return (

@@ -53,10 +53,13 @@ function MenuView () {
 				style={{
 					width: '100%',
 					borderRadius: 30,
-					background: '#c07b31',
+					background: '#E64848',
 					border: 'none'
 				}}
-				onClick={() => setShowModal(true)}
+				onClick={() => {
+					setProductToModify({} as ProductProps);
+					setShowModal(true);
+				}}
 			>
 				New Product
 			</Button>
@@ -101,8 +104,8 @@ function MenuView () {
 									cursor: 'pointer',
 									background: 'none',
 									borderWidth: 1,
-									borderColor: '#c07b31',
-									color: '#c07b31',
+									borderColor: '#E64848',
+									color: '#E64848',
 									borderStyle: 'solid'
 								}}
 								onClick={() => {

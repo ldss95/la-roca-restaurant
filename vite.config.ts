@@ -8,7 +8,7 @@ export default defineConfig({
 	preprocessorOptions:{
 	  less: {
 		modifyVars: {
-		  'primary-color': '#c07b31',
+		  'primary-color': '#E64848',
 		},
 		javascriptEnabled: true,
 	  },
