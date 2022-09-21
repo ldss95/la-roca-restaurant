@@ -26,4 +26,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LA_ROCA_RESTAURANT }}'
           channelId: live
-          projectId: la-roca-restaurant
+          projectId: la-roca-restaurant-d68d4
