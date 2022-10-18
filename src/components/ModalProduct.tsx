@@ -1,5 +1,5 @@
 import { memo, useState, useEffect } from 'react';
-import { Modal, Form, Input, Button, Space, Row } from 'antd';
+import { Modal, Input, Button, Spacer, Row, Textarea } from '@nextui-org/react';
 import Swal from 'sweetalert2';
 import { addDoc, collection, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
@@ -23,13 +23,8 @@ interface FormProps {
 }
 
 const ModalProduct = ({ visible, close, onFinish, name, id, description, price }: ModalProductProps) => {
-	const [form] = Form.useForm();
 	const [isLoading, setIsLoading] = useState(false);
 	const [isDeleting, setIsDeleting] = useState(false);
-
-	useEffect(() => {
-		form.resetFields();
-	}, [id]);
 
 	async function handleSave({ name, description, price }: FormProps) {
 		try {
@@ -78,11 +73,11 @@ const ModalProduct = ({ visible, close, onFinish, name, id, description, price }
 	return (
 		<Modal
 			visible={visible}
-			footer={null}
+			// footer={null}
 			title={id ? 'Modify Product' : 'New Product'}
 			onCancel={close}
 		>
-			<Form
+			{/* <Form
 				layout='vertical'
 				onFinish={handleSave}
 				form={form}
@@ -91,37 +86,13 @@ const ModalProduct = ({ visible, close, onFinish, name, id, description, price }
 					description,
 					price
 				}}
-			>
-				<Form.Item
-					label='Name'
-					name='name'
-					rules={[{
-						required: true,
-						message: 'Please, enter product name'
-					}]}
-				>
-					<Input />
-				</Form.Item>
+			> */}
 
-				<Form.Item
-					label='Price'
-					name='price'
-					rules={[{
-						required: true,
-						message: 'Please, enter product price'
-					}]}
-				>
-					<Input type='number' min={1} />
-				</Form.Item>
+				<Input label='Name' required />
+				<Input type='number' min={1} label='Price' />
+				<Textarea label='Description' />
 
-				<Form.Item
-					label='Description'
-					name='description'
-				>
-					<Input.TextArea />
-				</Form.Item>
-
-				<Row justify='end'>
+				{/* <Row justify='end'>
 					<Space>
 						<RenderIf condition={!!id}>
 							<Button
@@ -143,8 +114,7 @@ const ModalProduct = ({ visible, close, onFinish, name, id, description, price }
 							Save
 						</Button>
 					</Space>
-				</Row>
-			</Form>
+				</Row> */}
 		</Modal>
 	)
 }

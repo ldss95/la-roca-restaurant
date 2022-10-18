@@ -1,5 +1,5 @@
 
-import { Button } from 'antd';
+import { Button } from '@nextui-org/react';
 import { AlertOutlined } from '@ant-design/icons';
 
 import '../styles/error.scss';
@@ -17,7 +17,7 @@ const ErrorView = () => {
 				<p>Trabajamos tan rapido como es posible para solucionar esta situacion, disculpa los inconvenientes.</p>
 				<br />
 
-				<Button type='primary'>
+				<Button>
 					<a href='/dashboard'>Volver al inicio</a>
 				</Button>
 			</div>

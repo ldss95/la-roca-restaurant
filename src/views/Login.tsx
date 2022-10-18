@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { Form, Input, Button, Typography, notification } from 'antd';
+import { Input, Button, Text, Loading } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useAuthState } from 'react-firebase-hooks/auth';
 
 import { auth } from '../firebase';
-const { Title, Paragraph } = Typography;
+import Swal from 'sweetalert2';
+import RenderIf from '../components/RenderIf';
 
 interface FormProps {
 	email: string;
@@ -27,10 +28,7 @@ function LoginView () {
 			return;
 		}
 
-		notification.error({
-			message: 'Oops!',
-			description: 'Wrong credentials'
-		})
+		Swal.fire('Oops!', 'Wrong credentials')
 	}, [error]);
 
 	async function handleLogin({ email, password }: FormProps) {
@@ -40,46 +38,26 @@ function LoginView () {
 	return (
 		<div style={styles.container}>
 			<div style={styles.form}>
-				<Title style={{ textAlign: 'center' }}>Admin Login</Title>
-				<Paragraph style={{ textAlign: 'center' }}>Wecome back, enter your credentials to continue</Paragraph>
+				<Text h3 style={{ textAlign: 'center' }}>Admin Login</Text>
+				<Text style={{ textAlign: 'center' }}>
+					Wecome back, enter your credentials to continue
+				</Text>
 				<br />
 
-				<Form
-					layout='vertical'
-					onFinish={handleLogin}
+				<Input type='email' label='Email' required autoFocus />
+				<Input.Password label='Password' required />
+				<Button
+					style={{ width: '100%' }}
+					disabled={loading}
 				>
-					<Form.Item
-						label='Email'
-						name='email'
-						rules={[{
-							required: true,
-							message: 'Please, enter your email.'
-						}]}
-					>
-						<Input type='email' autoFocus />
-					</Form.Item>
+					<RenderIf condition={loading}>
+						<Loading color="currentColor" size="sm" />
+					</RenderIf>
 
-					<Form.Item
-						label='Password'
-						name='password'
-						rules={[{
-							required: true,
-							message: 'Please, enter your password.'
-						}]}
-					>
-						<Input.Password />
-					</Form.Item>
-
-					<Button
-						type='primary'
-						size='large'
-						style={{ width: '100%' }}
-						htmlType='submit'
-						loading={loading}
-					>
+					<RenderIf condition={!loading}>
 						Sign In
-					</Button>
-				</Form>
+					</RenderIf>
+				</Button>
 			</div>
 		</div>
 	)

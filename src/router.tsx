@@ -1,5 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { Layout } from 'antd';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import moment from 'moment';
 
 import NavBarState from './context/navbar/state';
@@ -14,7 +13,6 @@ import Users from './views/Users';
 import Menu from './views/Menu';
 import Categories from './views/Categories';
 
-const { Content, Footer } = Layout;
 
 const Router = () => {
 	const location = useLocation();
@@ -34,24 +32,24 @@ const Router = () => {
 
 	return (
 		<NavBarState>
-			<Layout style={{ minHeight: '100vh', background: '#EEE1D4' }}>
-				<Layout className='site-layout'>
+			<div style={{ minHeight: '100vh', background: '#EEE1D4' }}>
+				<div className='site-layout'>
 					{/* <Header path={path} /> */}
 
-					<Content style={{ padding: 30 }}>
+					<div style={{ padding: 30 }}>
 						<Routes>
 							<Route path='/users' element={<Users />} />
 							<Route path='/menu' element={<Menu />} />
 							<Route path='/categories' element={<Categories />} />
 						</Routes>
-					</Content>
-					<Footer style={{ textAlign: 'center' }}>
+					</div>
+					<div style={{ textAlign: 'center' }}>
 						La Roca Restaurant ©{moment().format('YYYY')} All rights reserved
-					</Footer>
-				</Layout>
+					</div>
+				</div>
 
 				<NavBar />
-			</Layout>
+			</div>
 		</NavBarState>
 	);
 };

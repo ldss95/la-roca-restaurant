@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Space } from 'antd';
+import { Spacer } from '@nextui-org/react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { collection } from 'firebase/firestore';
 
@@ -22,7 +22,7 @@ function LandingView () {
 				</button>
 
 				<div className='social-media'>
-					<Space size={20}>
+					<Spacer>
 						<a href='https://wa.me/14015851070' target='_blank'>
 							<WhatsAppOutlined style={{ fontSize: 26 }} />
 						</a>
@@ -34,7 +34,7 @@ function LandingView () {
 						<a href='https://www.facebook.com/profile.php?id=100069137480372' target='_blank'>
 							<FacebookOutlined style={{ fontSize: 26 }} />
 						</a>
-					</Space>
+					</Spacer>
 				</div>
 			</div>
 

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { EditOutlined, MenuOutlined, SearchOutlined, LoadingOutlined } from '@ant-design/icons';
-import { Row, Button, Spin } from 'antd';
+import { Row, Button, Loading } from '@nextui-org/react';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
@@ -25,7 +25,7 @@ function MenuView () {
 
 	return (
 		<div>
-			<Row justify='space-between' align='middle'>
+			<Row justify='space-between' align='center'>
 				<button
 					style={{
 						background: 'none',
@@ -48,8 +48,6 @@ function MenuView () {
 			<br />
 
 			<Button
-				type='primary'
-				size='large'
 				style={{
 					width: '100%',
 					borderRadius: 30,
@@ -68,7 +66,7 @@ function MenuView () {
 
 			<RenderIf condition={isLoading}>
 				<Row justify='center'>
-					<Spin indicator={<LoadingOutlined />} size='large' />
+					<Loading />
 				</Row>
 			</RenderIf>
 

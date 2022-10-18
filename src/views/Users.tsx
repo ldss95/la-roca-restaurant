@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { MenuOutlined, SearchOutlined } from '@ant-design/icons';
-import { Row } from 'antd';
+import { Row } from '@nextui-org/react';
 
 import NavbarContext from '../context/navbar/context';
 
@@ -9,7 +9,7 @@ function UsersView () {
 
 	return (
 		<div>
-			<Row justify='space-between' align='middle'>
+			<Row justify='space-between' align='center'>
 				<button
 					style={{
 						background: 'none',
