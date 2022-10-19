@@ -85,8 +85,7 @@ function LandingView () {
 							marginBottom: 10
 						}}
 					>
-						<h2 style={{ margin: 0 }}>{name}</h2>
-						<p style={{ margin: 0 }}>{description}</p>
+						<h2 style={{ margin: 0 }}>{name.spanish}</h2>
 						<h3 style={{ margin: 0 }}>$ {price}</h3>
 					</div>
 					)}
