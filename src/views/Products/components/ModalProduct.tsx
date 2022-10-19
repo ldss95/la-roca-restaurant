@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useMemo } from 'react';
+import { memo, useState, useEffect, useMemo, Key } from 'react';
 import { Modal, Input, Button, Text, Row, Dropdown, Loading } from '@nextui-org/react';
 import { Form, Formik } from 'formik';
 import { SaveOutlined } from '@ant-design/icons';
@@ -29,7 +29,7 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 	const [updateProduct, updating] = useUpdateProduct();
 	const [isOpen, setIsOpen] = useState(false);
 	const [categories] = useFetchCategories();
-	const [categoriesSelected, setCategoriesSelected] = useState<Set<string>>(new Set([]));
+	const [categoriesSelected, setCategoriesSelected] = useState<'all' | Set<Key>>(new Set([]));
 
 	useEffect(() => {
 		setCategoriesSelected(new Set(product?.categories || []));
@@ -48,10 +48,14 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 			await updateProduct(product.id, {
 				name,
 				price,
-				categories: Array.from(categoriesSelected)
+				categories: Array.from(categoriesSelected) as string[]
 			});
 		} else {
-			await createProduct({ name, price, categories: Array.from(categoriesSelected) })
+			await createProduct({
+				name,
+				price,
+				categories: Array.from(categoriesSelected) as string[]
+			})
 		}
 
 		setIsOpen(false);
