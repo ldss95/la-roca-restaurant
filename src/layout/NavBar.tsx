@@ -4,8 +4,8 @@ import { PoweroffOutlined, ArrowLeftOutlined, FileTextOutlined, TagsOutlined, Us
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
-import { auth } from '../firebase';
-import NavbarContext from '../context/navbar/context';
+import { auth } from '@/firebase';
+import NavbarContext from '@/context/navbar/context';
 
 const NavBar = () => {
 	const { isOpen, toggle } = useContext(NavbarContext);

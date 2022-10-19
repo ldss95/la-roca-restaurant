@@ -3,10 +3,10 @@ import { Input, Button, Text, Loading } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useAuthState } from 'react-firebase-hooks/auth';
 import { Formik, FormikErrors, Form } from 'formik';
-
-import { auth } from '../firebase';
 import Swal from 'sweetalert2';
-import RenderIf from '../components/RenderIf';
+
+import { auth } from '@/firebase';
+import RenderIf from '@/components/RenderIf';
 
 interface FormProps {
 	email: string;

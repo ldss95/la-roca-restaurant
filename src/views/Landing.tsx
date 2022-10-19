@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Spacer } from '@nextui-org/react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { collection } from 'firebase/firestore';
+import { FacebookOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
 
-import { db } from '../firebase';
-import logo from '../assets/logo.png'
-import { FacebookOutlined, InstagramOutlined, PhoneOutlined, WhatsAppOutlined } from '@ant-design/icons';
-import RenderIf from '../components/RenderIf';
+import { db } from '@/firebase';
+import logo from '@/assets/logo.png'
+import RenderIf from '@/components/RenderIf';
 
 function LandingView () {
 	const [products, isLoading] = useCollection(collection(db, 'products'));

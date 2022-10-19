@@ -2,7 +2,7 @@
 import { Button } from '@nextui-org/react';
 import { AlertOutlined } from '@ant-design/icons';
 
-import '../styles/error.scss';
+import '@/styles/error.scss';
 
 const ErrorView = () => {
 	return (

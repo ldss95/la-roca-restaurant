@@ -1,17 +1,17 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import moment from 'moment';
 
-import NavBarState from './context/navbar/state';
+import NavBarState from '@/context/navbar/state';
 
-import NavBar from './layout/NavBar';
+import NavBar from '@/layout/NavBar';
 // import Header from './layout/Header/Header';
 
-import Landing from './views/Landing';
-import Login from './views/Login';
-import NotFound from './views/NotFound';
-import Users from './views/Users';
-import Menu from './views/Menu';
-import Categories from './views/Categories';
+import Landing from '@/views/Landing';
+import Login from '@/views/Login';
+import NotFound from '@/views/NotFound';
+import Users from '@/views/Users';
+import Menu from '@/views/Menu';
+import Categories from '@/views/Categories';
 
 
 const Router = () => {

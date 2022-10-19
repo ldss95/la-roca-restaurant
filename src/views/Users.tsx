@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { MenuOutlined, SearchOutlined } from '@ant-design/icons';
 import { Row } from '@nextui-org/react';
 
-import NavbarContext from '../context/navbar/context';
+import NavbarContext from '@/context/navbar/context';
 
 function UsersView () {
 	const { toggle: toggleNavBar } = useContext(NavbarContext);

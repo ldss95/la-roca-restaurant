@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { EditOutlined, MenuOutlined, SearchOutlined, LoadingOutlined } from '@ant-design/icons';
+import { EditOutlined, MenuOutlined, SearchOutlined } from '@ant-design/icons';
 import { Row, Button, Loading } from '@nextui-org/react';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
