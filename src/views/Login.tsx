@@ -2,10 +2,16 @@ import { useEffect } from 'react';
 import { Input, Button, Text, Loading } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useAuthState } from 'react-firebase-hooks/auth';
+import { Formik, FormikErrors, Form } from 'formik';
 
 import { auth } from '../firebase';
 import Swal from 'sweetalert2';
 import RenderIf from '../components/RenderIf';
+
+interface FormProps {
+	email: string;
+	password: string;
+}
 
 interface FormProps {
 	email: string;
@@ -35,6 +41,26 @@ function LoginView () {
 		await signIn(email, password);
 	}
 
+	function validate ({ email, password }: FormikErrors<FormProps>) {
+		const errors: FormikErrors<FormProps> = {};
+
+		if (!email) {
+			errors.email = 'Please type yor email';
+		}
+
+		const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+		if (!email?.match(validEmail)) {
+			errors.email = 'Invalid email';
+		}
+
+		if (!password) {
+			errors.password = 'Please type yor password';
+		}
+
+		return errors;
+	}
+
 	return (
 		<div style={styles.container}>
 			<div style={styles.form}>
@@ -44,20 +70,60 @@ function LoginView () {
 				</Text>
 				<br />
 
-				<Input type='email' label='Email' required autoFocus />
-				<Input.Password label='Password' required />
-				<Button
-					style={{ width: '100%' }}
-					disabled={loading}
+				<Formik
+					onSubmit={handleLogin}
+					initialValues={{ email: '', password: '' }}
+					validate={validate}
 				>
-					<RenderIf condition={loading}>
-						<Loading color="currentColor" size="sm" />
-					</RenderIf>
+					{({ handleChange, handleBlur, errors }) => (
+						<Form>
+							<Input
+								type='email'
+								label='Email'
+								name='email'
+								onChange={handleChange}
+								onBlur={handleBlur}
+								css={{ width: '100%' }}
+								shadow={false}
+								helperColor='error'
+								helperText={errors.email}
+								required
+								autoFocus
+							/>
+							<br />
+							<br />
 
-					<RenderIf condition={!loading}>
-						Sign In
-					</RenderIf>
-				</Button>
+							<Input.Password
+								label='Password'
+								name='password'
+								onChange={handleChange}
+								onBlur={handleBlur}
+								css={{ width: '100%' }}
+								helperColor='error'
+								helperText={errors.password}
+								shadow={false}
+								required
+							/>
+							<br />
+							<br />
+							<br />
+
+							<Button
+								style={{ width: '100%' }}
+								disabled={loading}
+								type='submit'
+							>
+								<RenderIf condition={loading}>
+									<Loading color="currentColor" size="sm" />
+								</RenderIf>
+
+								<RenderIf condition={!loading}>
+									Sign In
+								</RenderIf>
+							</Button>
+						</Form>
+					)}
+				</Formik>
 			</div>
 		</div>
 	)
