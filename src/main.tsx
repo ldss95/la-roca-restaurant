@@ -1,9 +1,8 @@
-import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
-import { NextUIProvider, createTheme } from '@nextui-org/react';
+import { NextUIProvider } from '@nextui-org/react';
 import reportWebVitals from './reportWebVitals';
 import 'moment/dist/locale/es';
 
@@ -18,21 +17,12 @@ Sentry.init({
 	tracesSampleRate: 1.0,
 });
 
-const theme = createTheme({
-	type: 'light',
-	theme: {
-		colors: {
-			primary: '#EB2A00',
-		}
-	}
-})
-
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
 	<Sentry.ErrorBoundary fallback={<UnexpectedError />}>
 		<BrowserRouter>
-			<NextUIProvider theme={theme}>
+			<NextUIProvider>
 				<Router />
 			</NextUIProvider>
 		</BrowserRouter>
