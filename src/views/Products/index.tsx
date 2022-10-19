@@ -1,30 +1,24 @@
-import { useContext } from 'react';
-import {
-	DeleteOutlined,
-	EditOutlined,
-	MenuOutlined,
-	PlusOutlined,
-	SearchOutlined
-} from '@ant-design/icons';
-import {
-	Row,
-	Table,
-	Button,
-	Spacer,
-	Tooltip,
-	Popover,
-} from '@nextui-org/react';
+import { useContext, useState } from 'react';
+import { DeleteOutlined, EditOutlined, MenuOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { Row, Button, Loading, Table, Tooltip, Spacer, Popover } from '@nextui-org/react';
+import { collection } from 'firebase/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
-import NavbarContext from '../../context/navbar/context';
-import { useFetchCategories } from '@/hooks/useCategories';
-import { deleteCategory } from '@/services/categories';
+import NavbarContext from '@/context/navbar/context';
+import { db } from '@/firebase';
+import ModalProduct from '@/views/Products/components/ModalProduct';
+import RenderIf from '@/components/RenderIf';
 import { ModalOpener$ } from '@/utils/helpers';
-import ModalCategory from './components/ModalCategory';
+import { ProductProps } from '@/types/product';
+import { useFetchProducts } from '@/hooks/useProducts';
+import { deleteProduct } from '@/services/products';
 import ConfirmDeleteCard from '@/components/ConfirmDeleteCard';
 
-function CategoriesView () {
+function ProductsView () {
 	const { toggle: toggleNavBar } = useContext(NavbarContext);
-	const [categories] = useFetchCategories();
+
+	const [products, isLoading] = useFetchProducts()
+	// const [productToModify, setProductToModify] = useState<ProductProps>({} as ProductProps);
 
 	return (
 		<>
@@ -42,7 +36,7 @@ function CategoriesView () {
 					<MenuOutlined />
 				</button>
 
-				<h3 style={{ margin: 0 }}>Categories</h3>
+				<h3 style={{ margin: 0 }}>Menú</h3>
 
 				<button style={{ background: 'none', border: 'none', fontSize: 24, paddingRight: 0 }}>
 					<SearchOutlined />
@@ -52,23 +46,34 @@ function CategoriesView () {
 
 			<Button
 				icon={<PlusOutlined />}
-				onClick={() => ModalOpener$.next('CATEGORY')}
+				onClick={() => ModalOpener$.next('PRODUCT')}
 			>
-				Create Category
+				Create Product
 			</Button>
+			<br />
+
+			<RenderIf condition={isLoading}>
+				<Row justify='center'>
+					<Loading />
+				</Row>
+			</RenderIf>
 			<br />
 
 			<Table css={{ background: '#fff' }}>
 				<Table.Header>
 					<Table.Column>Name (Spanish)</Table.Column>
 					<Table.Column>Name (English)</Table.Column>
+					<Table.Column>Price</Table.Column>
+					<Table.Column>Categories</Table.Column>
 					<Table.Column align='center'>Options</Table.Column>
 				</Table.Header>
-				<Table.Body items={categories}>
-					{({ id, name }) => (
+				<Table.Body items={products}>
+					{({ id, name, price, categories }) => (
 						<Table.Row key={id}>
 							<Table.Cell>{name.spanish}</Table.Cell>
 							<Table.Cell>{name.english}</Table.Cell>
+							<Table.Cell>{price}</Table.Cell>
+							<Table.Cell>{categories.join(', ')}</Table.Cell>
 							<Table.Cell>
 								<Row justify='center'>
 									<Tooltip content='Edit'>
@@ -90,7 +95,7 @@ function CategoriesView () {
 											/>
 										</Popover.Trigger>
 										<Popover.Content>
-											<ConfirmDeleteCard onConfirm={() => deleteCategory(id!)} />
+											<ConfirmDeleteCard onConfirm={() => deleteProduct(id!)} />
 										</Popover.Content>
 									</Popover>
 								</Row>
@@ -100,9 +105,9 @@ function CategoriesView () {
 				</Table.Body>
 			</Table>
 
-			<ModalCategory />
+			<ModalProduct />
 		</>
 	)
 }
 
-export default CategoriesView;
+export default ProductsView;

@@ -18,4 +18,4 @@ export function avoidNotNumerics(event: any) {
 		event.preventDefault();
 }
 
-export const ModalOpener$ = new Subject<'CATEGORY'>();
+export const ModalOpener$ = new Subject<'CATEGORY' | 'PRODUCT'>();

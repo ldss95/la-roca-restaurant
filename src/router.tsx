@@ -10,7 +10,7 @@ import Landing from '@/views/Landing';
 import Login from '@/views/Login';
 import NotFound from '@/views/NotFound';
 import Users from '@/views/Users';
-import Menu from '@/views/Menu';
+import Products from '@/views/Products';
 import Categories from '@/views/Categories';
 
 
@@ -39,7 +39,7 @@ const Router = () => {
 					<div style={{ padding: 30 }}>
 						<Routes>
 							<Route path='/users' element={<Users />} />
-							<Route path='/menu' element={<Menu />} />
+							<Route path='/products' element={<Products />} />
 							<Route path='/categories' element={<Categories />} />
 						</Routes>
 					</div>

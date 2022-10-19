@@ -31,7 +31,7 @@ export const useFetchCategories = (): [CategoryProps[], boolean] => {
 		const ref = collection(db, 'categories');
 		const unsubscribe = onSnapshot(ref, (snap) => {
 			if (snap.empty) {
-				return;
+				return setLoading(false);
 			}
 
 			setLoading(true);
@@ -41,7 +41,7 @@ export const useFetchCategories = (): [CategoryProps[], boolean] => {
 			})) as CategoryProps[];
 
 			setCategories(categories);
-			setLoading(false)
+			setLoading(false);
 		});
 
 

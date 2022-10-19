@@ -10,7 +10,7 @@ import RenderIf from '@/components/RenderIf';
 
 const ModalCategory = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [createCategpry, isLoading] = useCreateCategory();
+	const [createCategory, isLoading] = useCreateCategory();
 
 	useEffect(() => {
 		const listener = ModalOpener$.subscribe((modal) => {
@@ -23,7 +23,7 @@ const ModalCategory = () => {
 	}, []);
 
 	async function handleSave(category: CategoryProps){
-		await createCategpry(category);
+		await createCategory(category);
 		setIsOpen(false);
 	}
 

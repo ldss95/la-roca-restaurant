@@ -96,6 +96,7 @@ html {
 	height: 0;
 	background: #fff;
 	overflow: hidden;
+	z-index: 1000;
 	transition:
 		ease height .3s,
 		ease width .3s;
