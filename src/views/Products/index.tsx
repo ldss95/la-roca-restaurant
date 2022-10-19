@@ -18,7 +18,7 @@ function ProductsView () {
 	const { toggle: toggleNavBar } = useContext(NavbarContext);
 
 	const [products, isLoading] = useFetchProducts()
-	// const [productToModify, setProductToModify] = useState<ProductProps>({} as ProductProps);
+	const [productToModify, setProductToModify] = useState<ProductProps>();
 
 	return (
 		<>
@@ -46,7 +46,10 @@ function ProductsView () {
 
 			<Button
 				icon={<PlusOutlined />}
-				onClick={() => ModalOpener$.next('PRODUCT')}
+				onClick={() => {
+					setProductToModify(undefined);
+					ModalOpener$.next('PRODUCT');
+				}}
 			>
 				Create Product
 			</Button>
@@ -79,6 +82,10 @@ function ProductsView () {
 									<Tooltip content='Edit'>
 										<Button
 											icon={<EditOutlined />}
+											onClick={() => {
+												setProductToModify({ name, id, categories, price });
+												ModalOpener$.next('PRODUCT');
+											}}
 											bordered
 											auto
 										/>
@@ -105,7 +112,7 @@ function ProductsView () {
 				</Table.Body>
 			</Table>
 
-			<ModalProduct />
+			<ModalProduct product={productToModify} />
 		</>
 	)
 }

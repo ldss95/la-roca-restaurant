@@ -1,6 +1,7 @@
 import { memo, useState, useEffect } from 'react';
 import { Modal, Input, Text, Button, Loading } from '@nextui-org/react';
 import { Formik, Form, FormikErrors } from 'formik';
+import { filter } from 'rxjs';
 
 import { ModalOpener$ } from '@/utils/helpers';
 import { SaveOutlined } from '@ant-design/icons';
@@ -13,11 +14,9 @@ const ModalCategory = () => {
 	const [createCategory, isLoading] = useCreateCategory();
 
 	useEffect(() => {
-		const listener = ModalOpener$.subscribe((modal) => {
-			if (modal === 'CATEGORY') {
-				setIsOpen(true);
-			}
-		})
+		const listener = ModalOpener$
+			.pipe(filter(modal => modal === 'CATEGORY'))
+			.subscribe(() => setIsOpen(true))
 
 		return () => listener.unsubscribe();
 	}, []);

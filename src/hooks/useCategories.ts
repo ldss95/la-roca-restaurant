@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 
 import { createCategory } from '@/services/categories';
@@ -29,7 +29,8 @@ export const useFetchCategories = (): [CategoryProps[], boolean] => {
 
 	useEffect(() => {
 		const ref = collection(db, 'categories');
-		const unsubscribe = onSnapshot(ref, (snap) => {
+		const q = query(ref, orderBy('name'))
+		const unsubscribe = onSnapshot(q, (snap) => {
 			if (snap.empty) {
 				return setLoading(false);
 			}

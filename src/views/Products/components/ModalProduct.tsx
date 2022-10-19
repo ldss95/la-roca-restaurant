@@ -1,13 +1,12 @@
 import { memo, useState, useEffect, useMemo } from 'react';
 import { Modal, Input, Button, Text, Row, Dropdown, Loading } from '@nextui-org/react';
-import { updateDoc, doc } from 'firebase/firestore';
 import { Form, Formik } from 'formik';
 import { SaveOutlined } from '@ant-design/icons';
+import { filter } from 'rxjs';
 
-import { db } from '@/firebase';
 import { ProductProps } from '@/types/product';
 import { avoidNotNumerics, ModalOpener$ } from '@/utils/helpers';
-import { useCreateProduct } from '@/hooks/useProducts';
+import { useCreateProduct, useUpdateProduct } from '@/hooks/useProducts';
 import { useFetchCategories } from '@/hooks/useCategories';
 import RenderIf from '@/components/RenderIf';
 
@@ -26,32 +25,37 @@ const defaultValues = {
 }
 
 const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
-	const [createProduct, loading] = useCreateProduct();
+	const [createProduct, creating] = useCreateProduct();
+	const [updateProduct, updating] = useUpdateProduct();
 	const [isOpen, setIsOpen] = useState(false);
 	const [categories] = useFetchCategories();
-	const [categoriesSelected, setCategoriesSelected] = useState(new Set([]));
+	const [categoriesSelected, setCategoriesSelected] = useState<Set<string>>(new Set([]));
 
 	useEffect(() => {
-		const listener = ModalOpener$.subscribe((modal) => {
-			if (modal === 'PRODUCT') {
-				setIsOpen(true);
-			}
-		})
+		setCategoriesSelected(new Set(product?.categories || []));
+	}, [product]);
+
+	useEffect(() => {
+		const listener = ModalOpener$
+			.pipe(filter(modal => modal === 'PRODUCT'))
+			.subscribe(() => setIsOpen(true));
 
 		return () => listener.unsubscribe();
 	}, []);
 
 	async function handleSave({ name, price }: ProductProps) {
 		if (product?.id) {
-			await updateDoc(doc(db, 'products', product?.id), {
+			await updateProduct(product.id, {
 				name,
-				price
+				price,
+				categories: Array.from(categoriesSelected)
 			});
 		} else {
 			await createProduct({ name, price, categories: Array.from(categoriesSelected) })
 		}
 
 		setIsOpen(false);
+		setCategoriesSelected(new Set([]));
 		if (onFinish) {
 			onFinish();
 		}
@@ -68,27 +72,16 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 			width='400px'
 		>
 			<Modal.Header>
-				<Text>{product?.id ? 'Modify Product' : 'New Product'}</Text>
+				<Text h4>{product?.id ? 'Modify Product' : 'New Product'}</Text>
 			</Modal.Header>
 			<Modal.Body>
 				<Formik
 					initialValues={product || defaultValues}
 					onSubmit={handleSave}
+					enableReinitialize
 				>
 					{({ handleChange, handleBlur }) => (
 						<Form>
-							<Input
-								label='Name (English)'
-								name='name.english'
-								onChange={handleChange}
-								onBlur={handleBlur}
-								shadow={false}
-								css={{ width: '100%' }}
-								required
-							/>
-							<br />
-							<br />
-
 							<Input
 								label='Name (Spanish)'
 								name='name.spanish'
@@ -96,6 +89,21 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 								onBlur={handleBlur}
 								shadow={false}
 								css={{ width: '100%' }}
+								value={product?.name?.spanish || ''}
+								autoFocus
+								required
+							/>
+							<br />
+							<br />
+
+							<Input
+								label='Name (English)'
+								name='name.english'
+								onChange={handleChange}
+								onBlur={handleBlur}
+								shadow={false}
+								css={{ width: '100%' }}
+								value={product?.name?.english || ''}
 								required
 							/>
 							<br />
@@ -110,6 +118,7 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 								onBlur={handleBlur}
 								label='Price'
 								css={{ width: '100%' }}
+								value={product?.price || 0}
 								shadow={false}
 							/>
 							<br />
@@ -139,19 +148,18 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 							</Dropdown>
 							<br />
 							<br />
-							<br />
 
 							<Row justify='center'>
 								<Button
 									type='submit'
 									icon={<SaveOutlined />}
-									disabled={loading}
+									disabled={creating || updating}
 								>
-									<RenderIf condition={loading}>
+									<RenderIf condition={creating || updating}>
 										<Loading />
 									</RenderIf>
 
-									<RenderIf condition={!loading}>
+									<RenderIf condition={!creating && !updating}>
 										Save
 									</RenderIf>
 								</Button>

@@ -31,9 +31,9 @@ const NavBar = () => {
 
 			<ul>
 				<li>
-					<NavLink to='/menu'>
+					<NavLink to='/products'>
 						<FileTextOutlined />
-						Menú
+						Products
 					</NavLink>
 				</li>
 				<li>
