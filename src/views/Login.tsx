@@ -25,7 +25,7 @@ function LoginView () {
 
 	useEffect(() => {
 		if (session) {
-			navigate('/menu')
+			navigate('/products')
 		}
 	}, [session]);
 
