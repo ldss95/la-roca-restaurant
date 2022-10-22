@@ -10,6 +10,7 @@ import Router from './router';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import './main.scss';
 import UnexpectedError from './views/Error';
+import LanguageState from './context/language/state';
 
 Sentry.init({
 	dsn: import.meta.env.VITE_SENTRY_DSN,
@@ -23,7 +24,9 @@ root.render(
 	<Sentry.ErrorBoundary fallback={<UnexpectedError />}>
 		<BrowserRouter>
 			<NextUIProvider>
-				<Router />
+				<LanguageState>
+					<Router />
+				</LanguageState>
 			</NextUIProvider>
 		</BrowserRouter>
 	</Sentry.ErrorBoundary>
