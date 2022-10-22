@@ -1,3 +1,22 @@
+@font-face {
+	font-family: 'Bitter';
+	src: url('/src/assets/fonts/Bitter-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Bitter Italic';
+	src: url('/src/assets/fonts/Bitter-Italic.ttf');
+}
+
+@font-face {
+	font-family: 'Bitter Italic Bold';
+	src: url('/src/assets/fonts/Bitter-BoldItalic.ttf');
+}
+
+* {
+	font-family: 'Bitter';
+}
+
 html {
 	scroll-behavior: smooth;
 }
