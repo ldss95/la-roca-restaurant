@@ -4,13 +4,22 @@
 }
 
 @font-face {
-	font-family: 'Bitter Italic';
-	src: url('/src/assets/fonts/Bitter-Italic.ttf');
+	font-family: 'Bitter';
+	src: url('/src/assets/fonts/Bitter-Bold.ttf');
+	font-weight: bold;
 }
 
 @font-face {
-	font-family: 'Bitter Italic Bold';
+	font-family: 'Bitter';
+	src: url('/src/assets/fonts/Bitter-Italic.ttf');
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Bitter';
 	src: url('/src/assets/fonts/Bitter-BoldItalic.ttf');
+	font-weight: bold;
+	font-style: italic;
 }
 
 * {
