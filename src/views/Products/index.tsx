@@ -73,8 +73,8 @@ function ProductsView () {
 				<Table.Body items={products}>
 					{({ id, name, price, categories }) => (
 						<Table.Row key={id}>
-							<Table.Cell>{name.spanish}</Table.Cell>
-							<Table.Cell>{name.english}</Table.Cell>
+							<Table.Cell>{name.es}</Table.Cell>
+							<Table.Cell>{name.en}</Table.Cell>
 							<Table.Cell>{price}</Table.Cell>
 							<Table.Cell>{categories.join(', ')}</Table.Cell>
 							<Table.Cell>

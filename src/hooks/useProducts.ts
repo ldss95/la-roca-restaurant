@@ -46,7 +46,7 @@ export const useFetchProducts = (): [ProductProps[], boolean] => {
 
 	useEffect(() => {
 		const ref = collection(db, 'products');
-		const q = query(ref, orderBy('name.spanish', 'asc'));
+		const q = query(ref, orderBy('name.es', 'asc'));
 		const unsubscribe = onSnapshot(q, (snap) => {
 			if (snap.empty) {
 				return setLoading(false);

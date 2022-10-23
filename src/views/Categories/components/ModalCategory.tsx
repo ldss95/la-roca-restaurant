@@ -27,14 +27,14 @@ const ModalCategory = () => {
 	}
 
 	function validate ({ name }: FormikErrors<CategoryProps>) {
-		const errors: FormikErrors<{ spanish: string; english: string; }> = {};
+		const errors: FormikErrors<{ es: string; en: string; }> = {};
 
-		if (!name?.spanish) {
-			errors.spanish = 'Please type the name of category';
+		if (!name?.es) {
+			errors.es = 'Please type the name of category';
 		}
 
-		if (!name?.english) {
-			errors.spanish = 'Please type the name of category';
+		if (!name?.en) {
+			errors.en = 'Please type the name of category';
 		}
 
 		return errors;
@@ -53,8 +53,8 @@ const ModalCategory = () => {
 				<Formik
 					initialValues={{
 						name: {
-							english: '',
-							spanish: ''
+							en: '',
+							es: ''
 						}
 					}}
 					onSubmit={handleSave}
@@ -66,9 +66,9 @@ const ModalCategory = () => {
 						<Form>
 							<Input
 								label='Name (Spanish)'
-								name='name.spanish'
+								name='name.es'
 								onChange={handleChange}
-								helperText={errors.spanish}
+								helperText={errors.es}
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}
@@ -80,9 +80,9 @@ const ModalCategory = () => {
 
 							<Input
 								label='Name (English)'
-								name='name.english'
+								name='name.en'
 								onChange={handleChange}
-								helperText={errors.spanish}
+								helperText={errors.es}
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}

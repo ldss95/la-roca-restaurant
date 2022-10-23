@@ -67,8 +67,8 @@ function CategoriesView () {
 				<Table.Body items={categories}>
 					{({ id, name }) => (
 						<Table.Row key={id}>
-							<Table.Cell>{name.spanish}</Table.Cell>
-							<Table.Cell>{name.english}</Table.Cell>
+							<Table.Cell>{name.es}</Table.Cell>
+							<Table.Cell>{name.en}</Table.Cell>
 							<Table.Cell>
 								<Row justify='center'>
 									<Tooltip content='Edit'>

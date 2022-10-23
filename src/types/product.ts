@@ -1,8 +1,8 @@
 export interface ProductProps {
 	id?: string;
 	name: {
-		english: string;
-		spanish: string;
+		en: string;
+		es: string;
 	};
 	price: number;
 	categories: string[];

@@ -18,8 +18,8 @@ interface ModalProductProps {
 const defaultValues = {
 	price: 0,
 	name: {
-		english: '',
-		spanish: ''
+		en: '',
+		es: ''
 	},
 	categories: []
 }
@@ -88,12 +88,12 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 						<Form>
 							<Input
 								label='Name (Spanish)'
-								name='name.spanish'
+								name='name.es'
 								onChange={handleChange}
 								onBlur={handleBlur}
 								shadow={false}
 								css={{ width: '100%' }}
-								value={product?.name?.spanish || ''}
+								value={product?.name?.es || ''}
 								autoFocus
 								required
 							/>
@@ -102,12 +102,12 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 
 							<Input
 								label='Name (English)'
-								name='name.english'
+								name='name.en'
 								onChange={handleChange}
 								onBlur={handleBlur}
 								shadow={false}
 								css={{ width: '100%' }}
-								value={product?.name?.english || ''}
+								value={product?.name?.en || ''}
 								required
 							/>
 							<br />
@@ -146,7 +146,7 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 									selectedKeys={categoriesSelected}
 								>
 									{categories.map(({ name }) => (
-										<Dropdown.Item key={name.english}>{name.english}</Dropdown.Item>
+										<Dropdown.Item key={name.en}>{name.en}</Dropdown.Item>
 									))}
 								</Dropdown.Menu>
 							</Dropdown>
