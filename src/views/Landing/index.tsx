@@ -55,7 +55,7 @@ function LandingView() {
 
 			<section id='about_us'>
 				<Grid.Container>
-					<Grid xs={6} justify='flex-start'>
+					<Grid xs={12} md={6}>
 						<Carousel
 							images={[
 								'https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
@@ -65,10 +65,14 @@ function LandingView() {
 						/>
 					</Grid>
 					<Grid xs={6}>
-						<h2 style={{ height: '100vh' }}>NOSOTROS</h2>
+						<Text h2>NOSOTROS</Text>
+
+
 					</Grid>
 				</Grid.Container>
 			</section>
+			<br />
+			<br />
 
 			<section id='menu'>
 				<Menu />

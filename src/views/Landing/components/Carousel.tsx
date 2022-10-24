@@ -18,10 +18,10 @@ const Carousel = ({ images }: CarouselProps) => {
 			spaceBetween={30}
 			style={{
 				height: 500,
-				marginLeft: -150,
+				marginLeft: window.innerWidth < 700 ? -50 : -150,
 				width: '100%',
 				position: 'relative',
-				paddingRight: 100
+				paddingRight: window.innerWidth < 700 ? 40 : 100,
 			}}
 			modules={[Navigation]}
 			loop
