@@ -13,16 +13,17 @@ const NavBar = () => {
 	const { lang, setLang } = useContext(LanguageContext);
 
 	return (
-		<Navbar disableShadow maxWidth='fluid'>
+		<Navbar disableShadow>
 			<Navbar.Toggle showIn='xs' />
 			<Navbar.Brand
 				css={{
-					'@xs': {
-						w: '12%',
-					},
+					// '@xs': {
+					// 	w: '12%',
+					// },
+					padding: 20
 				}}
 			>
-				<img src={logo} style={{ width: 100 }} />
+				<img src={logo} style={{ width: 150 }} />
 			</Navbar.Brand>
 			<Navbar.Content hideIn='xs'>
 				<Navbar.Link href='#about_us'>

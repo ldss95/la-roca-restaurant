@@ -2,10 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import moment from 'moment';
 
 import NavBarState from '@/context/navbar/state';
-
 import NavBar from '@/layout/NavBar';
-// import Header from './layout/Header/Header';
-
 import Landing from '@/views/Landing';
 import Login from '@/views/Login';
 import NotFound from '@/views/NotFound';
@@ -18,7 +15,7 @@ const Router = () => {
 	const location = useLocation();
 	const path = location.pathname;
 
-	if (['/', '/login', '/recuperar-contrasenia', '/404'].includes(path)) {
+	if (['/', '/login', '/404'].includes(path)) {
 		return (
 			<Routes>
 				<Route
@@ -34,8 +31,6 @@ const Router = () => {
 		<NavBarState>
 			<div style={{ minHeight: '100vh', background: '#EEE1D4' }}>
 				<div className='site-layout'>
-					{/* <Header path={path} /> */}
-
 					<div style={{ padding: 30 }}>
 						<Routes>
 							<Route path='/users' element={<Users />} />
