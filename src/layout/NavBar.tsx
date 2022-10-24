@@ -8,6 +8,7 @@ import FlagSpain from '@/assets/spain_flag.svg';
 import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import { Language } from '@/types/language';
+import '@/styles/navbar.scss'
 
 const NavBar = () => {
 	const { lang, setLang } = useContext(LanguageContext);
