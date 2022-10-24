@@ -64,10 +64,38 @@ function LandingView() {
 							]}
 						/>
 					</Grid>
-					<Grid xs={6}>
+					<Grid
+						xs={12}
+						md={6}
+						justify='center'
+						direction='column'
+						css={{
+							padding: 30,
+							position: 'relative'
+						}}
+					>
 						<Text h2>NOSOTROS</Text>
+						<br />
 
+						<Text className='heading'>
+							<span>Te ofrecemos un</span>
+							<br />
+							<span>ambiente familiar</span>
+						</Text>
+						<br />
 
+						<Text className='subheading'>Para disfrutar de tus platos favoritos y el sabroso sazón de nuestra cocina</Text>
+						<br />
+
+						<div
+							style={{
+								width: 110,
+								height: 5,
+								background: '#FFCDA9'
+							}}
+						/>
+
+						{/* <DecorationCircle right={-600} top={-100} /> */}
 					</Grid>
 				</Grid.Container>
 			</section>
@@ -77,8 +105,9 @@ function LandingView() {
 			<section id='menu'>
 				<Menu />
 			</section>
+			<br />
 
-			<section id='contact'>
+			{/* <section id='contact'>
 				<Grid.Container gap={10}>
 					<Grid xs={4}>
 						<ImageCard url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Fmofongo.png?alt=media&token=59de3a54-17ae-4723-9822-170bfad51b58' />
@@ -124,7 +153,7 @@ function LandingView() {
 					</Grid>
 				</Grid.Container>
 				<br /><br /><br /><br /><br /><br />
-			</section>
+			</section> */}
 
 			<Footer />
 		</>

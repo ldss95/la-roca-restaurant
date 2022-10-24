@@ -13,6 +13,30 @@
 	}
 }
 
+.heading {
+	line-height: 32px;
+
+	span {
+		&:nth-child(1) {
+			font-size: 30px;
+			color: #500E00;
+		}
+
+		&:nth-child(3) {
+			font-size: 38px;
+			font-style: italic;
+			color: #EB2A00;
+		}
+	}
+}
+
+.subheading {
+	font-family: Manrope;
+	color: #888888;
+	font-size: 24px;
+	z-index: 200;
+}
+
 .nextui-navbar-container {
 	background-color: transparent !important;
 	backdrop-filter: none !important;
