@@ -1,29 +1,19 @@
-import { Dropdown, Link, Navbar } from '@nextui-org/react';
+import { Link, Navbar } from '@nextui-org/react';
 import { memo, useContext } from 'react';
-import { SwapOutlined } from '@ant-design/icons';
 
 import logo from '@/assets/logo.png';
-import FlagUsa from '@/assets/usa_flag.svg';
-import FlagSpain from '@/assets/spain_flag.svg';
 import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
-import { Language } from '@/types/language';
+import LanguageToggler from '@/components/LanguageToggler';
 import '@/styles/navbar.scss'
 
 const NavBar = () => {
-	const { lang, setLang } = useContext(LanguageContext);
+	const { lang } = useContext(LanguageContext);
 
 	return (
 		<Navbar disableShadow>
 			<Navbar.Toggle showIn='xs' />
-			<Navbar.Brand
-				css={{
-					// '@xs': {
-					// 	w: '12%',
-					// },
-					padding: 20
-				}}
-			>
+			<Navbar.Brand css={{ padding: 20 }} >
 				<img src={logo} style={{ width: 150 }} />
 			</Navbar.Brand>
 			<Navbar.Content hideIn='xs'>
@@ -45,32 +35,7 @@ const NavBar = () => {
 					},
 				}}
 			>
-				<Dropdown placement='bottom-right'>
-					<Navbar.Item
-						css={{
-							background: '#fff',
-							padding: '10px 20px',
-							borderRadius: 10,
-						}}
-					>
-						<Dropdown.Trigger>
-							<SwapOutlined style={{ color: '#EB2A00' }} />
-						</Dropdown.Trigger>
-					</Navbar.Item>
-					<Dropdown.Menu
-						aria-label='Change language'
-						onAction={(lang) => setLang(lang as Language)}
-					>
-						<Dropdown.Item key='en'>
-							<img src={FlagUsa} style={{ height: 15 }} />
-							English
-						</Dropdown.Item>
-						<Dropdown.Item key='es'>
-							<img src={FlagSpain} style={{ height: 15 }} />
-							Español
-						</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown>
+				<LanguageToggler />
 			</Navbar.Content>
 			<Navbar.Collapse>
 				<Navbar.CollapseItem>

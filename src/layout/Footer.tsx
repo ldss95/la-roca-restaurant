@@ -5,6 +5,7 @@ import { FacebookOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-desi
 import logo from '@/assets/logo.png';
 import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
+import LanguageToggler from '@/components/LanguageToggler';
 
 const Footer = () => {
 	const { lang } = useContext(LanguageContext);
@@ -12,10 +13,15 @@ const Footer = () => {
 	return (
 		<footer>
 			<Grid.Container style={{ padding: '60px 0' }}>
-				<Grid xs={4} justify='center' alignItems='center'>
+				<Grid
+					xs={12}
+					md={3}
+					justify='center'
+					alignItems='center'
+				>
 					<img src={logo} style={{ maxWidth: '50%', maxHeight: '60%', height: 'auto', width: 'auto' }} />
 				</Grid>
-				<Grid xs={4}>
+				<Grid xs={12} md={3}>
 					<ul id='social_media_links'>
 						<li>
 							<a href='https://intagram.com' target='_blannk'>
@@ -37,7 +43,7 @@ const Footer = () => {
 						</li>
 					</ul>
 				</Grid>
-				<Grid xs={4}>
+				<Grid xs={12} md={3}>
 					<ul id='nav_links'>
 						<li>
 							<a href='#about_us'>{dictionary[lang].navbar.aboutUs}</a>
@@ -50,7 +56,9 @@ const Footer = () => {
 						</li>
 					</ul>
 				</Grid>
-				<Grid xs={4}></Grid>
+				<Grid xs={12} md={3} alignItems='center' justify='center'>
+					<LanguageToggler />
+				</Grid>
 			</Grid.Container>
 			<div
 				style={{
