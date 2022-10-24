@@ -23,6 +23,7 @@
     "react-router-dom": "^6.3.0",
     "rxjs": "^7.5.7",
     "sweetalert2": "^11.4.29",
+    "swiper": "^8.4.4",
     "web-vitals": "^3.0.0"
   },
   "devDependencies": {
