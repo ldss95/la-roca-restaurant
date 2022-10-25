@@ -1,18 +1,24 @@
 export default {
 	es: {
-		title: ['El sabor de la', 'cocina dominicana'],
 		navbar: {
 			menu: 'Menú',
 			aboutUs: 'Nosotros',
 			contact: 'Contacto'
+		},
+		titles: {
+			about_us: 'NOSOTROS',
+			menu: 'MENÚ'
 		}
 	},
 	en: {
-		title: ['The taste of ', 'Dominican cuisine'],
 		navbar: {
 			menu: 'Menu',
 			aboutUs: 'About Us',
 			contact: 'Contact'
+		},
+		titles: {
+			about_us: 'ABOUT US',
+			menu: 'MENU'
 		}
 	}
 }

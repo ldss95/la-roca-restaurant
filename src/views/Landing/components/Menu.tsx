@@ -1,11 +1,13 @@
 import { memo, useContext, useState } from 'react';
-import { Col, Row, Text, Grid } from '@nextui-org/react';
+import { Text, Grid } from '@nextui-org/react';
 
 import { useFetchCategories } from '@/hooks/useCategories';
 import { useFetchProducts } from '@/hooks/useProducts';
 import LanguageContext from '@/context/language/context';
+import dictionary from '@/dictionary';
+import { CopyProps } from '@/types/copy';
 
-const Menu = () => {
+const Menu = ({ copy }: { copy: CopyProps }) => {
 	const { lang } = useContext(LanguageContext);
 	const [categories] = useFetchCategories();
 	const [products] = useFetchProducts();
@@ -18,7 +20,7 @@ const Menu = () => {
 				md={6}
 				direction='column'
 			>
-				<Text h2>MENÚ</Text>
+				<Text h2>{dictionary[lang].titles.menu}</Text>
 				<br />
 				<br />
 
@@ -28,9 +30,9 @@ const Menu = () => {
 				<br />
 
 				<Text className='heading'>
-					<span>Una gran variedad</span>
+					<span>{copy[lang].menu.title[0]}</span>
 					<br />
-					<span>de platos dominicanos</span>
+					<span>{copy[lang].menu.title[1]}</span>
 				</Text>
 				<br />
 				<br />

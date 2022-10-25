@@ -36,7 +36,7 @@ const Footer = () => {
 							</a>
 						</li>
 						<li>
-							<a href='https://wa.me/14019418090'>
+							<a href='https://wa.me/14019418090' target='_blank'>
 								<WhatsAppOutlined />
 								<Text>(401) 941-8090</Text>
 							</a>
