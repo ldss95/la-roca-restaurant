@@ -1,26 +1,12 @@
-.swiper-button-next {
-	background-image: url(../../../assets/right_arrow.svg);
-	background-repeat: no-repeat;
-	background-size: 100% auto;
-	background-position: center;
+.carousel-nav-container {
+	position: absolute;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	top: calc(50% - 26px);
+	padding: 0 30px;
 
-	&::after {
-		display: none;
-	}
-}
-
-.swiper-button-prev {
-	margin-left: 150px;
-	background-image: url(../../../assets/left_arrow.svg);
-	background-repeat: no-repeat;
-	background-size: 100% auto;
-	background-position: center;
-
-	@media only screen and (max-width: 700px) {
-		margin-left: 80px;
-	}
-
-	&::after {
-		display: none;
+	img {
+		cursor: pointer;
 	}
 }

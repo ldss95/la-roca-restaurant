@@ -5,6 +5,12 @@
 
 @font-face {
 	font-family: 'Bitter';
+	src: url('/src/assets/fonts/Bitter-Light.ttf');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Bitter';
 	src: url('/src/assets/fonts/Bitter-Medium.ttf');
 	font-weight: 500;
 }
@@ -174,7 +180,7 @@ html {
 h2 {
 	font-family: 'Manrope';
 	color: #FFB876 !important;
-	font-size: 20px;
+	font-size: 24px;
 	letter-spacing: 6px;
 }
 

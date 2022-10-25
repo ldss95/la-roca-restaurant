@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Text, Grid, Row, Col } from '@nextui-org/react';
+import { Text, Grid, Row, Col, Spacer } from '@nextui-org/react';
 
 import '@/styles/landing.scss';
 import NavBar from '@/layout/NavBar';
@@ -11,14 +11,18 @@ import Menu from '@/views/Landing/components/Menu';
 import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import MainSectionBackground from './components/MainSectionBackground';
 import Carousel from './components/Carousel';
+import stamp from '@/assets/stamp.svg';
+import { useFetchImages } from '@/hooks/useImages';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
+	const [images] = useFetchImages();
 
 	return (
 		<>
 			<section>
 				<MainSectionBackground />
+				<br />
 				<NavBar />
 				<br />
 				<br />
@@ -36,16 +40,29 @@ function LandingView() {
 							/>
 						</div>
 					</Grid>
-					<Grid xs={12} md={6}>
-						<Grid.Container>
-							<Grid xs={7} css={{ padding: '0 30px' }}>
-								<ImageCard url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0' />
-							</Grid>
+					<Grid xs={12} md={6} css={{ paddingRight: -30, position: 'relative' }}>
+						<ImageCard
+							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
+							width='100%'
+						/>
+						<Spacer />
+						<ImageCard
+							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Fmofongo.png?alt=media&token=59de3a54-17ae-4723-9822-170bfad51b58'
+							width='60%'
+							marginRight={-30}
+						/>
 
-							<Grid xs={5} style={{ marginRight: -30 }}>
-								<ImageCard url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Fmofongo.png?alt=media&token=59de3a54-17ae-4723-9822-170bfad51b58' />
-							</Grid>
-						</Grid.Container>
+						<img
+							src={stamp}
+							style={{
+								position: 'absolute',
+								width: 250,
+								height: 250,
+								top: 100,
+								left: '50%',
+								zIndex: 100
+							}}
+						/>
 					</Grid>
 				</Grid.Container>
 			</section>
@@ -55,13 +72,12 @@ function LandingView() {
 
 			<section id='about_us'>
 				<Grid.Container>
-					<Grid xs={12} md={6}>
+					<Grid xs={12} md={6} css={{ position: 'relative' }}>
 						<Carousel
-							images={[
-								'https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
-								'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
-								'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=985&q=80'
-							]}
+							images={images
+								.filter(({ section }) => section === 'about_us')
+								.map(({ url }) => url)
+							}
 						/>
 					</Grid>
 					<Grid
@@ -75,6 +91,7 @@ function LandingView() {
 						}}
 					>
 						<Text h2>NOSOTROS</Text>
+						<br />
 						<br />
 
 						<Text className='heading'>

@@ -14,9 +14,9 @@ const NavBar = () => {
 		<Navbar disableShadow>
 			<Navbar.Toggle showIn='xs' />
 			<Navbar.Brand css={{ padding: 20 }} >
-				<img src={logo} style={{ width: 150 }} />
+				<img src={logo} style={{ width: 200 }} />
 			</Navbar.Brand>
-			<Navbar.Content hideIn='xs'>
+			<Navbar.Content hideIn='xs' gap='$20'>
 				<Navbar.Link href='#about_us'>
 					{dictionary[lang].navbar.aboutUs}
 				</Navbar.Link>
@@ -26,15 +26,6 @@ const NavBar = () => {
 				<Navbar.Link href='#contact'>
 					{dictionary[lang].navbar.contact}
 				</Navbar.Link>
-			</Navbar.Content>
-			<Navbar.Content
-				css={{
-					'@xs': {
-						w: '12%',
-						jc: 'flex-end',
-					},
-				}}
-			>
 				<LanguageToggler />
 			</Navbar.Content>
 			<Navbar.Collapse>

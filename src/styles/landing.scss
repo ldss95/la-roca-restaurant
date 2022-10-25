@@ -1,7 +1,10 @@
 .title {
+	font-size: 64px;
+
 	span {
 		&:nth-child(1) {
 			color: #500E00;
+			font-weight: 400;
 		}
 
 		&:nth-child(3) {
@@ -14,18 +17,20 @@
 }
 
 .heading {
-	line-height: 32px;
+	line-height: 44px;
 
 	span {
 		&:nth-child(1) {
-			font-size: 30px;
+			// font-weight: 500;
+			font-size: 48px;
 			color: #500E00;
 		}
 
 		&:nth-child(3) {
-			font-size: 38px;
+			font-size: 60px;
 			font-style: italic;
 			color: #EB2A00;
+			// font-weight: bold;
 		}
 	}
 }
@@ -33,7 +38,7 @@
 .subheading {
 	font-family: Manrope;
 	color: #888888;
-	font-size: 24px;
+	font-size: 32px;
 	z-index: 200;
 }
 

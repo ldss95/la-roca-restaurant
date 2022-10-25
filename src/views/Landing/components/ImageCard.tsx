@@ -1,15 +1,22 @@
 import { memo } from 'react';
 
-const ImageCard = ({ url }: { url: string }) => (
+interface ImageCardProps {
+	url: string;
+	width: string;
+	marginRight?: number
+}
+
+const ImageCard = ({ url, width, marginRight }: ImageCardProps) => (
 	<div
 		style={{
 			zIndex: 20,
-			height: 500,
+			height: 760,
 			borderRadius: 10,
-			width: '100%',
+			width,
 			backgroundImage: `url(${url})`,
 			backgroundSize: 'cover',
 			backgroundPosition: 'center',
+			marginRight
 		}}
 	/>
 )

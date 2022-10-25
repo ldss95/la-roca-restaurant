@@ -14,7 +14,7 @@ const MainSectionBackground = () => (
 		<div
 			style={{
 				background: '#FFCDA9',
-				height: 500,
+				height: 650,
 				width: '100%',
 				overflow: 'hidden',
 				position: 'relative'

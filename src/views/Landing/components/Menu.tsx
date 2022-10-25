@@ -12,14 +12,14 @@ const Menu = () => {
 	const [selectedCategory, setSelectedCategory] = useState<string>('Chicken');
 
 	return (
-		<Grid.Container>
+		<Grid.Container css={{ padding: 60 }} gap={1}>
 			<Grid
 				xs={12}
 				md={6}
-				css={{ padding: '0 30px' }}
 				direction='column'
 			>
 				<Text h2>MENÚ</Text>
+				<br />
 				<br />
 
 				<svg width="90" height="124" viewBox="0 0 90 124" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +50,6 @@ const Menu = () => {
 			<Grid
 				xs={12}
 				md={6}
-				css={{ padding: '0 30px' }}
 				direction='column'
 			>
 				{products

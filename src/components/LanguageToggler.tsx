@@ -13,6 +13,8 @@ const LanguageToggler = () => {
 		<Button
 			onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
 			css={{ background: '#fff', padding: 10 }}
+			ripple={false}
+			flat
 			auto
 		>
 			<svg width='23' height='20' viewBox='0 0 23 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
