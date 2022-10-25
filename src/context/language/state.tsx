@@ -10,7 +10,7 @@ const LanguageState = ({ children }: any) => {
 
 	useEffect(() => {
 		const savedLang = localStorage.getItem('lang');
-		if (savedLang != 'null') {
+		if (['es', 'en'].includes(savedLang + '')) {
 			return setLang(savedLang as Language);
 		}
 

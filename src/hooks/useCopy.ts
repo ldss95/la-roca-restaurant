@@ -6,7 +6,30 @@ import { db } from '@/firebase';
 
 export const useCopy = (): [CopyProps, boolean] => {
 	const [loading, setLoading] = useState(true);
-	const [copy, setCopy] = useState<CopyProps>({} as CopyProps);
+	const [copy, setCopy] = useState<CopyProps>({
+		en: {
+			title: ['', ''],
+			about_us: {
+				title: ['', ''],
+				subtitle: ''
+			},
+			menu: {
+				title: ['', '']
+			},
+			fdaWarning: '',
+		},
+		es: {
+			title: ['', ''],
+			about_us: {
+				title: ['', ''],
+				subtitle: ''
+			},
+			menu: {
+				title: ['', '']
+			},
+			fdaWarning: '',
+		}
+	});
 
 	useEffect(() => {
 		const ref = collection(db, 'copy');
