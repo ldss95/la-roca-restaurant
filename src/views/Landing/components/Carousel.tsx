@@ -1,13 +1,12 @@
 import { memo, useState } from 'react';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Button, Image } from '@nextui-org/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './Carousel.scss'
 import leftArrow from '@/assets/left_arrow.svg';
 import rightArrow from '@/assets/right_arrow.svg';
-import { Button } from '@nextui-org/react';
 
 interface CarouselProps {
 	images: string[];
@@ -23,30 +22,30 @@ const Carousel = ({ images }: CarouselProps) => {
 				spaceBetween={30}
 				onInit={setSwiper}
 				style={{
-					height: 500,
+					height: 700,
 					marginLeft: window.innerWidth < 700 ? -50 : -100,
 					width: '100%',
 					position: 'relative',
+					borderRadius: 10
 				}}
 				loop
 			>
 				{images.map((image, index) => (
 					<SwiperSlide key={'slide-' + index}>
 						{({ isActive }) => (
-							<div
-								style={{
-									backgroundImage: `url(${image})`,
-									backgroundSize: 'cover',
-									backgroundPosition: 'center',
-									height: '100%',
-									borderRadius: 10,
+
+							<Image
+								src={image}
+								height='100%'
+								objectFit='cover'
+								containerCss={{ borderRadius: 10 }}
+								css={{
 									...(isActive && {
 										opacity: 0.2,
 									})
 								}}
-							>
-								<h2 style={{ opacity: 0 }}>Slide {index}</h2>
-							</div>
+								autoResize
+							/>
 						)}
 					</SwiperSlide>
 				))}

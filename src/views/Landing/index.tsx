@@ -1,12 +1,11 @@
 import { useContext } from 'react';
-import { Text, Grid, Spacer, Row } from '@nextui-org/react';
+import { Text, Grid, Spacer, Image, Button } from '@nextui-org/react';
 
 import '@/styles/landing.scss';
 import NavBar from '@/layout/NavBar';
 import LanguageContext from '@/context/language/context';
 import dictionary from '@/dictionary';
 import Footer from '@/layout/Footer';
-import ImageCard from '@/views/Landing/components/ImageCard';
 import Menu from '@/views/Landing/components/Menu';
 // import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import MainSectionBackground from './components/MainSectionBackground';
@@ -44,15 +43,24 @@ function LandingView() {
 						</div>
 					</Grid>
 					<Grid xs={12} md={6} css={{ paddingRight: -30, position: 'relative' }}>
-						<ImageCard
-							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
+						<Image
+							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
+							height={760}
 							width='100%'
+							objectFit='cover'
+							containerCss={{ zIndex: 20, borderRadius: 10 }}
+							autoResize
 						/>
+
 						<Spacer />
-						<ImageCard
-							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Fmofongo.png?alt=media&token=59de3a54-17ae-4723-9822-170bfad51b58'
+
+						<Image
+							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Fmofongo.png?alt=media&token=59de3a54-17ae-4723-9822-170bfad51b58'
+							height={760}
 							width='60%'
-							marginRight={-30}
+							objectFit='cover'
+							containerCss={{ zIndex: 20, borderRadius: 10, marginRight: -30 }}
+							autoResize
 						/>
 
 						<img
