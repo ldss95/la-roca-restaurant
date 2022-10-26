@@ -1,5 +1,6 @@
-import { useContext } from 'react';
-import { Text, Grid, Spacer, Image, Button } from '@nextui-org/react';
+import { useContext, useEffect } from 'react';
+import { Text, Grid, Spacer, Image } from '@nextui-org/react';
+import Lottie from 'lottie-react';
 
 import '@/styles/landing.scss';
 import NavBar from '@/layout/NavBar';
@@ -14,11 +15,34 @@ import stamp from '@/assets/stamp.svg';
 import { useFetchImages } from '@/hooks/useImages';
 import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
+import loadingAnimation from '@/assets/loading.json';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
 	const [images] = useFetchImages();
-	const [copy] = useCopy();
+	const [copy, loading] = useCopy();
+	if (loading) {
+		return (
+			<div
+				style={{
+					width: '100%',
+					height: '100vh',
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center',
+					alignItems: 'center',
+					background: '#FFCDA9'
+				}}
+			>
+				<Lottie
+					animationData={loadingAnimation}
+					size={600}
+					loop
+				/>
+				<Text h2 css={{ color: '#EB2A00 !important' }}>{lang === 'es' ? 'Cargando' : 'Loading'}</Text>
+			</div>
+		)
+	}
 
 	return (
 		<>
