@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import moment from 'moment';
 
 import NavBarState from '@/context/navbar/state';
@@ -9,7 +9,6 @@ import NotFound from '@/views/NotFound';
 import Users from '@/views/Users';
 import Products from '@/views/Products';
 import Categories from '@/views/Categories';
-
 
 const Router = () => {
 	const location = useLocation();
@@ -36,6 +35,7 @@ const Router = () => {
 							<Route path='/users' element={<Users />} />
 							<Route path='/products' element={<Products />} />
 							<Route path='/categories' element={<Categories />} />
+							<Route path='/*' element={<Navigate to='/404' />} />
 						</Routes>
 					</div>
 					<div style={{ textAlign: 'center' }}>
