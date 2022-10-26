@@ -18,7 +18,7 @@ const ErrorView = () => {
 				<br />
 
 				<Button>
-					<a href='/dashboard'>Volver al inicio</a>
+					<a href='/'>Volver al inicio</a>
 				</Button>
 			</div>
 		</div>
