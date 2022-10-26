@@ -34,7 +34,7 @@ const WeekSchedule = ({ openDays, openAt, closeAt }: WeekScheduleProps) => {
 								color: '#EB2A00'
 							})
 						}}
-						key={'day-' + index}
+						key={'day-' + index + Math.random()}
 					>
 						{day}
 					</Text>
