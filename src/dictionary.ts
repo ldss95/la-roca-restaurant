@@ -7,7 +7,8 @@ export default {
 		},
 		titles: {
 			about_us: 'NOSOTROS',
-			menu: 'MENÚ'
+			menu: 'MENÚ',
+			contact_us: 'CONTÁCTANOS'
 		}
 	},
 	en: {
@@ -18,7 +19,8 @@ export default {
 		},
 		titles: {
 			about_us: 'ABOUT US',
-			menu: 'MENU'
+			menu: 'MENU',
+			contact_us: 'CONTACT US'
 		}
 	}
 }

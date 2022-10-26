@@ -13,6 +13,9 @@ export const useCopy = (): [CopyProps, boolean] => {
 				title: ['', ''],
 				subtitle: ''
 			},
+			contact_us: {
+				title: ['', '']
+			},
 			menu: {
 				title: ['', '']
 			},
@@ -23,6 +26,9 @@ export const useCopy = (): [CopyProps, boolean] => {
 			about_us: {
 				title: ['', ''],
 				subtitle: ''
+			},
+			contact_us: {
+				title: ['', '']
 			},
 			menu: {
 				title: ['', '']
