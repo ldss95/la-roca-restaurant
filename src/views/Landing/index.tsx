@@ -19,15 +19,7 @@ import ContactSection from './components/ContactSection';
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
 	const [images] = useFetchImages();
-	const [copy, loading] = useCopy();
-
-	if (loading) {
-		return (
-			<div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-				<Text h1>Cargando</Text>
-			</div>
-		)
-	}
+	const [copy] = useCopy();
 
 	return (
 		<>
