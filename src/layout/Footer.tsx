@@ -24,7 +24,7 @@ const Footer = () => {
 				<Grid xs={12} md={3}>
 					<ul id='social_media_links'>
 						<li>
-							<a href='https://intagram.com' target='_blannk'>
+							<a href='https://instagram.com' target='_blannk'>
 								<InstagramOutlined />
 								<Text>@laroca_restaurant</Text>
 							</a>
