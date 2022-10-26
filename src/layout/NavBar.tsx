@@ -1,20 +1,32 @@
+import { memo, useContext, useEffect, useState } from 'react';
 import { Link, Navbar } from '@nextui-org/react';
-import { memo, useContext } from 'react';
 
 import logo from '@/assets/logo.png';
 import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
-import '@/styles/navbar.scss'
+import '@/styles/navbar.scss';
 
 const NavBar = () => {
 	const { lang } = useContext(LanguageContext);
+	const [mobileNabIsOpen, setMobileNabIsOpen] = useState(false);
+
+	useEffect(() => {
+		if (!mobileNabIsOpen) {
+			const body = document.querySelector('body');
+			body!.style.overflow = 'auto';
+		}
+	}, [mobileNabIsOpen]);
 
 	return (
-		<Navbar disableShadow>
-			<Navbar.Toggle showIn='xs' />
+		<Navbar disableShadow maxWidth='lg'>
 			<Navbar.Brand css={{ padding: 20 }} >
-				<img src={logo} style={{ width: 200 }} />
+				<img
+					src={logo}
+					style={{
+						width: window.innerWidth < 700 ? 100 : 200
+					}}
+				/>
 			</Navbar.Brand>
 			<Navbar.Content hideIn='xs' gap='$20'>
 				<Navbar.Link href='#about_us'>
@@ -28,31 +40,68 @@ const NavBar = () => {
 				</Navbar.Link>
 				<LanguageToggler />
 			</Navbar.Content>
-			<Navbar.Collapse>
+			<Navbar.Content showIn='xs'>
+				<LanguageToggler />
+
+				<Navbar.Toggle onClick={() => setMobileNabIsOpen(!mobileNabIsOpen)}>
+					<svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect width="27" height="3" rx="1.5" fill="#EB2A00"/>
+						<rect y="9" width="27" height="3" rx="1.5" fill="#EB2A00"/>
+						<rect y="18" width="27" height="3" rx="1.5" fill="#EB2A00"/>
+					</svg>
+				</Navbar.Toggle>
+			</Navbar.Content>
+			<Navbar.Collapse isOpen={mobileNabIsOpen}>
 				<Navbar.CollapseItem>
 					<Link
 						color='inherit'
-						css={{ minWidth: '100%' }}
+						css={{
+							minWidth: '100%',
+							justifyContent: 'center',
+							color: '#500E00',
+							fontSize: 29,
+							fontWeight: 'bold'
+						}}
 						href='#about_us'
+						onClick={() => setMobileNabIsOpen(false)}
 					>
 						{dictionary[lang].navbar.aboutUs}
 					</Link>
+				</Navbar.CollapseItem>
+				<Navbar.CollapseItem>
 					<Link
 						color='inherit'
-						css={{ minWidth: '100%' }}
+						css={{
+							minWidth: '100%',
+							justifyContent: 'center',
+							color: '#500E00',
+							fontSize: 29,
+							fontWeight: 'bold'
+						}}
 						href='#menu'
+						onClick={() => setMobileNabIsOpen(false)}
 					>
 						{dictionary[lang].navbar.menu}
 					</Link>
+				</Navbar.CollapseItem>
+				<Navbar.CollapseItem>
 					<Link
 						color='inherit'
-						css={{ minWidth: '100%' }}
+						css={{
+							minWidth: '100%',
+							justifyContent: 'center',
+							color: '#500E00',
+							fontSize: 29,
+							fontWeight: 'bold'
+						}}
 						href='#contact'
+						onClick={() => setMobileNabIsOpen(false)}
 					>
 						{dictionary[lang].navbar.contact}
 					</Link>
 				</Navbar.CollapseItem>
 			</Navbar.Collapse>
+
 		</Navbar>
 	);
 };

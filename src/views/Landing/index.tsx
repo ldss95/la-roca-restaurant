@@ -17,6 +17,7 @@ import { useFetchImages } from '@/hooks/useImages';
 import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
 import loadingAnimation from '@/assets/loading.json';
+import RenderIf from '@/components/RenderIf';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
@@ -62,7 +63,9 @@ function LandingView() {
 		<>
 			<section style={{ overflow: 'hidden' }}>
 				<MainSectionBackground />
-				<br />
+				<RenderIf condition={window.innerWidth > 700}>
+					<br />
+				</RenderIf>
 				<NavBar />
 				<br />
 				<br />
