@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { Text, Grid, Spacer, Image } from '@nextui-org/react';
+import { useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 
 import '@/styles/landing.scss';
@@ -21,6 +22,19 @@ function LandingView() {
 	const { lang } = useContext(LanguageContext);
 	const [images] = useFetchImages();
 	const [copy, loading] = useCopy();
+	const location = useLocation();
+
+	useEffect(() => {
+		if (loading) {
+			return;
+		}
+
+		if (location.hash) {
+			const section = document.getElementById(location.hash.replace('#', ''));
+			section?.scrollIntoView();
+		}
+	}, [loading]);
+
 	if (loading) {
 		return (
 			<div
