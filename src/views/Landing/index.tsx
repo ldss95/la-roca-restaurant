@@ -60,7 +60,7 @@ function LandingView() {
 
 	return (
 		<>
-			<section>
+			<section style={{ overflow: 'hidden' }}>
 				<MainSectionBackground />
 				<br />
 				<NavBar />
@@ -119,7 +119,7 @@ function LandingView() {
 			<br />
 			<br />
 
-			<section id='about_us'>
+			<section id='about_us' style={{ overflow: 'hidden' }}>
 				<Grid.Container>
 					<Grid xs={12} md={6} css={{ position: 'relative' }}>
 						<Carousel
@@ -168,12 +168,12 @@ function LandingView() {
 			<br />
 			<br />
 
-			<section id='menu'>
+			<section id='menu' style={{ overflow: 'hidden' }}>
 				<Menu copy={copy} />
 			</section>
 			<br />
 
-			<section id='contact'>
+			<section id='contact' style={{ overflow: 'hidden' }}>
 				<ContactSection copy={copy} />
 			</section>
 
