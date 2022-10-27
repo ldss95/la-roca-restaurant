@@ -19,7 +19,7 @@ const NavBar = () => {
 	}, [mobileNabIsOpen]);
 
 	return (
-		<Navbar disableShadow maxWidth='lg'>
+		<Navbar disableShadow maxWidth='fluid'>
 			<Navbar.Brand css={{ padding: 20 }} >
 				<img
 					src={logo}
