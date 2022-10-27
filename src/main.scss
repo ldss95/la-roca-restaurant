@@ -120,10 +120,10 @@ html {
 }
 
 h2 {
-	font-family: 'Manrope';
+	font-family: 'Manrope' !important;
 	color: #FFB876 !important;
-	font-size: 24px;
-	letter-spacing: 6px;
+	font-size: 24px !important;
+	letter-spacing: 6px !important;
 }
 
 .category-selector {

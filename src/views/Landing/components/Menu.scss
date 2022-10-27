@@ -1,14 +1,14 @@
 .nextui-pagination {
-	font-size: 36px;
+	font-size: 36px !important;
 
 	@media screen and (max-width: 700px) {
-		font-size: 24px;
+		font-size: 24px !important;
 	}
 
 	button {
 		background: transparent;
 		color: #FFB876;
-		font-weight: 500;
+		font-weight: 500 !important;
 
 		&:hover {
 			background: none;
@@ -29,8 +29,8 @@
 	}
 
 	.nextui-pagination-icon {
-		width: 36px;
-		height: 36px;
+		width: 36px !important;
+		height: 36px !important;
 		color: #EB2A00;
 	}
 }
