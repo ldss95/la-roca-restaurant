@@ -61,18 +61,14 @@ function LandingView() {
 
 	return (
 		<>
-			<section style={{ overflow: 'hidden' }}>
-				<MainSectionBackground />
-				<RenderIf condition={window.innerWidth > 700}>
-					<br />
-				</RenderIf>
-				<NavBar />
-				<br />
-				<br />
+			<NavBar />
 
-				<Grid.Container>
+			<section style={{ overflow: 'hidden', marginTop: -100 }}>
+				<MainSectionBackground />
+
+				<Grid.Container css={{ marginTop: 150 }}>
 					<Grid xs={12} md={6}>
-						<div style={{ padding: '0 60px', marginTop: 90, zIndex: 20, marginBottom: 30 }}>
+						<div style={{ padding: '0 60px', marginTop: 60, zIndex: 20, marginBottom: 30 }}>
 							<Text h1 className='title'>
 								<span>{copy[lang].title[0]}</span>
 								<br />

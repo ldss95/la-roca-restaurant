@@ -19,16 +19,22 @@ const NavBar = () => {
 	}, [mobileNabIsOpen]);
 
 	return (
-		<Navbar disableShadow maxWidth='fluid'>
-			<Navbar.Brand css={{ padding: 20 }} >
+		<Navbar
+			maxWidth='fluid'
+			variant='sticky'
+			containerCss={{ height: 100, padding: '0 60px' }}
+			disableShadow
+		>
+			<Navbar.Brand>
 				<img
 					src={logo}
 					style={{
-						width: window.innerWidth < 700 ? 100 : 200
+						// width: window.innerWidth < 700 ? 100 : 200,
+						height: 60
 					}}
 				/>
 			</Navbar.Brand>
-			<Navbar.Content hideIn='xs' gap='$20'>
+			<Navbar.Content hideIn='sm' gap='$20'>
 				<Navbar.Link href='#about_us'>
 					{dictionary[lang].navbar.aboutUs}
 				</Navbar.Link>
@@ -40,7 +46,7 @@ const NavBar = () => {
 				</Navbar.Link>
 				<LanguageToggler />
 			</Navbar.Content>
-			<Navbar.Content showIn='xs'>
+			<Navbar.Content showIn='sm'>
 				<LanguageToggler />
 
 				<Navbar.Toggle onClick={() => setMobileNabIsOpen(!mobileNabIsOpen)}>
