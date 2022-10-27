@@ -1,0 +1,36 @@
+.nextui-pagination {
+	font-size: 36px;
+
+	@media screen and (max-width: 700px) {
+		font-size: 24px;
+	}
+
+	button {
+		background: transparent;
+		color: #FFB876;
+		font-weight: 500;
+
+		&:hover {
+			background: none;
+		}
+
+		&.nextui-pagination-item-active {
+
+			span {
+				color: #EB2A00;
+			}
+
+			box-shadow: none;
+		}
+	}
+
+	.nextui-pagination-highlight {
+		background: transparent;
+	}
+
+	.nextui-pagination-icon {
+		width: 36px;
+		height: 36px;
+		color: #EB2A00;
+	}
+}

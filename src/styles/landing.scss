@@ -33,7 +33,7 @@
 			color: #500E00;
 
 			@media screen and (max-width: 700px) {
-				font-size: 25px;
+				font-size: 30px;
 			}
 		}
 
@@ -43,7 +43,7 @@
 			color: #EB2A00;
 
 			@media screen and (max-width: 700px) {
-				font-size: 40px;
+				font-size: 36px;
 			}
 		}
 	}
@@ -54,6 +54,10 @@
 	color: #888888;
 	font-size: 32px;
 	z-index: 200;
+
+	@media screen and (max-width: 700px) {
+		font-size: 24px;
+	}
 }
 
 .nextui-navbar-container {

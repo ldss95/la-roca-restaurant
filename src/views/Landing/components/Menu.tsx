@@ -1,20 +1,33 @@
-import { memo, useContext, useState } from 'react';
-import { Text, Grid } from '@nextui-org/react';
+import { memo, useContext, useState, useMemo } from 'react';
+import { Text, Grid, Pagination, Spacer } from '@nextui-org/react';
 
 import { useFetchCategories } from '@/hooks/useCategories';
 import { useFetchProducts } from '@/hooks/useProducts';
 import LanguageContext from '@/context/language/context';
 import dictionary from '@/dictionary';
 import { CopyProps } from '@/types/copy';
+import './Menu.scss';
 
 const Menu = ({ copy }: { copy: CopyProps }) => {
 	const { lang } = useContext(LanguageContext);
 	const [categories] = useFetchCategories();
 	const [products] = useFetchProducts();
 	const [selectedCategory, setSelectedCategory] = useState<string>('Chicken');
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const pages = useMemo(() => {
+		const productsOfSelectedCategory = products.filter(({ categories }) => categories.includes(selectedCategory));
+		const productsQty = productsOfSelectedCategory.length;
+		const pages = Math.ceil(productsQty / 7);
+
+		return pages;
+	}, [products, selectedCategory]);
 
 	return (
-		<Grid.Container css={{ padding: 60 }} gap={1}>
+		<Grid.Container
+			css={{ padding: 30 }}
+			gap={1}
+		>
 			<Grid
 				xs={12}
 				md={6}
@@ -53,9 +66,11 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 				xs={12}
 				md={6}
 				direction='column'
+				alignItems='flex-end'
 			>
 				{products
 					.filter(({ categories }) => categories.includes(selectedCategory))
+					.filter((_, index) => (index + 1) <= (currentPage * 7) && (index + 1) >= ((currentPage - 1) * 7))
 					.map(({ name, price }) => (
 						<div className='product'>
 							<Text className='name'>{name[lang]}</Text>
@@ -63,6 +78,14 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 						</div>
 					))
 				}
+
+				<Spacer />
+
+				<Pagination
+					total={pages}
+					onChange={setCurrentPage}
+					size='md'
+				/>
 			</Grid>
 		</Grid.Container>
 	);

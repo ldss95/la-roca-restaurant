@@ -170,6 +170,10 @@ h2 {
 	padding: 30px 0;
 	font-size: 30px;
 
+	@media screen and (max-width: 700px) {
+		font-size: 20px;
+	}
+
 	.name {
 		font-family: 'Bitter';
 		color: #500E00;
@@ -208,6 +212,19 @@ footer {
 				}
 			}
 		}
+	}
+
+	.social-media-link {
+		font-size: 28px;
+		color: #EB2A00;
+	}
+
+	.nav-link {
+		color: #500E00;
+		font-size: 29px;
+		font-family: Bitter;
+		font-weight: 500;
+		margin-bottom: 15px;
 	}
 
 	#nav_links {

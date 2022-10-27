@@ -22,8 +22,8 @@ const Carousel = ({ images }: CarouselProps) => {
 				spaceBetween={30}
 				onInit={setSwiper}
 				style={{
-					height: 700,
-					marginLeft: window.innerWidth < 700 ? -50 : -100,
+					height: window.innerWidth < 700 ? 330 : 700,
+					marginLeft: window.innerWidth < 700 ? -60 : -100,
 					width: '100%',
 					position: 'relative',
 					borderRadius: 10
