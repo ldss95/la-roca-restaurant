@@ -1,4 +1,4 @@
-import { Grid, Text } from '@nextui-org/react';
+import { Grid, Spacer, Text } from '@nextui-org/react';
 import { memo, useContext } from 'react';
 import { FacebookOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
 
@@ -21,7 +21,12 @@ const Footer = () => {
 				>
 					<img src={logo} style={{ maxWidth: '50%', maxHeight: '60%', height: 'auto', width: 'auto' }} />
 				</Grid>
-				<Grid xs={12} md={3}>
+
+				{/* Desktop */}
+				<Grid
+					xs={0}
+					md={3}
+				>
 					<ul id='social_media_links'>
 						<li>
 							<a href='https://instagram.com' target='_blannk'>
@@ -43,7 +48,47 @@ const Footer = () => {
 						</li>
 					</ul>
 				</Grid>
-				<Grid xs={12} md={3}>
+
+				{/* Mobile */}
+				<Grid
+					xs={12}
+					md={0}
+					direction='column'
+					alignItems='center'
+				>
+					<br />
+					<LanguageToggler />
+					<br />
+					<br />
+
+					<a className='nav-link' href='#about_us'>{dictionary[lang].navbar.aboutUs}</a>
+					<a className='nav-link' href='#menu'>{dictionary[lang].navbar.menu}</a>
+					<a className='nav-link' href='#contact'>{dictionary[lang].navbar.contact}</a>
+					<br />
+				</Grid>
+
+				<Grid
+					xs={12}
+					md={0}
+					justify='center'
+				>
+					<a href='https://instagram.com' target='_blannk' className='social-media-link'>
+						<InstagramOutlined />
+					</a>
+
+					<Spacer x={2} />
+
+					<a href='https://facebook.com' target='_blank' className='social-media-link'>
+						<FacebookOutlined />
+					</a>
+
+					<Spacer x={2} />
+
+					<a href='https://wa.me/14019418090' target='_blank' className='social-media-link'>
+						<WhatsAppOutlined />
+					</a>
+				</Grid>
+				<Grid xs={0} md={3}>
 					<ul id='nav_links'>
 						<li>
 							<a href='#about_us'>{dictionary[lang].navbar.aboutUs}</a>
@@ -56,7 +101,12 @@ const Footer = () => {
 						</li>
 					</ul>
 				</Grid>
-				<Grid xs={12} md={3} alignItems='center' justify='center'>
+				<Grid
+					xs={0}
+					md={3}
+					alignItems='center'
+					justify='center'
+				>
 					<LanguageToggler />
 				</Grid>
 			</Grid.Container>
