@@ -124,7 +124,6 @@ html {
 h2 {
 	font-family: 'Manrope' !important;
 	color: $color_primary !important;
-	font-size: 24px !important;
 	letter-spacing: 6px !important;
 }
 
@@ -134,9 +133,8 @@ h2 {
 	margin-bottom: 10px;
 	background: transparent;
 	color: $color_secondary;
-	padding: 10px 15px;
+	padding: 0 10px;
 	border-radius: 5px;
-	font-size: 28px;
 	cursor: pointer;
 	position: relative;
 	z-index: 10;
@@ -169,17 +167,12 @@ h2 {
 	width: 100%;
 	justify-content: space-between;
 	border-bottom: solid 3px $color_primary;
-	padding: 30px 0;
-	font-size: 30px;
-
-	@media screen and (max-width: 700px) {
-		font-size: 20px;
-	}
 
 	.name {
 		font-family: 'Bitter';
 		color: $color_secondary;
 		font-size: inherit;
+		font-weight: 500;
 	}
 
 	.price {

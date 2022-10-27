@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import LanguageContext from '@/context/language/context';
 import { lightGreyColor, redColor, secondaryColor } from '@/contants/colors';
+import { sizeCalc } from '@/helpers';
 
 const days = {
 	en: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -22,12 +23,12 @@ const WeekSchedule = ({ openDays, openAt, closeAt }: WeekScheduleProps) => {
 	const { lang } = useContext(LanguageContext);
 
 	return (
-		<>
-			<div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+		<div style={{ maxWidth: sizeCalc(190, 277) }}>
+			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 				{days[lang].map((day, index) => (
 					<Text
 						css={{
-							fontSize: 24,
+							fontSize: sizeCalc(18, 24),
 							fontFamily: 'Bitter',
 							fontWeight: 'bold',
 							color: lightGreyColor,
@@ -41,16 +42,24 @@ const WeekSchedule = ({ openDays, openAt, closeAt }: WeekScheduleProps) => {
 					</Text>
 				))}
 			</div>
-			<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-				<Text css={{ color: secondaryColor, fontSize: 30, fontFamily: 'Bitter', fontWeight: 'bold' }}>{moment('2022-01-01 ' + openAt).format('hh:mm')}</Text>
-				<Text css={{ color: redColor, fontSize: 30, fontFamily: 'Bitter' }}>{moment('2022-01-01 ' + openAt).format('A')}</Text>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+					fontSize: sizeCalc(21, 30),
+					fontFamily: 'Bitter'
+				}}
+			>
+				<Text css={{ color: secondaryColor, fontWeight: 'bold', fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + openAt).format('hh:mm')}</Text>
+				<Text css={{ color: redColor, fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + openAt).format('A')}</Text>
 
 				-
 
-				<Text css={{ color: secondaryColor, fontSize: 30, fontFamily: 'Bitter', fontWeight: 'bold' }}>{moment('2022-01-01 ' + closeAt).format('hh:mm')}</Text>
-				<Text css={{ color: redColor, fontSize: 30, fontFamily: 'Bitter' }}>{moment('2022-01-01 ' + closeAt).format('A')}</Text>
+				<Text css={{ color: secondaryColor, fontWeight: 'bold', fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + closeAt).format('hh:mm')}</Text>
+				<Text css={{ color: redColor, fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + closeAt).format('A')}</Text>
 			</div>
-		</>
+		</div>
 	)
 }
 

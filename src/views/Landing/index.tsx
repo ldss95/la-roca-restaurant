@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { Text, Grid, Spacer, Image } from '@nextui-org/react';
 import { useLocation } from 'react-router-dom';
-import Lottie from 'lottie-react';
 
 import '@/styles/landing.scss';
 import NavBar from '@/layout/NavBar';
@@ -16,9 +15,10 @@ import stamp from '@/assets/stamp.svg';
 import { useFetchImages } from '@/hooks/useImages';
 import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
-import loadingAnimation from '@/assets/loading.json';
-import RenderIf from '@/components/RenderIf';
-import { primaryColor, redColor, secondaryColor } from '@/contants/colors';
+import { primaryColor, redColor } from '@/contants/colors';
+import LoadingPage from '@/views/Loading';
+import { sizeCalc } from '@/helpers';
+import Decoration from '@/assets/mobile_decoration.svg';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
@@ -38,26 +38,7 @@ function LandingView() {
 	}, [loading]);
 
 	if (loading) {
-		return (
-			<div
-				style={{
-					width: '100%',
-					height: '100vh',
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'center',
-					alignItems: 'center',
-					background: primaryColor
-				}}
-			>
-				<Lottie
-					animationData={loadingAnimation}
-					size={600}
-					loop
-				/>
-				<Text h2 css={{ color: `${secondaryColor} !important` }}>{lang === 'es' ? 'Cargando' : 'Loading'}</Text>
-			</div>
-		)
+		return <LoadingPage />
 	}
 
 	return (
@@ -67,9 +48,9 @@ function LandingView() {
 			<section style={{ overflow: 'hidden', marginTop: -100 }}>
 				<MainSectionBackground />
 
-				<Grid.Container css={{ marginTop: 150 }}>
+				<Grid.Container css={{ marginTop: 180 }}>
 					<Grid xs={12} md={6}>
-						<div style={{ padding: '0 60px', marginTop: 60, zIndex: 20, marginBottom: 30 }}>
+						<div style={{ zIndex: 20, padding: sizeCalc(30, 60) }}>
 							<Text h1 className='title'>
 								<span>{copy[lang].title[0]}</span>
 								<br />
@@ -90,7 +71,7 @@ function LandingView() {
 					>
 						<Image
 							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
-							height={window.innerWidth < 700 ? 400 : 760}
+							height={sizeCalc(400, 760)}
 							width='100%'
 							objectFit='cover'
 							containerCss={{ zIndex: 20, borderRadius: 10 }}
@@ -101,7 +82,7 @@ function LandingView() {
 
 						<Image
 							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Fmofongo.png?alt=media&token=59de3a54-17ae-4723-9822-170bfad51b58'
-							height={window.innerWidth < 700 ? 400 : 760}
+							height={sizeCalc(400, 760)}
 							width='60%'
 							objectFit='cover'
 							containerCss={{ zIndex: 20, borderRadius: 10, marginRight: -30 }}
@@ -112,17 +93,20 @@ function LandingView() {
 							src={stamp}
 							style={{
 								position: 'absolute',
-								width: 250,
-								height: 250,
+								width: sizeCalc(150, 250),
 								top: 100,
-								left: window.innerWidth < 700 ? '40%': '50%',
+								left: window.innerWidth < 700 ? '47%': '50%',
 								zIndex: 100
 							}}
 						/>
 					</Grid>
+					<Grid.Container>
+						<Grid xs={12} md={0} justify='center'>
+							<img src={Decoration} />
+						</Grid>
+					</Grid.Container>
 				</Grid.Container>
 			</section>
-			<br />
 			<br />
 			<br />
 
@@ -146,8 +130,7 @@ function LandingView() {
 							position: 'relative'
 						}}
 					>
-						<Text h2>{dictionary[lang].titles.about_us}</Text>
-						<br />
+						<Text h2 css={{ fontSize: sizeCalc(15, 25) }}>{dictionary[lang].titles.about_us}</Text>
 						<br />
 
 						<Text className='heading'>
@@ -183,6 +166,7 @@ function LandingView() {
 			<section id='contact' style={{ overflow: 'hidden' }}>
 				<ContactSection copy={copy} />
 			</section>
+			<br />
 
 			<Grid.Container css={{ padding: '0 30px' }}>
 				<Grid

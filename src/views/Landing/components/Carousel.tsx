@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import './Carousel.scss'
 import leftArrow from '@/assets/left_arrow.svg';
 import rightArrow from '@/assets/right_arrow.svg';
+import { sizeCalc } from '@/helpers';
 
 interface CarouselProps {
 	images: string[];
@@ -22,9 +23,9 @@ const Carousel = ({ images }: CarouselProps) => {
 				spaceBetween={30}
 				onInit={setSwiper}
 				style={{
-					height: window.innerWidth < 700 ? 330 : 700,
-					marginLeft: window.innerWidth < 700 ? -60 : -100,
-					width: '100%',
+					height: sizeCalc(330, 700),
+					marginLeft: '-40%',
+					width: '120%',
 					position: 'relative',
 					borderRadius: 10
 				}}
