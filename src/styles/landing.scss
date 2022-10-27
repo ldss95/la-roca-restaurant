@@ -1,25 +1,21 @@
+@import './colors';
+
 .title {
+	line-height: clamp(2rem, 4vw + 1rem, 65px);
+
 	span {
 		&:nth-child(1) {
-			color: #500E00;
+			color: $color_secondary;
 			font-weight: 400;
-			font-size: 65px;
-
-			@media screen and (max-width: 700px) {
-				font-size: 34px;
-			}
+			font-size: clamp(2rem, 4vw + 1rem, 65px);
 		}
 
 		&:nth-child(3) {
-			color: #EB2A00;
+			color: $color_red;
 			font-family: 'Bitter';
 			font-weight: bold;
 			font-style: italic;
-			font-size: 70px;
-
-			@media screen and (max-width: 700px) {
-				font-size: 39px;
-			}
+			font-size: clamp(1rem, 4vw + 1.1rem, 70px);
 		}
 	}
 }
@@ -31,7 +27,7 @@
 	span {
 		&:nth-child(1) {
 			font-size: 48px;
-			color: #500E00;
+			color: $color_secondary;
 
 			@media screen and (max-width: 700px) {
 				font-size: 30px;
@@ -41,7 +37,7 @@
 		&:nth-child(3) {
 			font-size: 60px;
 			font-style: italic;
-			color: #EB2A00;
+			color: $color_red;
 
 			@media screen and (max-width: 700px) {
 				font-size: 36px;
@@ -52,7 +48,7 @@
 
 .subheading {
 	font-family: Manrope;
-	color: #888888 !important;
+	color: $color_grey !important;
 	font-size: 32px;
 	z-index: 200;
 

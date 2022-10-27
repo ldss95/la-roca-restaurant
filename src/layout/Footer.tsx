@@ -6,6 +6,7 @@ import logo from '@/assets/logo.png';
 import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
+import { redColor } from '@/contants/colors';
 
 const Footer = () => {
 	const { lang } = useContext(LanguageContext);
@@ -114,7 +115,7 @@ const Footer = () => {
 				style={{
 					width: '100%',
 					textAlign: 'center',
-					background: '#EB2A001C',
+					background: redColor,
 					padding: 20
 				}}
 			>

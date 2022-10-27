@@ -1,5 +1,16 @@
-.nextui-navbar-item {
-	color: #500E00;
-	font-weight: 500 !important;
-	font-size: 24px !important;
+@import './colors';
+
+.nextui-navbar-container {
+	padding: 0 60px;
+
+	@media screen and (max-width: 700px) {
+		padding: 0 30px;
+	}
+
+	.nextui-navbar-item {
+		color: $color_secondary;
+		font-weight: 500 !important;
+		font-size: 24px !important;
+	}
 }
+

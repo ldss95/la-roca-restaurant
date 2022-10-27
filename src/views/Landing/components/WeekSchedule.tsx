@@ -3,6 +3,7 @@ import { Text } from '@nextui-org/react';
 import moment from 'moment';
 
 import LanguageContext from '@/context/language/context';
+import { lightGreyColor, redColor, secondaryColor } from '@/contants/colors';
 
 const days = {
 	en: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -29,9 +30,9 @@ const WeekSchedule = ({ openDays, openAt, closeAt }: WeekScheduleProps) => {
 							fontSize: 24,
 							fontFamily: 'Bitter',
 							fontWeight: 'bold',
-							color: '#D9D9D9',
+							color: lightGreyColor,
 							...(openDays.includes(index as DayIndex) && {
-								color: '#EB2A00'
+								color: redColor
 							})
 						}}
 						key={'day-' + index + Math.random()}
@@ -41,13 +42,13 @@ const WeekSchedule = ({ openDays, openAt, closeAt }: WeekScheduleProps) => {
 				))}
 			</div>
 			<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-				<Text css={{ color: '#500E00', fontSize: 30, fontFamily: 'Bitter', fontWeight: 'bold' }}>{moment('2022-01-01 ' + openAt).format('hh:mm')}</Text>
-				<Text css={{ color: '#EB2A00', fontSize: 30, fontFamily: 'Bitter' }}>{moment('2022-01-01 ' + openAt).format('A')}</Text>
+				<Text css={{ color: secondaryColor, fontSize: 30, fontFamily: 'Bitter', fontWeight: 'bold' }}>{moment('2022-01-01 ' + openAt).format('hh:mm')}</Text>
+				<Text css={{ color: redColor, fontSize: 30, fontFamily: 'Bitter' }}>{moment('2022-01-01 ' + openAt).format('A')}</Text>
 
 				-
 
-				<Text css={{ color: '#500E00', fontSize: 30, fontFamily: 'Bitter', fontWeight: 'bold' }}>{moment('2022-01-01 ' + closeAt).format('hh:mm')}</Text>
-				<Text css={{ color: '#EB2A00', fontSize: 30, fontFamily: 'Bitter' }}>{moment('2022-01-01 ' + closeAt).format('A')}</Text>
+				<Text css={{ color: secondaryColor, fontSize: 30, fontFamily: 'Bitter', fontWeight: 'bold' }}>{moment('2022-01-01 ' + closeAt).format('hh:mm')}</Text>
+				<Text css={{ color: redColor, fontSize: 30, fontFamily: 'Bitter' }}>{moment('2022-01-01 ' + closeAt).format('A')}</Text>
 			</div>
 		</>
 	)

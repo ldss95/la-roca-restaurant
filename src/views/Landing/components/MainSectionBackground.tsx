@@ -2,6 +2,7 @@ import { memo } from 'react'
 
 import Decoration from '@/assets/decoration.svg';
 import DecorationCircle from '@/views/Landing/components/DecorationCircle';
+import { primaryColor } from '@/contants/colors';
 
 const MainSectionBackground = () => (
 	<div
@@ -13,7 +14,7 @@ const MainSectionBackground = () => (
 	>
 		<div
 			style={{
-				background: '#FFCDA9',
+				background: primaryColor,
 				height: 650,
 				width: '100%',
 				overflow: 'hidden',

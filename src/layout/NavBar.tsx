@@ -6,6 +6,7 @@ import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
 import '@/styles/navbar.scss';
+import { redColor, secondaryColor } from '@/contants/colors';
 
 const NavBar = () => {
 	const { lang } = useContext(LanguageContext);
@@ -22,7 +23,7 @@ const NavBar = () => {
 		<Navbar
 			maxWidth='fluid'
 			variant='sticky'
-			containerCss={{ height: 100, padding: '0 60px' }}
+			containerCss={{ height: 100 }}
 			disableShadow
 		>
 			<Navbar.Brand>
@@ -51,9 +52,9 @@ const NavBar = () => {
 
 				<Navbar.Toggle onClick={() => setMobileNabIsOpen(!mobileNabIsOpen)}>
 					<svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<rect width="27" height="3" rx="1.5" fill="#EB2A00"/>
-						<rect y="9" width="27" height="3" rx="1.5" fill="#EB2A00"/>
-						<rect y="18" width="27" height="3" rx="1.5" fill="#EB2A00"/>
+						<rect width="27" height="3" rx="1.5" fill={redColor} />
+						<rect y="9" width="27" height="3" rx="1.5" fill={redColor} />
+						<rect y="18" width="27" height="3" rx="1.5" fill={redColor} />
 					</svg>
 				</Navbar.Toggle>
 			</Navbar.Content>
@@ -64,7 +65,7 @@ const NavBar = () => {
 						css={{
 							minWidth: '100%',
 							justifyContent: 'center',
-							color: '#500E00',
+							color: secondaryColor,
 							fontSize: 29,
 							fontWeight: 'bold'
 						}}
@@ -80,7 +81,7 @@ const NavBar = () => {
 						css={{
 							minWidth: '100%',
 							justifyContent: 'center',
-							color: '#500E00',
+							color: secondaryColor,
 							fontSize: 29,
 							fontWeight: 'bold'
 						}}
@@ -96,7 +97,7 @@ const NavBar = () => {
 						css={{
 							minWidth: '100%',
 							justifyContent: 'center',
-							color: '#500E00',
+							color: secondaryColor,
 							fontSize: 29,
 							fontWeight: 'bold'
 						}}

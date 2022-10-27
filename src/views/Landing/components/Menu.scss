@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .nextui-pagination {
 	font-size: 36px !important;
 
@@ -17,7 +19,7 @@
 		&.nextui-pagination-item-active {
 
 			span {
-				color: #EB2A00;
+				color: $color_red;
 			}
 
 			box-shadow: none;
@@ -31,6 +33,6 @@
 	.nextui-pagination-icon {
 		width: 36px !important;
 		height: 36px !important;
-		color: #EB2A00;
+		color: $color_red;
 	}
 }

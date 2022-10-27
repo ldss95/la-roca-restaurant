@@ -4,6 +4,7 @@ import { HomeOutlined } from '@ant-design/icons';
 import { Button, Spacer, Text } from '@nextui-org/react';
 
 import LanguageContext from '@/context/language/context';
+import { primaryColor, redColor, secondaryColor } from '@/contants/colors';
 
 function NotFoundView () {
 	const { lang } = useContext(LanguageContext);
@@ -18,7 +19,7 @@ function NotFoundView () {
 				flexDirection: 'column',
 				justifyContent: 'center',
 				alignItems: 'center',
-				background: '#FFCDA9'
+				background: primaryColor
 			}}
 		>
 			<div
@@ -28,17 +29,17 @@ function NotFoundView () {
 					alignItems: 'center',
 				}}
 			>
-				<Text h1 color='#EB2A00'>404</Text>
+				<Text h1 color={redColor}>404</Text>
 				<Spacer />
-				<div style={{ width: 2, height: 40, background: '#500E00', transform: 'rotate(10deg)' }} />
+				<div style={{ width: 2, height: 40, background: secondaryColor, transform: 'rotate(10deg)' }} />
 				<Spacer />
-				<Text h4 color='#500E00'>Page not found</Text>
+				<Text h4 color={secondaryColor}>Page not found</Text>
 			</div>
 			<br />
 
 			<Button
 				onClick={() => navigate('/')}
-				css={{ background: '#EB2A00' }}
+				css={{ background: redColor }}
 				icon={<HomeOutlined />}
 				size='lg'
 			>

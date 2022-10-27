@@ -1,3 +1,5 @@
+@import './styles/colors';
+
 @font-face {
 	font-family: 'Bitter';
 	src: url('/src/assets/fonts/Bitter-Regular.ttf');
@@ -121,17 +123,17 @@ html {
 
 h2 {
 	font-family: 'Manrope' !important;
-	color: #FFB876 !important;
+	color: $color_primary !important;
 	font-size: 24px !important;
 	letter-spacing: 6px !important;
 }
 
 .category-selector {
-	border: solid 3px #FFCDA9;
+	border: solid 3px $color_primary;
 	margin-right: 10px;
 	margin-bottom: 10px;
 	background: transparent;
-	color: #500E00;
+	color: $color_secondary;
 	padding: 10px 15px;
 	border-radius: 5px;
 	font-size: 28px;
@@ -145,7 +147,7 @@ h2 {
 	;
 
 	&.selected {
-		background: #FFCDA9;
+		background: $color_primary;
 		margin-left: 10px;
 
 		&::before {
@@ -157,7 +159,7 @@ h2 {
 			position: absolute;
 			z-index: 1;
 			border-radius: 5px;
-			border: solid 3px #FFCDA9;
+			border: solid 3px $color_primary;
 		}
 	}
 }
@@ -166,7 +168,7 @@ h2 {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
-	border-bottom: solid 3px #FFCDA9;
+	border-bottom: solid 3px $color_primary;
 	padding: 30px 0;
 	font-size: 30px;
 
@@ -176,20 +178,20 @@ h2 {
 
 	.name {
 		font-family: 'Bitter';
-		color: #500E00;
+		color: $color_secondary;
 		font-size: inherit;
 	}
 
 	.price {
 		font-family: 'Bitter';
 		font-weight: bold;
-		color: #EB2A00;
+		color: $color_red;
 		font-size: inherit;
 	}
 }
 
 footer {
-	background: #FFCDA9;
+	background: $color_primary;
 
 	#social_media_links {
 		list-style: none;
@@ -201,13 +203,13 @@ footer {
 
 				p {
 					font-family: 'Bitter';
-					color: #500E00;
+					color: $color_secondary;
 					font-size: 20px;
 				}
 
 				span {
 					margin-right: 30px;
-					color: #EB2A00;
+					color: $color_red;
 					font-size: 28px;
 				}
 			}
@@ -216,11 +218,11 @@ footer {
 
 	.social-media-link {
 		font-size: 28px;
-		color: #EB2A00;
+		color: $color_red;
 	}
 
 	.nav-link {
-		color: #500E00;
+		color: $color_secondary;
 		font-size: 29px;
 		font-family: Bitter;
 		font-weight: 500;
@@ -230,7 +232,7 @@ footer {
 	#nav_links {
 		li {
 			a {
-				color: #EB2A00;
+				color: $color_red;
 				font-size: 20px;
 			}
 		}
