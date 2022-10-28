@@ -11,7 +11,6 @@ import { useFetchCategories } from '@/hooks/useCategories';
 import RenderIf from '@/components/RenderIf';
 
 interface ModalProductProps {
-	product?: ProductProps;
 	onFinish?: () => void;
 }
 
@@ -32,13 +31,22 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 	const [categoriesSelected, setCategoriesSelected] = useState<'all' | Set<Key>>(new Set([]));
 
 	useEffect(() => {
-		setCategoriesSelected(new Set(product?.categories || []));
+		if (product) {
+			setCategorySelected(product.category);
+		}
+
 	}, [product]);
 
 	useEffect(() => {
 		const listener = ModalOpener$
-			.pipe(filter(modal => modal === 'PRODUCT'))
-			.subscribe(() => setIsOpen(true));
+			.pipe(filter(({ name }) => name === 'PRODUCT'))
+			.subscribe(({ data }) => {
+				if (data) {
+					setProduct(data as ProductProps);
+				}
+
+				setIsOpen(true);
+			});
 
 		return () => listener.unsubscribe();
 	}, []);

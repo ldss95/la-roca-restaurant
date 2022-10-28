@@ -15,7 +15,7 @@ const ModalCategory = () => {
 
 	useEffect(() => {
 		const listener = ModalOpener$
-			.pipe(filter(modal => modal === 'CATEGORY'))
+			.pipe(filter(({ name }) => name === 'CATEGORY'))
 			.subscribe(() => setIsOpen(true))
 
 		return () => listener.unsubscribe();
