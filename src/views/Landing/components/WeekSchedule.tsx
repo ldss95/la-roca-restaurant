@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import LanguageContext from '@/context/language/context';
 import { lightGreyColor, redColor, secondaryColor } from '@/contants/colors';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 
 const days = {
 	en: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],

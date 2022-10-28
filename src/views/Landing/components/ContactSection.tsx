@@ -8,7 +8,7 @@ import WeekSchedule from './WeekSchedule';
 import { CopyProps } from '@/types/copy';
 import RenderIf from '@/components/RenderIf';
 import { primaryColor, redColor, secondaryColor } from '@/contants/colors';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 import ImageCard from '@/components/ImageCard';
 
 const ContactSection = ({ copy }: { copy: CopyProps }) => {

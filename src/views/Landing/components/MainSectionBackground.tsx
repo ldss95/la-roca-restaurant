@@ -5,7 +5,7 @@ import Decoration from '@/assets/decoration.svg';
 import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import { lightPrimaryColor } from '@/contants/colors';
 import { Grid } from '@nextui-org/react';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 
 const MainSectionBackground = () => (
 	<div

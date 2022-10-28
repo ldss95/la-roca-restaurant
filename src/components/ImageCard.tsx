@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { motion } from 'framer-motion';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 
 interface ImageCardProps {
 	url: string;

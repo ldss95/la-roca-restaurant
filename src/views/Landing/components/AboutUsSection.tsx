@@ -5,7 +5,7 @@ import { Grid, Text } from '@nextui-org/react';
 import Carousel from './Carousel';
 import { useFetchImages } from '@/hooks/useImages';
 import dictionary from '@/dictionary';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 import LanguageContext from '@/context/language/context';
 import { CopyProps } from '@/types/copy';
 import { primaryColor } from '@/contants/colors';

@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import './Carousel.scss'
 import leftArrow from '@/assets/left_arrow.svg';
 import rightArrow from '@/assets/right_arrow.svg';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 
 interface CarouselProps {
 	images: string[];

@@ -1,3 +1,5 @@
+import { CategoryProps } from '@/types/category';
+import { ProductProps } from '@/types/product';
 import { Subject } from 'rxjs';
 
 /**
@@ -18,4 +20,26 @@ export function avoidNotNumerics(event: any) {
 		event.preventDefault();
 }
 
-export const ModalOpener$ = new Subject<'CATEGORY' | 'PRODUCT'>();
+interface ModalOpener$Props {
+	name: 'CATEGORY' | 'PRODUCT',
+	data?: ProductProps | CategoryProps
+}
+export const ModalOpener$ = new Subject<ModalOpener$Props>();
+
+export function sizeCalc(min: number, max: number) {
+	const MIN_SCREEN_WIDTH = 320;
+	const MAX_SCREEN_WIDTH = 1600;
+	const width = window.innerWidth;
+
+	if (width <= MIN_SCREEN_WIDTH) {
+		return min;
+	}
+
+	if (width >= MAX_SCREEN_WIDTH) {
+		return max;
+	}
+
+	const screenPercent = (MAX_SCREEN_WIDTH - MIN_SCREEN_WIDTH) / (max - min);
+	const pixels = (width - MIN_SCREEN_WIDTH) / screenPercent;
+	return Math.round(min + pixels);
+}

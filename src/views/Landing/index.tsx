@@ -13,7 +13,7 @@ import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
 import { primaryColor, redColor } from '@/contants/colors';
 import LoadingPage from '@/views/Loading';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 import Decoration from '@/assets/mobile_decoration.svg';
 import ImageCard from '@/components/ImageCard';
 import AboutUsSection from './components/AboutUsSection';

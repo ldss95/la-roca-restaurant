@@ -8,7 +8,7 @@ import LanguageContext from '@/context/language/context';
 import dictionary from '@/dictionary';
 import { CopyProps } from '@/types/copy';
 import { redColor } from '@/contants/colors';
-import { sizeCalc } from '@/helpers';
+import { sizeCalc } from '@/utils/helpers';
 import './Menu.scss';
 
 const Menu = ({ copy }: { copy: CopyProps }) => {
