@@ -8,7 +8,7 @@ import LanguageContext from '@/context/language/context';
 import dictionary from '@/dictionary';
 import Footer from '@/layout/Footer';
 import Menu from '@/views/Landing/components/Menu';
-// import DecorationCircle from '@/views/Landing/components/DecorationCircle';
+import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import MainSectionBackground from './components/MainSectionBackground';
 import Carousel from './components/Carousel';
 import stamp from '@/assets/stamp.svg';
@@ -70,7 +70,7 @@ function LandingView() {
 						}}
 					>
 						<Image
-							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
+							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2FWhatsApp%20Image%202022-10-17%20at%201.22.18%20PM.jpeg?alt=media&token=574a7a3a-b3ff-48da-aa5e-28310a95072c'
 							height={sizeCalc(400, 760)}
 							width='100%'
 							objectFit='cover'
@@ -81,7 +81,7 @@ function LandingView() {
 						<Spacer />
 
 						<Image
-							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Funsplash_pOCJHyIN6Xs.png?alt=media&token=fcb7b240-1280-4001-a33d-fa883ea5ef88'
+							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
 							height={sizeCalc(400, 760)}
 							width='60%'
 							objectFit='cover'
@@ -152,7 +152,6 @@ function LandingView() {
 							}}
 						/>
 
-						{/* <DecorationCircle right={-600} top={-100} /> */}
 					</Grid>
 				</Grid.Container>
 			</section>
@@ -188,6 +187,8 @@ function LandingView() {
 				</Grid>
 			</Grid.Container>
 			<br />
+
+			<DecorationCircle bottom={0} left={-400} />
 
 			<Footer />
 		</>

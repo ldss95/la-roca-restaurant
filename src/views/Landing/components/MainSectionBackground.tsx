@@ -1,8 +1,8 @@
 import { memo } from 'react'
 
 import Decoration from '@/assets/decoration.svg';
-// import DecorationCircle from '@/views/Landing/components/DecorationCircle';
-import { primaryColor } from '@/contants/colors';
+import DecorationCircle from '@/views/Landing/components/DecorationCircle';
+import { lightPrimaryColor } from '@/contants/colors';
 import { Grid } from '@nextui-org/react';
 import { sizeCalc } from '@/helpers';
 
@@ -17,22 +17,22 @@ const MainSectionBackground = () => (
 	>
 		<div
 			style={{
-				background: primaryColor,
+				background: lightPrimaryColor,
 				height: sizeCalc(650, 700),
 				width: '100%',
 				overflow: 'hidden',
 				position: 'relative'
 			}}
 		>
-			{/* <DecorationCircle
+			<DecorationCircle
 				left={-500}
-				top={-300}
+				top={-100}
 			/>
 
 			<DecorationCircle
 				right={-200}
 				top={-200}
-			/> */}
+			/>
 		</div>
 
 		<Grid.Container>

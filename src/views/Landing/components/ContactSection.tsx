@@ -9,6 +9,7 @@ import { CopyProps } from '@/types/copy';
 import RenderIf from '@/components/RenderIf';
 import { primaryColor, redColor, secondaryColor } from '@/contants/colors';
 import { sizeCalc } from '@/helpers';
+import DecorationCircle from './DecorationCircle';
 
 const ContactSection = ({ copy }: { copy: CopyProps }) => {
 	const { lang } = useContext(LanguageContext);
@@ -37,7 +38,8 @@ const ContactSection = ({ copy }: { copy: CopyProps }) => {
 						objectFit='cover'
 						containerCss={{
 							borderTopRightRadius: 10,
-							borderBottomRightRadius: 10
+							borderBottomRightRadius: 10,
+							backgroundPosition: 'right'
 						}}
 						autoResize
 					/>

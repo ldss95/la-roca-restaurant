@@ -1,3 +1,4 @@
+import { redColor40 } from '@/contants/colors';
 import { memo } from 'react';
 
 interface PositionProps {
@@ -13,8 +14,7 @@ const DecorationCircle = (position: PositionProps) => (
 			width: 1000,
 			height: 1000,
 			borderRadius: 500,
-			background:
-				'radial-gradient(circle, rgba(235, 42, 0, 0.47) 0%, transparent 50%)',
+			background: `radial-gradient(circle, ${redColor40} 0%, transparent 50%)`,
 			position: 'absolute',
 			...position,
 			zIndex: 10
