@@ -35,7 +35,7 @@ const MainSectionBackground = () => (
 
 		<Grid.Container>
 			<Grid xs={0} md={12}>
-				<img src={Decoration} style={{ zIndex: 10, position: 'relative' }} />
+				<img src={Decoration} style={{ zIndex: 10, position: 'relative', margin: 20 }} />
 			</Grid>
 		</Grid.Container>
 	</div>
