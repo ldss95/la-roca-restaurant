@@ -5,5 +5,6 @@ export interface ProductProps {
 		es: string;
 	};
 	price: number;
-	categories: string[];
+	category: string;
+	order: number;
 }
