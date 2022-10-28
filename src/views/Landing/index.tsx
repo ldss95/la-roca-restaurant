@@ -1,28 +1,26 @@
 import { useContext, useEffect } from 'react';
-import { Text, Grid, Spacer, Image } from '@nextui-org/react';
+import { Text, Grid, Spacer } from '@nextui-org/react';
 import { useLocation } from 'react-router-dom';
 
 import '@/styles/landing.scss';
 import NavBar from '@/layout/NavBar';
 import LanguageContext from '@/context/language/context';
-import dictionary from '@/dictionary';
 import Footer from '@/layout/Footer';
-import Menu from '@/views/Landing/components/Menu';
 import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import MainSectionBackground from './components/MainSectionBackground';
-import Carousel from './components/Carousel';
 import stamp from '@/assets/stamp.svg';
-import { useFetchImages } from '@/hooks/useImages';
 import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
 import { primaryColor, redColor } from '@/contants/colors';
 import LoadingPage from '@/views/Loading';
 import { sizeCalc } from '@/helpers';
 import Decoration from '@/assets/mobile_decoration.svg';
+import ImageCard from '@/components/ImageCard';
+import AboutUsSection from './components/AboutUsSection';
+import MenuSection from '@/views/Landing/components/MenuSection';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
-	const [images] = useFetchImages();
 	const [copy, loading] = useCopy();
 	const location = useLocation();
 
@@ -69,24 +67,18 @@ function LandingView() {
 							position: 'relative'
 						}}
 					>
-						<Image
-							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2FWhatsApp%20Image%202022-10-17%20at%201.22.18%20PM.jpeg?alt=media&token=574a7a3a-b3ff-48da-aa5e-28310a95072c'
-							height={sizeCalc(400, 760)}
-							width='100%'
-							objectFit='cover'
-							containerCss={{ zIndex: 20, borderRadius: 10 }}
-							autoResize
+						<ImageCard
+							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2FWhatsApp%20Image%202022-10-17%20at%201.22.18%20PM.jpeg?alt=media&token=574a7a3a-b3ff-48da-aa5e-28310a95072c'
+							minHeight={400}
+							maxHeight={760}
 						/>
 
 						<Spacer />
 
-						<Image
-							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
-							height={sizeCalc(400, 760)}
-							width='60%'
-							objectFit='cover'
-							containerCss={{ zIndex: 20, borderRadius: 10, marginRight: -30 }}
-							autoResize
+						<ImageCard
+							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
+							minHeight={400}
+							maxHeight={760}
 						/>
 
 						<img
@@ -95,7 +87,7 @@ function LandingView() {
 								position: 'absolute',
 								width: sizeCalc(150, 250),
 								top: 100,
-								left: window.innerWidth < 700 ? '47%': '50%',
+								right: sizeCalc(120, 300),
 								zIndex: 100
 							}}
 						/>
@@ -110,62 +102,14 @@ function LandingView() {
 			<br />
 			<br />
 
-			<section id='about_us' style={{ overflow: 'hidden' }}>
-				<Grid.Container>
-					<Grid xs={12} md={6} css={{ position: 'relative' }}>
-						<Carousel
-							images={images
-								.filter(({ section }) => section === 'about_us')
-								.map(({ url }) => url)
-							}
-						/>
-					</Grid>
-					<Grid
-						xs={12}
-						md={6}
-						justify='center'
-						direction='column'
-						css={{
-							padding: 30,
-							position: 'relative'
-						}}
-					>
-						<Text h2 css={{ fontSize: sizeCalc(15, 25) }}>{dictionary[lang].titles.about_us}</Text>
-						<br />
-
-						<Text className='heading'>
-							<span style={{ fontSize: sizeCalc(25, 55) }}>{copy[lang].about_us.title[0]}</span>
-							<br />
-							<span style={{ fontSize: sizeCalc(40, 70) }}>{copy[lang].about_us.title[1]}</span>
-						</Text>
-						<br />
-
-						<Text className='subheading' css={{ fontSize: sizeCalc(16, 35) }}>{copy[lang].about_us.subtitle}</Text>
-						<br />
-
-						<div
-							style={{
-								width: 110,
-								height: 5,
-								background: primaryColor,
-								marginTop: 60
-							}}
-						/>
-
-					</Grid>
-				</Grid.Container>
-			</section>
+			<AboutUsSection copy={copy} />
 			<br />
 			<br />
 
-			<section id='menu' style={{ overflow: 'hidden' }}>
-				<Menu copy={copy} />
-			</section>
+			<MenuSection copy={copy} />
 			<br />
 
-			<section id='contact' style={{ overflow: 'hidden' }}>
-				<ContactSection copy={copy} />
-			</section>
+			<ContactSection copy={copy} />
 			<br />
 
 			<Grid.Container css={{ padding: `0 ${sizeCalc(10, 90)}px` }}>
@@ -187,8 +131,6 @@ function LandingView() {
 				</Grid>
 			</Grid.Container>
 			<br />
-
-			<DecorationCircle bottom={0} left={-400} />
 
 			<Footer />
 		</>

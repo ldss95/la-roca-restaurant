@@ -9,39 +9,37 @@ import { CopyProps } from '@/types/copy';
 import RenderIf from '@/components/RenderIf';
 import { primaryColor, redColor, secondaryColor } from '@/contants/colors';
 import { sizeCalc } from '@/helpers';
-import DecorationCircle from './DecorationCircle';
+import ImageCard from '@/components/ImageCard';
 
 const ContactSection = ({ copy }: { copy: CopyProps }) => {
 	const { lang } = useContext(LanguageContext);
 
 	return (
-		<>
+		<section id='contact' style={{ overflow: 'hidden' }}>
 			<div style={{ padding: '0 30px' }}>
 				<Text h2 css={{ fontSize: sizeCalc(15, 25), marginBottom: 40 }} showIn='xs'>{dictionary[lang].titles.contact_us}</Text>
 			</div>
 
 			<Grid.Container>
 				<Grid xs={0} md={5} css={{ padding: `0 ${sizeCalc(10, 90)}px` }}>
-					<Image
-						src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Funsplash_pOCJHyIN6Xs.png?alt=media&token=fcb7b240-1280-4001-a33d-fa883ea5ef88'
-						height={760}
-						objectFit='cover'
-						containerCss={{ borderRadius: 10 }}
-						autoResize
+					<ImageCard
+						url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Funsplash_pOCJHyIN6Xs.png?alt=media&token=fcb7b240-1280-4001-a33d-fa883ea5ef88'
+						minHeight={760}
+						maxHeight={760}
 					/>
 				</Grid>
 
 				<Grid xs={3} md={0}>
-					<Image
-						src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Funsplash_pOCJHyIN6Xs.png?alt=media&token=fcb7b240-1280-4001-a33d-fa883ea5ef88'
-						height={760}
-						objectFit='cover'
-						containerCss={{
-							borderTopRightRadius: 10,
-							borderBottomRightRadius: 10,
-							backgroundPosition: 'right'
+					<ImageCard
+						url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Funsplash_pOCJHyIN6Xs.png?alt=media&token=fcb7b240-1280-4001-a33d-fa883ea5ef88'
+						minHeight={760}
+						maxHeight={760}
+						borderRadius={{
+							bottomLeft: 0,
+							bottomRight: 0
 						}}
-						autoResize
+						backgroundPosition='right'
+						animationType='onShow'
 					/>
 				</Grid>
 
@@ -189,7 +187,7 @@ const ContactSection = ({ copy }: { copy: CopyProps }) => {
 					</div>
 				</Grid>
 			</Grid.Container>
-		</>
+		</section>
 	)
 }
 
