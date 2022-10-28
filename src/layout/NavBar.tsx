@@ -16,7 +16,6 @@ const NavBar = () => {
 		<Navbar
 			maxWidth='fluid'
 			variant='sticky'
-			containerCss={{ height: 100 }}
 			disableScrollHandler
 			disableShadow
 		>
@@ -46,7 +45,7 @@ const NavBar = () => {
 					</svg>
 				</Navbar.Toggle>
 			</Navbar.Content>
-			<Navbar.Collapse css={{ paddingTop: 30 }}>
+			<Navbar.Collapse>
 				<Navbar.CollapseItem>
 					<Link
 						color='inherit'
