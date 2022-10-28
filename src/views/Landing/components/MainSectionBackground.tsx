@@ -18,7 +18,7 @@ const MainSectionBackground = () => (
 		<div
 			style={{
 				background: primaryColor,
-				height: sizeCalc(690, 833),
+				height: sizeCalc(650, 700),
 				width: '100%',
 				overflow: 'hidden',
 				position: 'relative'
@@ -36,7 +36,7 @@ const MainSectionBackground = () => (
 		</div>
 
 		<Grid.Container>
-			<Grid xs={0} md={12}>
+			<Grid xs={0} sm={12} css={{ overflow: 'hidden' }}>
 				<img src={Decoration} style={{ zIndex: 10, position: 'relative', margin: 20 }} />
 			</Grid>
 		</Grid.Container>

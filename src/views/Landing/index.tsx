@@ -49,7 +49,7 @@ function LandingView() {
 				<MainSectionBackground />
 
 				<Grid.Container css={{ marginTop: 180 }}>
-					<Grid xs={12} md={6}>
+					<Grid xs={12} sm={6}>
 						<div style={{ zIndex: 20, padding: sizeCalc(30, 60), marginTop: sizeCalc(0, 200) }}>
 							<Text h1 className='title'>
 								<span style={{ fontSize: sizeCalc(39, 70) }}>{copy[lang].title[0]}</span>
@@ -63,7 +63,7 @@ function LandingView() {
 					</Grid>
 					<Grid
 						xs={12}
-						md={6}
+						sm={6}
 						css={{
 							padding: 15,
 							position: 'relative'
@@ -101,7 +101,7 @@ function LandingView() {
 						/>
 					</Grid>
 					<Grid.Container>
-						<Grid xs={12} md={0} justify='center'>
+						<Grid xs={12} sm={0} justify='center'>
 							<img src={Decoration} />
 						</Grid>
 					</Grid.Container>
