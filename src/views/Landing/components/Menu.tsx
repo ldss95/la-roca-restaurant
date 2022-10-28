@@ -35,12 +35,13 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 				xs={12}
 				md={6}
 				direction='column'
+				css={{ padding: sizeCalc(10, 60) }}
 			>
 				<Text h2 css={{ fontSize: sizeCalc(15, 25) }}>{dictionary[lang].titles.menu}</Text>
 				<br />
 				<br />
 
-				<div style={{ display: 'flex' }}>
+				<div style={{ display: 'flex', marginBottom: 40, alignItems: 'center' }}>
 					<svg
 						width={sizeCalc(44, 90)}
 						height={sizeCalc(61, 124)}
@@ -53,14 +54,13 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 
 					<Spacer />
 
-					<Text className='heading'>
-						<span style={{ fontSize: sizeCalc(25, 60) }}>{copy[lang].menu.title[0]}</span>
+					<Text className='heading' css={{ lineHeight: 1.2 }}>
+						<span style={{ fontSize: sizeCalc(25, 55) }}>{copy[lang].menu.title[0]}</span>
 						<br />
-						<span style={{ fontSize: sizeCalc(24, 55) }}>{copy[lang].menu.title[1]}</span>
+						<span style={{ fontSize: sizeCalc(24, 60) }}>{copy[lang].menu.title[1]}</span>
 					</Text>
 				</div>
 
-				<br />
 				<br />
 
 				<div>
@@ -84,6 +84,7 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 				md={6}
 				direction='column'
 				alignItems='flex-end'
+				css={{ padding: sizeCalc(10, 60) }}
 			>
 				{products
 					.filter(({ categories }) => categories.includes(selectedCategory))

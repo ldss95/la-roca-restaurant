@@ -50,14 +50,14 @@ function LandingView() {
 
 				<Grid.Container css={{ marginTop: 180 }}>
 					<Grid xs={12} md={6}>
-						<div style={{ zIndex: 20, padding: sizeCalc(30, 60) }}>
+						<div style={{ zIndex: 20, padding: sizeCalc(30, 60), marginTop: sizeCalc(0, 200) }}>
 							<Text h1 className='title'>
-								<span>{copy[lang].title[0]}</span>
+								<span style={{ fontSize: sizeCalc(39, 70) }}>{copy[lang].title[0]}</span>
 								<br />
-								<span>{copy[lang].title[1]}</span>
+								<span style={{ fontSize: sizeCalc(34, 65) }}>{copy[lang].title[1]}</span>
 							</Text>
 							<div
-								style={{ width: 100, height: 2, background: redColor }}
+								style={{ width: 100, height: 4, background: redColor }}
 							/>
 						</div>
 					</Grid>
@@ -134,9 +134,9 @@ function LandingView() {
 						<br />
 
 						<Text className='heading'>
-							<span>{copy[lang].about_us.title[0]}</span>
+							<span style={{ fontSize: sizeCalc(25, 55) }}>{copy[lang].about_us.title[0]}</span>
 							<br />
-							<span>{copy[lang].about_us.title[1]}</span>
+							<span style={{ fontSize: sizeCalc(40, 70) }}>{copy[lang].about_us.title[1]}</span>
 						</Text>
 						<br />
 
@@ -147,7 +147,8 @@ function LandingView() {
 							style={{
 								width: 110,
 								height: 5,
-								background: primaryColor
+								background: primaryColor,
+								marginTop: 60
 							}}
 						/>
 
@@ -168,7 +169,7 @@ function LandingView() {
 			</section>
 			<br />
 
-			<Grid.Container css={{ padding: '0 30px' }}>
+			<Grid.Container css={{ padding: `0 ${sizeCalc(10, 90)}px` }}>
 				<Grid
 					xs={12}
 					md={8}

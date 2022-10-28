@@ -20,7 +20,7 @@ const ContactSection = ({ copy }: { copy: CopyProps }) => {
 			</div>
 
 			<Grid.Container>
-				<Grid xs={0} md={4} css={{ padding: '0 30px' }}>
+				<Grid xs={0} md={5} css={{ padding: `0 ${sizeCalc(10, 90)}px` }}>
 					<Image
 						src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Funsplash_pOCJHyIN6Xs.png?alt=media&token=fcb7b240-1280-4001-a33d-fa883ea5ef88'
 						height={760}
@@ -45,7 +45,7 @@ const ContactSection = ({ copy }: { copy: CopyProps }) => {
 
 				<Grid
 					xs={9}
-					md={8}
+					md={7}
 					direction='column'
 					justify='center'
 					css={{ padding: '0 30px' }}

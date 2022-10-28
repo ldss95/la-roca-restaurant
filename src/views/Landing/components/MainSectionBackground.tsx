@@ -4,11 +4,13 @@ import Decoration from '@/assets/decoration.svg';
 // import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import { primaryColor } from '@/contants/colors';
 import { Grid } from '@nextui-org/react';
+import { sizeCalc } from '@/helpers';
 
 const MainSectionBackground = () => (
 	<div
 		style={{
 			position: 'absolute',
+			top: 0,
 			width: '100%',
 			zIndex: 1
 		}}
@@ -16,7 +18,7 @@ const MainSectionBackground = () => (
 		<div
 			style={{
 				background: primaryColor,
-				height: 650,
+				height: sizeCalc(690, 833),
 				width: '100%',
 				overflow: 'hidden',
 				position: 'relative'

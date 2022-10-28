@@ -19,27 +19,16 @@
 }
 
 .heading {
-	line-height: 44px;
 	z-index: 1;
 
 	span {
 		&:nth-child(1) {
-			font-size: 48px;
 			color: $color_secondary;
-
-			@media screen and (max-width: 700px) {
-				font-size: 30px;
-			}
 		}
 
 		&:nth-child(3) {
-			font-size: 60px;
 			font-style: italic;
 			color: $color_red;
-
-			@media screen and (max-width: 700px) {
-				font-size: 36px;
-			}
 		}
 	}
 }

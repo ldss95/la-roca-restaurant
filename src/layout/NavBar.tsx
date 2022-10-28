@@ -11,6 +11,26 @@ import { redColor, secondaryColor } from '@/contants/colors';
 const NavBar = () => {
 	const { lang } = useContext(LanguageContext);
 	const toggleRef = useRef<any>();
+	const [logoCss, setLogoCss] = useState({
+		height: 100,
+		marginTop: 60
+	})
+
+	useEffect(() => {
+		document.addEventListener('scroll', handleLogoSize);
+		function handleLogoSize() {
+			const height = 100 - (window.pageYOffset / 10);
+			const marginTop = 40 - (window.pageYOffset / 8)
+
+			if (height < 60) {
+				return;
+			}
+
+			setLogoCss({ height, marginTop });
+		}
+
+		return () => document.removeEventListener('scroll', handleLogoSize)
+	}, []);
 
 	return (
 		<Navbar
@@ -19,7 +39,10 @@ const NavBar = () => {
 			disableScrollHandler
 			disableShadow
 		>
-			<Navbar.Brand>
+			<Navbar.Brand hideIn='xs'>
+				<img src={logo} style={logoCss} />
+			</Navbar.Brand>
+			<Navbar.Brand showIn='xs'>
 				<img src={logo} style={{ height: 60 }} />
 			</Navbar.Brand>
 			<Navbar.Content hideIn='sm' gap='$20'>
