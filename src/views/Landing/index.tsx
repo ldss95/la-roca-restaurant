@@ -81,7 +81,7 @@ function LandingView() {
 						<Spacer />
 
 						<Image
-							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Fmofongo.png?alt=media&token=59de3a54-17ae-4723-9822-170bfad51b58'
+							src='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Funsplash_pOCJHyIN6Xs.png?alt=media&token=fcb7b240-1280-4001-a33d-fa883ea5ef88'
 							height={sizeCalc(400, 760)}
 							width='60%'
 							objectFit='cover'
