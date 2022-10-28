@@ -66,19 +66,21 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 
 					<br />
 
-					{categories.map(({ name, id }) => (
-						<button
-							className={`category-selector ${selectedCategory === name.en ? 'selected' : ''}`}
-							style={{
-								height: sizeCalc(40, 80),
-								fontSize: sizeCalc(14, 30)
-							}}
-							key={'category-selector-' + id}
-							onClick={() => setSelectedCategory(name.en)}
-						>
-							{name[lang]}
-						</button>
-					))}
+					<div>
+						{categories.map(({ name, id }) => (
+							<button
+								className={`category-selector ${selectedCategory === name.en ? 'selected' : ''}`}
+								style={{
+									height: sizeCalc(40, 80),
+									fontSize: sizeCalc(14, 30)
+								}}
+								key={'category-selector-' + id}
+								onClick={() => setSelectedCategory(name.en)}
+							>
+								{name[lang]}
+							</button>
+						))}
+					</div>
 				</Grid>
 				<Grid
 					xs={12}
