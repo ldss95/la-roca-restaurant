@@ -1,6 +1,6 @@
 export function sizeCalc(min: number, max: number) {
 	const MIN_SCREEN_WIDTH = 320;
-	const MAX_SCREEN_WIDTH = 1024;
+	const MAX_SCREEN_WIDTH = 1600;
 	const width = window.innerWidth;
 
 	if (width <= MIN_SCREEN_WIDTH) {
