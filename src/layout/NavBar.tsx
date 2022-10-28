@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from 'react';
+import { memo, useContext, useEffect, useState, useRef } from 'react';
 import { Link, Navbar } from '@nextui-org/react';
 
 import logo from '@/assets/logo.png';
@@ -10,30 +10,18 @@ import { redColor, secondaryColor } from '@/contants/colors';
 
 const NavBar = () => {
 	const { lang } = useContext(LanguageContext);
-	const [mobileNabIsOpen, setMobileNabIsOpen] = useState(false);
-
-	useEffect(() => {
-		if (!mobileNabIsOpen) {
-			const body = document.querySelector('body');
-			body!.style.overflow = 'auto';
-		}
-	}, [mobileNabIsOpen]);
+	const toggleRef = useRef<any>();
 
 	return (
 		<Navbar
 			maxWidth='fluid'
 			variant='sticky'
 			containerCss={{ height: 100 }}
+			disableScrollHandler
 			disableShadow
 		>
 			<Navbar.Brand>
-				<img
-					src={logo}
-					style={{
-						// width: window.innerWidth < 700 ? 100 : 200,
-						height: 60
-					}}
-				/>
+				<img src={logo} style={{ height: 60 }} />
 			</Navbar.Brand>
 			<Navbar.Content hideIn='sm' gap='$20'>
 				<Navbar.Link href='#about_us'>
@@ -50,7 +38,7 @@ const NavBar = () => {
 			<Navbar.Content showIn='sm'>
 				<LanguageToggler />
 
-				<Navbar.Toggle onClick={() => setMobileNabIsOpen(!mobileNabIsOpen)}>
+				<Navbar.Toggle ref={toggleRef}>
 					<svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<rect width="27" height="3" rx="1.5" fill={redColor} />
 						<rect y="9" width="27" height="3" rx="1.5" fill={redColor} />
@@ -58,7 +46,7 @@ const NavBar = () => {
 					</svg>
 				</Navbar.Toggle>
 			</Navbar.Content>
-			<Navbar.Collapse isOpen={mobileNabIsOpen}>
+			<Navbar.Collapse css={{ paddingTop: 30 }}>
 				<Navbar.CollapseItem>
 					<Link
 						color='inherit'
@@ -70,7 +58,7 @@ const NavBar = () => {
 							fontWeight: 'bold'
 						}}
 						href='#about_us'
-						onClick={() => setMobileNabIsOpen(false)}
+						onClick={() => toggleRef.current.click()}
 					>
 						{dictionary[lang].navbar.aboutUs}
 					</Link>
@@ -86,7 +74,7 @@ const NavBar = () => {
 							fontWeight: 'bold'
 						}}
 						href='#menu'
-						onClick={() => setMobileNabIsOpen(false)}
+						onClick={() => toggleRef.current.click()}
 					>
 						{dictionary[lang].navbar.menu}
 					</Link>
@@ -102,13 +90,12 @@ const NavBar = () => {
 							fontWeight: 'bold'
 						}}
 						href='#contact'
-						onClick={() => setMobileNabIsOpen(false)}
+						onClick={() => toggleRef.current.click()}
 					>
 						{dictionary[lang].navbar.contact}
 					</Link>
 				</Navbar.CollapseItem>
 			</Navbar.Collapse>
-
 		</Navbar>
 	);
 };
