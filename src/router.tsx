@@ -2,7 +2,8 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import moment from 'moment';
 
 import NavBarState from '@/context/navbar/state';
-import NavBar from '@/layout/NavBar';
+import AdminNavBar from '@/layout/AdminNavBar';
+
 import Landing from '@/views/Landing';
 import Login from '@/views/Login';
 import NotFound from '@/views/NotFound';
@@ -43,7 +44,7 @@ const Router = () => {
 					</div>
 				</div>
 
-				<NavBar />
+				<AdminNavBar />
 			</div>
 		</NavBarState>
 	);
