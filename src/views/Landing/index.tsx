@@ -140,7 +140,7 @@ function LandingView() {
 						</Text>
 						<br />
 
-						<Text className='subheading'>{copy[lang].about_us.subtitle}</Text>
+						<Text className='subheading' css={{ fontSize: sizeCalc(16, 35) }}>{copy[lang].about_us.subtitle}</Text>
 						<br />
 
 						<div

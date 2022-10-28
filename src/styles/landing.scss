@@ -47,17 +47,11 @@
 .subheading {
 	font-family: Manrope;
 	color: $color_grey !important;
-	font-size: 32px;
 	z-index: 100;
-
-	@media screen and (max-width: 700px) {
-		font-size: 24px;
-	}
 }
 
 .nextui-navbar-container {
 	background-color: $color_primary !important;
 	backdrop-filter: blur(4px) !important;
 	-webkit-backdrop-filter: blur(4px) !important;
-	// z-index: 2000;
 }
