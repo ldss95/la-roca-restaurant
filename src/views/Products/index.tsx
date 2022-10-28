@@ -8,8 +8,8 @@ import { ModalOpener$ } from '@/utils/helpers';
 import { useFetchProducts } from '@/hooks/useProducts';
 import { useFetchCategories } from '@/hooks/useCategories';
 import Loading from '../Loading';
-import OrderCell from './components/OrderCell';
-import OptionsCell from './components/OptionsCell';
+import { redColor, redColor50 } from '@/contants/colors';
+import ModalProductOptions from './components/ModalProductOptions';
 
 function ProductsView () {
 	const { toggle: toggleNavBar } = useContext(NavbarContext);
@@ -17,6 +17,7 @@ function ProductsView () {
 	const [products, isLoading] = useFetchProducts();
 	const [categories] = useFetchCategories();
 	const [categorySelected, setCategorySelected] = useState<string | null>(null);
+	const [lastSelectedProduct, setLastSelectedProduct] = useState<string | null>(null);
 
 	if (isLoading) {
 		return (
@@ -40,28 +41,37 @@ function ProductsView () {
 					<MenuOutlined />
 				</button>
 
-				<h3 style={{ margin: 0 }}>Menú</h3>
+				<h3 style={{ margin: 0 }}>Products</h3>
 
-				<button style={{ background: 'none', border: 'none', fontSize: 24, paddingRight: 0 }}>
+				<button
+					style={{
+						background: 'none',
+						border: 'none',
+						fontSize: 24,
+						paddingRight: 0,
+						opacity: 0
+					}}
+				>
 					<SearchOutlined />
 				</button>
 			</Grid.Container>
 			<br />
 
 			<Grid.Container>
-				<Button
-					icon={<PlusOutlined />}
-					onClick={() => ModalOpener$.next({ name: 'PRODUCT' })}
-				>
-					Create Product
-				</Button>
-
+				<Grid xs={12} sm={4} md={2}>
+					<Button
+						icon={<PlusOutlined />}
+						onClick={() => ModalOpener$.next({ name: 'PRODUCT' })}
+						css={{ width: '100%', background: redColor50, color: '#000' }}
+					>
+						Create Product
+					</Button>
+				</Grid>
 				<Spacer />
-
-				<div>
+				<Grid xs={12} sm={4} md={2}>
 					<Dropdown>
-						<Dropdown.Button>
-							{categorySelected || 'Choose One'}
+						<Dropdown.Button css={{ width: '100%', background: redColor50, color: '#000' }} flat>
+							{categorySelected || 'Choose One Category'}
 						</Dropdown.Button>
 						<Dropdown.Menu
 							selectionMode='single'
@@ -76,42 +86,55 @@ function ProductsView () {
 							))}
 						</Dropdown.Menu>
 					</Dropdown>
-				</div>
+				</Grid>
 			</Grid.Container>
 
 			<br />
 
-			<Table css={{ background: '#fff' }}>
+			<Table
+				css={{ background: '#fff' }}
+				selectionMode='single'
+				color='warning'
+				onSelectionChange={(keys) => {
+					const selectedId = Array.from(keys)[0] as string || lastSelectedProduct;
+					console.log(selectedId);
+					const product = products.find(({ id }) => id === selectedId);
+
+					ModalOpener$.next({
+						name: 'PRODUCT_OPTIONS',
+						product,
+						enableOrderChange: !!categorySelected
+					});
+					setLastSelectedProduct(selectedId);
+				}}
+				compact
+				selectedKeys={new Set([lastSelectedProduct || ''])}
+			>
 				<Table.Header>
 					<Table.Column>Name (Spanish)</Table.Column>
 					<Table.Column>Price</Table.Column>
-					<Table.Column>Categories</Table.Column>
-					<Table.Column align='center'>Order</Table.Column>
-					<Table.Column align='center'>Options</Table.Column>
 				</Table.Header>
 				<Table.Body>
 					{products
 						.filter(({ category }) => !categorySelected || categorySelected === category)
-						.map(({ id, name, price, category, order }) => (
+						.map(({ id, name, price }) => (
 							<Table.Row key={id}>
-								<Table.Cell>{name.es}</Table.Cell>
-								<Table.Cell>{price}</Table.Cell>
-								<Table.Cell>{category}</Table.Cell>
-								<Table.Cell>
-									<OrderCell
-										id={id!}
-										order={order}
-										categorySelected={categorySelected}
-									/>
+								<Table.Cell
+									css={{
+										fontSize: 16,
+										fontWeight: 'bold' }}
+								>
+									{name.es}
 								</Table.Cell>
-								<Table.Cell>
-									<OptionsCell
-										id={id}
-										order={order}
-										price={price}
-										name={name}
-										category={category}
-									/>
+								<Table.Cell
+									css={{
+										fontSize: 16,
+										fontWeight: 'bold',
+										color: redColor,
+										textAlign: 'right'
+									}}
+								>
+									{price}
 								</Table.Cell>
 							</Table.Row>
 						))
@@ -120,6 +143,7 @@ function ProductsView () {
 			</Table>
 
 			<ModalProduct />
+			<ModalProductOptions />
 		</>
 	)
 }

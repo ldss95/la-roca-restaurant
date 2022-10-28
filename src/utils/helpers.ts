@@ -21,8 +21,10 @@ export function avoidNotNumerics(event: any) {
 }
 
 interface ModalOpener$Props {
-	name: 'CATEGORY' | 'PRODUCT',
-	data?: ProductProps | CategoryProps
+	name: 'CATEGORY' | 'PRODUCT' | 'PRODUCT_OPTIONS';
+	product?: ProductProps;
+	category?: CategoryProps;
+	enableOrderChange?: boolean;
 }
 export const ModalOpener$ = new Subject<ModalOpener$Props>();
 

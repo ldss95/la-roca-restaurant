@@ -1,8 +1,9 @@
-import { memo, useState, useEffect, useMemo, Key } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { Modal, Input, Button, Text, Row, Dropdown, Loading } from '@nextui-org/react';
 import { Form, Formik } from 'formik';
 import { SaveOutlined } from '@ant-design/icons';
 import { filter } from 'rxjs';
+import Swal from 'sweetalert2';
 
 import { ProductProps } from '@/types/product';
 import { avoidNotNumerics, ModalOpener$ } from '@/utils/helpers';
@@ -20,15 +21,16 @@ const defaultValues = {
 		en: '',
 		es: ''
 	},
-	categories: []
+	category: ''
 }
 
-const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
+const ModalProduct = ({ onFinish }: ModalProductProps) => {
 	const [createProduct, creating] = useCreateProduct();
 	const [updateProduct, updating] = useUpdateProduct();
 	const [isOpen, setIsOpen] = useState(false);
 	const [categories] = useFetchCategories();
-	const [categoriesSelected, setCategoriesSelected] = useState<'all' | Set<Key>>(new Set([]));
+	const [categorySelected, setCategorySelected] = useState<string | null>(null);
+	const [product, setProduct] = useState<ProductProps>({} as ProductProps);
 
 	useEffect(() => {
 		if (product) {
@@ -40,9 +42,11 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 	useEffect(() => {
 		const listener = ModalOpener$
 			.pipe(filter(({ name }) => name === 'PRODUCT'))
-			.subscribe(({ data }) => {
-				if (data) {
-					setProduct(data as ProductProps);
+			.subscribe(({ product }) => {
+				if (product) {
+					setProduct(product);
+				} else {
+					setProduct({} as ProductProps);
 				}
 
 				setIsOpen(true);
@@ -52,30 +56,33 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 	}, []);
 
 	async function handleSave({ name, price }: ProductProps) {
+		if (!categorySelected) {
+			return Swal.fire('Oops!', 'Please choose one category', 'warning')
+		}
+
 		if (product?.id) {
 			await updateProduct(product.id, {
 				name,
 				price,
-				categories: Array.from(categoriesSelected) as string[]
+				category: categorySelected,
+				order: product.order
 			});
 		} else {
+			console.log()
 			await createProduct({
 				name,
 				price,
-				categories: Array.from(categoriesSelected) as string[]
+				category: categorySelected,
+				order: product.order
 			})
 		}
 
 		setIsOpen(false);
-		setCategoriesSelected(new Set([]));
+		setCategorySelected(null);
 		if (onFinish) {
 			onFinish();
 		}
 	}
-
-	const selectedValue = useMemo(() => {
-		return Array.from(categoriesSelected).join(", ").replaceAll("_", " ")
-	}, [categoriesSelected]);
 
 	return (
 		<Modal
@@ -131,12 +138,13 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 								label='Price'
 								css={{ width: '100%' }}
 								value={product?.price || 0}
+								step={0.01}
 								shadow={false}
 							/>
 							<br />
 							<br />
 
-							<Text>Categories</Text>
+							<Text>Category</Text>
 							<Dropdown>
 								<Dropdown.Button
 									flat color='secondary'
@@ -145,13 +153,16 @@ const ModalProduct = ({ onFinish, product }: ModalProductProps) => {
 										width: '100%'
 									}}
 								>
-									{selectedValue === '' ? 'Choose One' : selectedValue}
+									{categorySelected || 'Choose One Category'}
 								</Dropdown.Button>
 								<Dropdown.Menu
 									css={{ width: '100%' }}
-									selectionMode='multiple'
-									onSelectionChange={setCategoriesSelected}
-									selectedKeys={categoriesSelected}
+									onSelectionChange={(keys) => {
+										const [key] = Array.from(keys) as string[];
+										setCategorySelected(key || null)
+									}}
+									selectionMode='single'
+									selectedKeys={categorySelected ? [categorySelected] : []}
 								>
 									{categories.map(({ name }) => (
 										<Dropdown.Item key={name.en}>{name.en}</Dropdown.Item>

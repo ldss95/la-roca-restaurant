@@ -1,10 +1,32 @@
-import { addDoc, collection, updateDoc, doc, deleteDoc, query, where, getDoc, getDocs } from 'firebase/firestore';
+import { addDoc, collection, updateDoc, doc, deleteDoc, query, where, getDoc, getDocs, orderBy, limit } from 'firebase/firestore';
 
 import { db } from '@/firebase';
 import { ProductProps } from '@/types/product';
 
 export async function createProduct(product: ProductProps): Promise<void> {
-	await addDoc(collection(db, 'products'), product);
+	let order = 1;
+	const q = query(
+		collection(db, 'products'),
+		where('category', '==', product.category),
+		orderBy('order', 'desc'),
+		limit(1)
+	);
+	const snap = await getDocs(q);
+	if (!snap.empty) {
+		const [doc] = snap.docs;
+		const data = doc.data();
+		order = data.order + 1;
+	}
+
+	console.log({
+		...product,
+		order
+	})
+
+	await addDoc(collection(db, 'products'), {
+		...product,
+		order
+	});
 }
 
 export async function updateProduct(id: string, product: ProductProps): Promise<void> {
