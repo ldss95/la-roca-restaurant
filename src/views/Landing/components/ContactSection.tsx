@@ -36,9 +36,9 @@ const ContactSection = ({ copy }: { copy: CopyProps }) => {
 						maxHeight={760}
 						borderRadius={{
 							bottomLeft: 0,
-							bottomRight: 0
+							topLeft: 0
 						}}
-						backgroundPosition='right'
+						backgroundPosition='75% center'
 						animationType='onShow'
 					/>
 				</Grid>

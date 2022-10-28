@@ -63,43 +63,50 @@ function LandingView() {
 						xs={12}
 						sm={6}
 						css={{
-							padding: 15,
+							paddingLeft: 30,
 							position: 'relative'
 						}}
 					>
-						<ImageCard
-							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2FWhatsApp%20Image%202022-10-17%20at%201.22.18%20PM.jpeg?alt=media&token=574a7a3a-b3ff-48da-aa5e-28310a95072c'
-							minHeight={400}
-							maxHeight={760}
-						/>
-
-						<Spacer />
-
-						<ImageCard
-							url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
-							minHeight={400}
-							maxHeight={760}
-						/>
+							<Grid xs={10} md={8} css={{ paddingRight: 10 }}>
+								<ImageCard
+									url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2FWhatsApp%20Image%202022-10-17%20at%201.22.18%20PM.jpeg?alt=media&token=574a7a3a-b3ff-48da-aa5e-28310a95072c'
+									minHeight={400}
+									maxHeight={760}
+								/>
+							</Grid>
+							<Grid xs={2} md={4} css={{ paddingLeft: 10 }}>
+								<ImageCard
+									url='https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Flocrio.png?alt=media&token=3523fcc7-e3d6-443a-95ef-41c9843639e0'
+									minHeight={400}
+									maxHeight={760}
+									borderRadius={{
+										topRight: 0,
+										bottomRight: 0
+									}}
+								/>
+							</Grid>
 
 						<img
 							src={stamp}
 							style={{
 								position: 'absolute',
 								width: sizeCalc(150, 250),
-								top: 100,
-								right: sizeCalc(120, 300),
+								top: 10,
+								right: sizeCalc(0, 150),
 								zIndex: 100
 							}}
 						/>
 					</Grid>
 					<Grid.Container>
 						<Grid xs={12} sm={0} justify='center'>
+							<br />
+							<br />
+							<br />
 							<img src={Decoration} />
 						</Grid>
 					</Grid.Container>
 				</Grid.Container>
 			</section>
-			<br />
 			<br />
 
 			<AboutUsSection copy={copy} />

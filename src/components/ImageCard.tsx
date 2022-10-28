@@ -6,7 +6,7 @@ interface ImageCardProps {
 	url: string;
 	minHeight: number;
 	maxHeight: number;
-	backgroundPosition?: 'center' | 'right';
+	backgroundPosition?: any;
 	borderRadius?: {
 		topRight?: number;
 		topLeft?: number;
@@ -31,6 +31,7 @@ const ImageCard = ({ url, minHeight, maxHeight, backgroundPosition = 'center', b
 				borderTopLeftRadius: borderRadius?.topLeft ?? 10,
 				borderBottomRightRadius: borderRadius?.bottomRight ?? 10,
 				borderBottomLeftRadius: borderRadius?.bottomLeft ?? 10,
+				overflow: 'hidden'
 			}}
 			initial={{ x: '100vw' }}
 			animate={{

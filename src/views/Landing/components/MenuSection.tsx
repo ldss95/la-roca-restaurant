@@ -1,6 +1,5 @@
-import { memo, useContext, useState, useMemo, useEffect } from 'react';
+import { memo, useContext, useState, useMemo } from 'react';
 import { Text, Grid, Pagination, Spacer } from '@nextui-org/react';
-import { motion, useAnimation } from 'framer-motion';
 
 import { useFetchCategories } from '@/hooks/useCategories';
 import { useFetchProducts } from '@/hooks/useProducts';
@@ -20,7 +19,7 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 
 
 	const pages = useMemo(() => {
-		const productsOfSelectedCategory = products.filter(({ categories }) => categories.includes(selectedCategory));
+		const productsOfSelectedCategory = products.filter(({ category }) => category === selectedCategory);
 		const productsQty = productsOfSelectedCategory.length;
 		const pages = Math.ceil(productsQty / 7);
 
@@ -67,35 +66,19 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 
 					<br />
 
-					<div>
-						{categories.map(({ name, id }, index) => (
-							<motion.button
-								className={`category-selector ${selectedCategory === name.en ? 'selected' : ''}`}
-								style={{
-									height: sizeCalc(40, 80),
-									fontSize: sizeCalc(14, 30)
-								}}
-								key={'category-selector-' + id}
-								onClick={() => setSelectedCategory(name.en)}
-								initial={{
-									opacity: 0,
-									y: -60
-								}}
-								whileInView={{
-									y: 0,
-									opacity: 1,
-									transition: {
-										duration: (index + 1) * 0.3,
-										type: 'spring',
-										bounce: 0.3
-									}
-								}}
-								viewport={{ once: false }}
-							>
-								{name[lang]}
-							</motion.button>
-						))}
-					</div>
+					{categories.map(({ name, id }) => (
+						<button
+							className={`category-selector ${selectedCategory === name.en ? 'selected' : ''}`}
+							style={{
+								height: sizeCalc(40, 80),
+								fontSize: sizeCalc(14, 30)
+							}}
+							key={'category-selector-' + id}
+							onClick={() => setSelectedCategory(name.en)}
+						>
+							{name[lang]}
+						</button>
+					))}
 				</Grid>
 				<Grid
 					xs={12}
@@ -105,29 +88,19 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 					css={{ padding: sizeCalc(10, 60) }}
 				>
 					{products
-						.filter(({ categories }) => categories.includes(selectedCategory))
+						.filter(({ category }) => category === selectedCategory)
 						.filter((_, index) => (index + 1) <= (currentPage * 7) && (index + 1) >= ((currentPage - 1) * 7))
-						.map(({ name, price }, index) => (
-							<motion.div
+						.map(({ name, price }) => (
+							<div
 								className='product'
 								style={{
 									padding: `${sizeCalc(10, 30)}px 0`,
 									fontSize: sizeCalc(20, 30),
 								}}
-								initial={{ x: 300 }}
-								whileInView={{
-									x: 0,
-									transition: {
-										duration: (index + 1) * 0.3,
-										type: 'spring',
-										bounce: 0.3
-									}
-								}}
-								viewport={{ once: false }}
 							>
 								<Text className='name'>{name[lang]}</Text>
 								<Text className='price'>$ {price}</Text>
-							</motion.div>
+							</div>
 						))
 					}
 

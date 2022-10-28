@@ -52,7 +52,7 @@ function CategoriesView () {
 
 			<Button
 				icon={<PlusOutlined />}
-				onClick={() => ModalOpener$.next('CATEGORY')}
+				onClick={() => ModalOpener$.next({ name: 'CATEGORY' })}
 			>
 				Create Category
 			</Button>
