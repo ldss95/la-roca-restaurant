@@ -1,5 +1,5 @@
 import { memo, useContext, useEffect, useState, useRef } from 'react';
-import { Link, Navbar } from '@nextui-org/react';
+import { Grid, Link, Navbar } from '@nextui-org/react';
 
 import logo from '@/assets/logo.png';
 import dictionary from '@/dictionary';
@@ -7,6 +7,7 @@ import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
 import '@/styles/navbar.scss';
 import { redColor, secondaryColor } from '@/contants/colors';
+import { FacebookOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
 
 const NavBar = () => {
 	const { lang } = useContext(LanguageContext);
@@ -116,6 +117,52 @@ const NavBar = () => {
 					>
 						{dictionary[lang].navbar.contact}
 					</Link>
+				</Navbar.CollapseItem>
+
+				<Navbar.CollapseItem>
+					<div
+						style={{
+							width: '80%',
+							height: 2,
+							background: secondaryColor,
+							margin: '10%',
+						}}
+					/>
+				</Navbar.CollapseItem>
+
+				<Navbar.CollapseItem>
+					<Grid.Container>
+						<Grid xs={4} justify='center'>
+							<a
+								href='https://instagram.com'
+								onClick={() => toggleRef.current.click()}
+								target='_blannk'
+								className='social-media-link'
+							>
+								<InstagramOutlined />
+							</a>
+						</Grid>
+						<Grid xs={4} justify='center'>
+							<a
+								href='https://facebook.com'
+								onClick={() => toggleRef.current.click()}
+								target='_blank'
+								className='social-media-link'
+							>
+								<FacebookOutlined />
+							</a>
+						</Grid>
+						<Grid xs={4} justify='center'>
+							<a
+								href='https://wa.me/14019418090'
+								onClick={() => toggleRef.current.click()}
+								target='_blank'
+								className='social-media-link'
+							>
+								<WhatsAppOutlined />
+							</a>
+						</Grid>
+					</Grid.Container>
 				</Navbar.CollapseItem>
 			</Navbar.Collapse>
 		</Navbar>

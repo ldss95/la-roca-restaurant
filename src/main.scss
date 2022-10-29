@@ -209,11 +209,6 @@ footer {
 		}
 	}
 
-	.social-media-link {
-		font-size: 28px;
-		color: $color_red;
-	}
-
 	.nav-link {
 		color: $color_secondary;
 		font-size: 29px;
@@ -231,4 +226,9 @@ footer {
 			}
 		}
 	}
+}
+
+.social-media-link {
+	font-size: 42px;
+	color: $color_red;
 }
