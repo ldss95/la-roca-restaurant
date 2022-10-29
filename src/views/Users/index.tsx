@@ -1,36 +1,19 @@
-import { useContext } from 'react';
-import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 import { Button, Grid, Table } from '@nextui-org/react';
 
-import NavbarContext from '@/context/navbar/context';
 import { useFetchUsers } from '@/hooks/useUsers';
 import { ModalOpener$ } from '@/utils/helpers';
 import { redColor50 } from '@/contants/colors';
 import ModalUser from './components/ModalUser';
 import { resetPassword } from '@/services/users';
+import ViewHeader from '@/components/ViewHeader';
 
 function UsersView () {
-	const { toggle: toggleNavBar } = useContext(NavbarContext);
 	const [users] = useFetchUsers();
 
 	return (
 		<>
-			<Grid.Container justify='space-between' alignItems='center'>
-				<button
-					style={{
-						background: 'none',
-						border: 'none',
-						fontSize: 24,
-						paddingLeft: 0,
-						cursor: 'pointer'
-					}}
-					onClick={toggleNavBar}
-				>
-					<MenuOutlined />
-				</button>
-
-				<h3 style={{ margin: 0 }}>Usuarios</h3>
-			</Grid.Container>
+			<ViewHeader title='Usuarios' />
 			<br />
 
 			<Grid.Container>

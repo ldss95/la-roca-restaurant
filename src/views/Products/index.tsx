@@ -1,8 +1,7 @@
-import { useContext, useMemo, useState } from 'react';
-import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
+import { useMemo, useState } from 'react';
+import { PlusOutlined } from '@ant-design/icons';
 import { Grid, Button, Table, Spacer, Dropdown, Text } from '@nextui-org/react';
 
-import NavbarContext from '@/context/navbar/context';
 import ModalProduct from '@/views/Products/components/ModalProduct';
 import { ModalOpener$ } from '@/utils/helpers';
 import { useFetchProducts } from '@/hooks/useProducts';
@@ -10,10 +9,9 @@ import { useFetchCategories } from '@/hooks/useCategories';
 import Loading from '../Loading';
 import { redColor, redColor50 } from '@/contants/colors';
 import ModalProductOptions from './components/ModalProductOptions';
+import ViewHeader from '@/components/ViewHeader';
 
 function ProductsView () {
-	const { toggle: toggleNavBar } = useContext(NavbarContext);
-
 	const [products, isLoading] = useFetchProducts();
 	const [categories] = useFetchCategories();
 	const [categorySelected, setCategorySelected] = useState<string | null>(null);
@@ -39,22 +37,7 @@ function ProductsView () {
 
 	return (
 		<>
-			<Grid.Container justify='space-between' alignItems='center'>
-				<button
-					style={{
-						background: 'none',
-						border: 'none',
-						fontSize: 24,
-						paddingLeft: 0,
-						cursor: 'pointer'
-					}}
-					onClick={toggleNavBar}
-				>
-					<MenuOutlined />
-				</button>
-
-				<Text h3>Productos</Text>
-			</Grid.Container>
+			<ViewHeader title='Productos' />
 			<br />
 
 			<Grid.Container>

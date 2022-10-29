@@ -1,37 +1,21 @@
-import { useContext, useState } from 'react';
-import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { PlusOutlined } from '@ant-design/icons';
 import { Table, Button, Grid } from '@nextui-org/react';
 
-import NavbarContext from '../../context/navbar/context';
 import { useFetchCategories } from '@/hooks/useCategories';
 import { ModalOpener$ } from '@/utils/helpers';
 import ModalCategory from './components/ModalCategory';
 import { redColor50 } from '@/contants/colors';
 import ModalCategoryOptions from './components/ModalCategoryOptions';
+import ViewHeader from '@/components/ViewHeader';
 
 function CategoriesView () {
-	const { toggle: toggleNavBar } = useContext(NavbarContext);
 	const [categories] = useFetchCategories();
 	const [lastSelectedCategory, setLastSelectedCategory] = useState<string | null>(null);
 
 	return (
 		<>
-			<Grid.Container justify='space-between' alignItems='center'>
-				<button
-					style={{
-						background: 'none',
-						border: 'none',
-						fontSize: 24,
-						paddingLeft: 0,
-						cursor: 'pointer'
-					}}
-					onClick={toggleNavBar}
-				>
-					<MenuOutlined />
-				</button>
-
-				<h3 style={{ margin: 0 }}>Categorias</h3>
-			</Grid.Container>
+			<ViewHeader title='Categorias' />
 			<br />
 
 			<Grid.Container>
