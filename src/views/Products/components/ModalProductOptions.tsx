@@ -110,6 +110,7 @@ const ModalProductOptions = () => {
 										deleteProduct(product.id!);
 										setIsOpen(false);
 									}}
+									message='Estas seguro de eliminar este producto?'
 								/>
 							</Popover.Content>
 						</Popover>
