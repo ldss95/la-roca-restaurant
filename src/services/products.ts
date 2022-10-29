@@ -18,11 +18,6 @@ export async function createProduct(product: ProductProps): Promise<void> {
 		order = data.order + 1;
 	}
 
-	console.log({
-		...product,
-		order
-	})
-
 	await addDoc(collection(db, 'products'), {
 		...product,
 		order
@@ -40,10 +35,6 @@ export async function deleteProduct(id: string): Promise<void> {
 }
 
 export async function changeProductOrder(id: string, type: 'up' | 'down', currentOrder: number, category: string) {
-	if (currentOrder === 1 && type === 'up') {
-		return;
-	}
-
 	if (type === 'up') {
 		const products = collection(db, 'products');
 		const q = query(
