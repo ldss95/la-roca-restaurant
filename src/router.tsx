@@ -10,6 +10,8 @@ import NotFound from '@/views/NotFound';
 import Users from '@/views/Users';
 import Products from '@/views/Products';
 import Categories from '@/views/Categories';
+import Images from '@/views/Images';
+import Texts from '@/views/Texts';
 
 const Router = () => {
 	const location = useLocation();
@@ -36,6 +38,8 @@ const Router = () => {
 							<Route path='/users' element={<Users />} />
 							<Route path='/products' element={<Products />} />
 							<Route path='/categories' element={<Categories />} />
+							<Route path='/images' element={<Images />} />
+							<Route path='/texts' element={<Texts />} />
 							<Route path='/*' element={<Navigate to='/404' />} />
 						</Routes>
 					</div>
