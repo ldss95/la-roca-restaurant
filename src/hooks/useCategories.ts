@@ -29,7 +29,7 @@ export const useFetchCategories = (): [CategoryProps[], boolean] => {
 
 	useEffect(() => {
 		const ref = collection(db, 'categories');
-		const q = query(ref, orderBy('name'))
+		const q = query(ref, orderBy('order', 'asc'))
 		const unsubscribe = onSnapshot(q, (snap) => {
 			if (snap.empty) {
 				return setLoading(false);

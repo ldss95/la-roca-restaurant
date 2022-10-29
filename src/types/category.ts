@@ -3,5 +3,6 @@ export interface CategoryProps {
 	name: {
 		es: string;
 		en: string;
-	}
+	};
+	order?: number;
 }
