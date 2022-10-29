@@ -1,6 +1,6 @@
 import { memo, useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { PoweroffOutlined, ArrowLeftOutlined, FileTextOutlined, TagsOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import { PoweroffOutlined, ArrowLeftOutlined, FileTextOutlined, TagsOutlined, UsergroupAddOutlined, FileImageOutlined, FontColorsOutlined, ReadOutlined } from '@ant-design/icons';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,7 +32,7 @@ const AdminNavBar = () => {
 			<ul>
 				<li>
 					<NavLink to='/products'>
-						<FileTextOutlined />
+						<ReadOutlined />
 						Productos
 					</NavLink>
 				</li>
@@ -40,6 +40,18 @@ const AdminNavBar = () => {
 					<NavLink to='/categories'>
 						<TagsOutlined />
 						Categorias
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to='/images'>
+						<FileImageOutlined />
+						Imagenes
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to='/texts'>
+						<FontColorsOutlined />
+						Textos
 					</NavLink>
 				</li>
 				<li>

@@ -1,6 +1,6 @@
 import { memo, useState, useEffect } from 'react';
 import { Modal, Input, Text, Button, Loading } from '@nextui-org/react';
-import { Formik, Form, FormikErrors } from 'formik';
+import { Formik, Form } from 'formik';
 import { filter } from 'rxjs';
 
 import { ModalOpener$ } from '@/utils/helpers';
@@ -96,7 +96,7 @@ const ModalCategory = () => {
 								</RenderIf>
 
 								<RenderIf condition={!isLoading}>
-									Save
+									Guardar
 								</RenderIf>
 							</Button>
 						</Form>

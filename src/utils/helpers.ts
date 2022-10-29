@@ -1,5 +1,6 @@
 import { CategoryProps } from '@/types/category';
 import { ProductProps } from '@/types/product';
+import { UserProps } from '@/types/user';
 import { Subject } from 'rxjs';
 
 /**
@@ -21,9 +22,10 @@ export function avoidNotNumerics(event: any) {
 }
 
 interface ModalOpener$Props {
-	name: 'CATEGORY' | 'PRODUCT' | 'PRODUCT_OPTIONS' | 'CATEGORY_OPTIONS';
+	name: 'CATEGORY' | 'PRODUCT' | 'PRODUCT_OPTIONS' | 'CATEGORY_OPTIONS' | 'USER';
 	product?: ProductProps;
 	category?: CategoryProps;
+	user?: UserProps;
 	enableOrderChange?: boolean;
 }
 export const ModalOpener$ = new Subject<ModalOpener$Props>();
