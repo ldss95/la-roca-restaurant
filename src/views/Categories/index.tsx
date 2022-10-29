@@ -60,9 +60,8 @@ function CategoriesView () {
 
 			<Table css={{ background: '#fff' }}>
 				<Table.Header>
-					<Table.Column>Name (Spanish)</Table.Column>
-					<Table.Column>Name (English)</Table.Column>
-					<Table.Column align='center'>Options</Table.Column>
+					<Table.Column>Nombre (Español)</Table.Column>
+					<Table.Column>Nombre (Ingles)</Table.Column>
 				</Table.Header>
 				<Table.Body items={categories}>
 					{({ id, name }) => (

@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect, useMemo } from 'react';
 import { Modal, Input, Button, Text, Row, Dropdown, Loading } from '@nextui-org/react';
 import { Form, Formik } from 'formik';
 import { SaveOutlined } from '@ant-design/icons';
@@ -31,6 +31,18 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 	const [categories] = useFetchCategories();
 	const [categorySelected, setCategorySelected] = useState<string | null>(null);
 	const [product, setProduct] = useState<ProductProps>({} as ProductProps);
+	const selectedCategoryName = useMemo(() => {
+		if (categories.length === 0 || !categorySelected) {
+			return null;
+		}
+
+		const category = categories.find(({ name }) => name.en === categorySelected);
+		if (!category) {
+			return null;
+		}
+
+		return category.name.es;
+	}, [categorySelected, categories]);
 
 	useEffect(() => {
 		if (product) {
@@ -57,7 +69,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 
 	async function handleSave({ name, price }: ProductProps) {
 		if (!categorySelected) {
-			return Swal.fire('Oops!', 'Please choose one category', 'warning')
+			return Swal.fire('Oops!', 'Debes seleccionar una categoria', 'warning')
 		}
 
 		if (product?.id) {
@@ -89,9 +101,10 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 			open={isOpen}
 			onClose={() => setIsOpen(false)}
 			width='400px'
+			closeButton
 		>
 			<Modal.Header>
-				<Text h4>{product?.id ? 'Modify Product' : 'New Product'}</Text>
+				<Text h4>{product?.id ? 'Modificar Producto' : 'Nuevo Producto'}</Text>
 			</Modal.Header>
 			<Modal.Body>
 				<Formik
@@ -102,7 +115,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 					{({ handleChange, handleBlur }) => (
 						<Form>
 							<Input
-								label='Name (Spanish)'
+								label='Nombre (Español)'
 								name='name.es'
 								onChange={handleChange}
 								onBlur={handleBlur}
@@ -116,7 +129,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 							<br />
 
 							<Input
-								label='Name (English)'
+								label='Nombre (Ingles)'
 								name='name.en'
 								onChange={handleChange}
 								onBlur={handleBlur}
@@ -135,7 +148,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 								onKeyDown={avoidNotNumerics}
 								onChange={handleChange}
 								onBlur={handleBlur}
-								label='Price'
+								label='Precio'
 								css={{ width: '100%' }}
 								value={product?.price || 0}
 								step={0.01}
@@ -144,7 +157,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 							<br />
 							<br />
 
-							<Text>Category</Text>
+							<Text>Categoria</Text>
 							<Dropdown>
 								<Dropdown.Button
 									flat color='secondary'
@@ -153,7 +166,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 										width: '100%'
 									}}
 								>
-									{categorySelected || 'Choose One Category'}
+									{selectedCategoryName || 'Seleccionar Categoria'}
 								</Dropdown.Button>
 								<Dropdown.Menu
 									css={{ width: '100%' }}
@@ -165,7 +178,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 									selectedKeys={categorySelected ? [categorySelected] : []}
 								>
 									{categories.map(({ name }) => (
-										<Dropdown.Item key={name.en}>{name.en}</Dropdown.Item>
+										<Dropdown.Item key={name.en}>{name.es}</Dropdown.Item>
 									))}
 								</Dropdown.Menu>
 							</Dropdown>

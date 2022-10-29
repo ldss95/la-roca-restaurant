@@ -33,25 +33,25 @@ const AdminNavBar = () => {
 				<li>
 					<NavLink to='/products'>
 						<FileTextOutlined />
-						Menú
+						Productos
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/categories'>
 						<TagsOutlined />
-						Categories
+						Categorias
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/users'>
 						<UsergroupAddOutlined />
-						Users
+						Usuarios
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to='#' onClick={handleLogout}>
 						<PoweroffOutlined />
-						Logout
+						Cerrar Sesion
 					</NavLink>
 				</li>
 			</ul>

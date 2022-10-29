@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
-import { MenuOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
-import { Grid, Button, Table, Spacer, Dropdown } from '@nextui-org/react';
+import { useContext, useMemo, useState } from 'react';
+import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
+import { Grid, Button, Table, Spacer, Dropdown, Text } from '@nextui-org/react';
 
 import NavbarContext from '@/context/navbar/context';
 import ModalProduct from '@/views/Products/components/ModalProduct';
@@ -18,6 +18,18 @@ function ProductsView () {
 	const [categories] = useFetchCategories();
 	const [categorySelected, setCategorySelected] = useState<string | null>(null);
 	const [lastSelectedProduct, setLastSelectedProduct] = useState<string | null>(null);
+	const selectedCategoryName = useMemo(() => {
+		if (categories.length === 0 || !categorySelected) {
+			return null;
+		}
+
+		const category = categories.find(({ name }) => name.en === categorySelected);
+		if (!category) {
+			return null;
+		}
+
+		return category.name.es;
+	}, [categorySelected, categories]);
 
 	if (isLoading) {
 		return (
@@ -41,19 +53,7 @@ function ProductsView () {
 					<MenuOutlined />
 				</button>
 
-				<h3 style={{ margin: 0 }}>Products</h3>
-
-				<button
-					style={{
-						background: 'none',
-						border: 'none',
-						fontSize: 24,
-						paddingRight: 0,
-						opacity: 0
-					}}
-				>
-					<SearchOutlined />
-				</button>
+				<Text h3>Productos</Text>
 			</Grid.Container>
 			<br />
 
@@ -64,14 +64,14 @@ function ProductsView () {
 						onClick={() => ModalOpener$.next({ name: 'PRODUCT' })}
 						css={{ width: '100%', background: redColor50, color: '#000' }}
 					>
-						Create Product
+						Nuevo Producto
 					</Button>
 				</Grid>
 				<Spacer />
 				<Grid xs={12} sm={4} md={2}>
 					<Dropdown>
 						<Dropdown.Button css={{ width: '100%', background: redColor50, color: '#000' }} flat>
-							{categorySelected || 'Choose One Category'}
+							{selectedCategoryName || 'Seleccionar Categoria'}
 						</Dropdown.Button>
 						<Dropdown.Menu
 							selectionMode='single'
@@ -82,7 +82,7 @@ function ProductsView () {
 							selectedKeys={categorySelected ? [categorySelected] : []}
 						>
 							{categories.map(({ name }) => (
-								<Dropdown.Item key={name.en}>{name.en}</Dropdown.Item>
+								<Dropdown.Item key={name.en}>{name.es}</Dropdown.Item>
 							))}
 						</Dropdown.Menu>
 					</Dropdown>
@@ -111,8 +111,8 @@ function ProductsView () {
 				selectedKeys={new Set([lastSelectedProduct || ''])}
 			>
 				<Table.Header>
-					<Table.Column>Name (Spanish)</Table.Column>
-					<Table.Column>Price</Table.Column>
+					<Table.Column>Nombre</Table.Column>
+					<Table.Column>Precio</Table.Column>
 				</Table.Header>
 				<Table.Body>
 					{products

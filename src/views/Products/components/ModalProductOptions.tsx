@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react';
-import { Button, Grid, Modal, Popover, Text } from '@nextui-org/react';
+import { Button, Grid, Modal, Popover, Spacer, Text } from '@nextui-org/react';
 import { filter } from 'rxjs';
 import { ArrowDownOutlined, ArrowUpOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
@@ -54,36 +54,43 @@ const ModalProductOptions = () => {
 			open={isOpen}
 			onClose={() => setIsOpen(false)}
 			width='90%'
-			css={{ maxWidth: 600 }}
+			css={{ maxWidth: 450 }}
+			autoMargin
+			closeButton
 			blur
 		>
 			<Modal.Header>
-				<Text h4>{product?.name?.en}</Text>
+				<Text h4>{product?.name?.es}</Text>
 			</Modal.Header>
 			<Modal.Body>
-				<Grid.Container gap={2}>
+				<Spacer />
+				<Grid.Container>
 					<Option
 						icon={<ArrowUpOutlined style={{ fontSize: 24 }} />}
-						text='Move Up'
+						text='Mover Arriba'
 						onClick={() => {
 							changeProductOrder(product?.id!, 'up', product?.order, product?.category);
 							setIsOpen(false);
 						}}
-						disabled={!enableOrderChange}
+						disabled={!enableOrderChange || product.order === 1}
 					/>
 
 					<Option
 						icon={<EditOutlined style={{ fontSize: 24 }} />}
-						text='Modify'
+						text='Modificar'
 						onClick={() => {
 							ModalOpener$.next({ name: 'PRODUCT', product });
 							setIsOpen(false);
 						}}
 					/>
+				</Grid.Container>
 
+				<Spacer />
+
+				<Grid.Container>
 					<Option
 						icon={<ArrowDownOutlined style={{ fontSize: 24 }} />}
-						text='Move Down'
+						text='Move Abajo'
 						onClick={() => {
 							changeProductOrder(product?.id!, 'down', product?.order, product?.category);
 							setIsOpen(false);
@@ -114,9 +121,10 @@ const ModalProductOptions = () => {
 								/>
 							</Popover.Content>
 						</Popover>
-						<Text css={{ opacity: 0.6 }}>Delete</Text>
+						<Text css={{ opacity: 0.6 }}>Eliminar</Text>
 					</Grid>
 				</Grid.Container>
+				<Spacer />
 			</Modal.Body>
 		</Modal>
 	);

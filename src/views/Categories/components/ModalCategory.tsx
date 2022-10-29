@@ -65,7 +65,7 @@ const ModalCategory = () => {
 					{({ handleChange, errors }: any) => (
 						<Form>
 							<Input
-								label='Name (Spanish)'
+								label='Nombre (Español)'
 								name='name.es'
 								onChange={handleChange}
 								helperText={errors.es}
@@ -79,7 +79,7 @@ const ModalCategory = () => {
 							<br />
 
 							<Input
-								label='Name (English)'
+								label='Nombre (Ingles)'
 								name='name.en'
 								onChange={handleChange}
 								helperText={errors.es}
