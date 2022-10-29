@@ -9,14 +9,27 @@ import { CategoryProps } from '@/types/category';
 import { useCreateCategory } from '@/hooks/useCategories';
 import RenderIf from '@/components/RenderIf';
 
+const initialValues = {
+	name: {
+		en: '',
+		es: ''
+	}
+}
+
 const ModalCategory = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [createCategory, isLoading] = useCreateCategory();
+	const [category, setCategory] = useState<CategoryProps>({} as CategoryProps);
 
 	useEffect(() => {
 		const listener = ModalOpener$
 			.pipe(filter(({ name }) => name === 'CATEGORY'))
-			.subscribe(() => setIsOpen(true))
+			.subscribe(({ category }) => {
+				if (category) {
+					setCategory(category);
+				}
+				setIsOpen(true);
+			});
 
 		return () => listener.unsubscribe();
 	}, []);
@@ -26,39 +39,20 @@ const ModalCategory = () => {
 		setIsOpen(false);
 	}
 
-	function validate ({ name }: FormikErrors<CategoryProps>) {
-		const errors: FormikErrors<{ es: string; en: string; }> = {};
-
-		if (!name?.es) {
-			errors.es = 'Please type the name of category';
-		}
-
-		if (!name?.en) {
-			errors.en = 'Please type the name of category';
-		}
-
-		return errors;
-	}
-
 	return (
 		<Modal
 			open={isOpen}
 			onClose={() => setIsOpen(false)}
 			width='300px'
+			closeButton
 		>
 			<Modal.Header>
-				<Text h4>New Category</Text>
+				<Text h4>{category?.id ? 'Modificar Categoria' : 'Nueva Categoria'}</Text>
 			</Modal.Header>
 			<Modal.Body>
 				<Formik
-					initialValues={{
-						name: {
-							en: '',
-							es: ''
-						}
-					}}
+					initialValues={category || initialValues}
 					onSubmit={handleSave}
-					validate={validate}
 					validateOnChange={false}
 					validateOnBlur={false}
 				>

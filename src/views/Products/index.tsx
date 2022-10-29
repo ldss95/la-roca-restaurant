@@ -97,7 +97,6 @@ function ProductsView () {
 				color='warning'
 				onSelectionChange={(keys) => {
 					const selectedId = Array.from(keys)[0] as string || lastSelectedProduct;
-					console.log(selectedId);
 					const product = products.find(({ id }) => id === selectedId);
 
 					ModalOpener$.next({
@@ -107,7 +106,6 @@ function ProductsView () {
 					});
 					setLastSelectedProduct(selectedId);
 				}}
-				compact
 				selectedKeys={new Set([lastSelectedProduct || ''])}
 			>
 				<Table.Header>
