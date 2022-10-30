@@ -2,8 +2,7 @@ import { memo, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Grid, Text } from '@nextui-org/react';
 
-import Carousel from './Carousel';
-import { useFetchImages } from '@/hooks/useImages';
+import Carousel from './AboutUsCarousel';
 import dictionary from '@/dictionary';
 import { sizeCalc } from '@/utils/helpers';
 import LanguageContext from '@/context/language/context';

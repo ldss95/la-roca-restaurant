@@ -13,7 +13,7 @@ interface CarouselProps {
 	images: string[];
 }
 
-const Carousel = ({ images }: CarouselProps) => {
+const AboutUsCarousel = ({ images }: CarouselProps) => {
 	const [swiper, setSwiper] = useState<any>({});
 
 	return (
@@ -74,4 +74,4 @@ const Carousel = ({ images }: CarouselProps) => {
 	)
 }
 
-export default memo(Carousel);
+export default memo(AboutUsCarousel);
