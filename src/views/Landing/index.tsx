@@ -6,7 +6,6 @@ import '@/styles/landing.scss';
 import NavBar from '@/layout/NavBar';
 import LanguageContext from '@/context/language/context';
 import Footer from '@/layout/Footer';
-import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import MainSectionBackground from './components/MainSectionBackground';
 import stamp from '@/assets/stamp.svg';
 import { useCopy } from '@/hooks/useCopy';
@@ -18,11 +17,13 @@ import Decoration from '@/assets/mobile_decoration.svg';
 import ImageCard from '@/components/ImageCard';
 import AboutUsSection from './components/AboutUsSection';
 import MenuSection from '@/views/Landing/components/MenuSection';
+import { useFetchImages } from '@/hooks/useImages';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
 	const [copy, loading] = useCopy();
 	const location = useLocation();
+	const [images] = useFetchImages();
 
 	useEffect(() => {
 		if (loading) {
@@ -109,14 +110,20 @@ function LandingView() {
 			</section>
 			<br />
 
-			<AboutUsSection copy={copy} />
+			<AboutUsSection
+				copy={copy}
+				images={images.filter(({ section }) => section === 'about_us')}
+			/>
 			<br />
 			<br />
 
 			<MenuSection copy={copy} />
 			<br />
 
-			<ContactSection copy={copy} />
+			<ContactSection
+				copy={copy}
+				imageUrl={images.find(({ section }) => section === 'contact')?.url || ''}
+			/>
 			<br />
 
 			<Grid.Container css={{ padding: `0 ${sizeCalc(10, 90)}px` }}>

@@ -9,10 +9,10 @@ import { sizeCalc } from '@/utils/helpers';
 import LanguageContext from '@/context/language/context';
 import { CopyProps } from '@/types/copy';
 import { primaryColor } from '@/contants/colors';
+import { DBImageProps } from '@/types/image';
 
-const AboutUsSection = ({ copy }: { copy: CopyProps }) => {
+const AboutUsSection = ({ copy, images }: { copy: CopyProps, images: DBImageProps[]; }) => {
 	const { lang } = useContext(LanguageContext);
-	const [images] = useFetchImages();
 
 	return (
 		<motion.section
