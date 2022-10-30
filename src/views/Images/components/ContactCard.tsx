@@ -49,6 +49,17 @@ const ContactCard = ({ url, id }: ContactCardProps) => {
 				}}
 			/>
 			<Card css={{ w: '100%', h: '500px' }}>
+				<Card.Header
+					css={{
+						background: 'rgba(255, 255, 255, .4)',
+						textAlign: 'center',
+						justifyContent: 'center',
+						position: 'absolute',
+						zIndex: 1,
+					}}
+				>
+					<Text size={16} b>Contacto</Text>
+				</Card.Header>
 				<Card.Body css={{ p: 0 }}>
 					<Card.Image
 						src={imageUrl}
@@ -67,35 +78,31 @@ const ContactCard = ({ url, id }: ContactCardProps) => {
 							'$borderWeights$light solid rgba(255, 255, 255, 0.2)',
 						bottom: 0,
 						zIndex: 1,
+						justifyContent: 'center'
 					}}
 				>
-					<Row justify='space-between' align='center'>
-						<Text size={16} b>
-							Contacto
-						</Text>
-						<Button
-							flat
-							auto
-							rounded
-							color='secondary'
-							onClick={() => fileInputRef.current?.click()}
+					<Button
+						flat
+						auto
+						rounded
+						color='secondary'
+						onClick={() => fileInputRef.current?.click()}
+					>
+						<Text
+							css={{ color: 'inherit' }}
+							size={12}
+							weight='bold'
+							transform='uppercase'
 						>
-							<Text
-								css={{ color: 'inherit' }}
-								size={12}
-								weight='bold'
-								transform='uppercase'
-							>
-								<RenderIf condition={uploading}>
-									<Loading color='currentColor' size='sm' />
-								</RenderIf>
+							<RenderIf condition={uploading}>
+								<Loading color='currentColor' size='sm' />
+							</RenderIf>
 
-								<RenderIf condition={!uploading}>
-									Cambiar
-								</RenderIf>
-							</Text>
-						</Button>
-					</Row>
+							<RenderIf condition={!uploading}>
+								Cambiar
+							</RenderIf>
+						</Text>
+					</Button>
 				</Card.Footer>
 			</Card>
 		</>

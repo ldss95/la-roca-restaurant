@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { collection, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 
 import { db } from '@/firebase';
 import { DBImageProps } from '@/types/image';
-import { uploadImage } from '@/services/images';
+import { addNewImage, removeImage, updateImage, uploadImage } from '@/services/images';
 
 export const useFetchImages = (): [DBImageProps[], boolean] => {
 	const [loading, setLoading] = useState(true);
@@ -39,20 +39,23 @@ interface UploadImageProps {
 	id?: string;
 	file: File;
 	order?: number;
-	section?: 'about_us' | 'main';
+	section?: 'about_us' | 'main' | 'contact';
 	path: string;
 }
 
 export const useUploadImage = (): [(data: UploadImageProps) => Promise<void>, boolean] => {
 	const [loading, setLoading] = useState(false);
 
-	async function handleUploadImage({ file, id, path }: UploadImageProps) {
+	async function handleUploadImage({ file, id, path, section }: UploadImageProps) {
 		try {
 			setLoading(true);
 			const url = await uploadImage(file, path);
-			await updateDoc(doc(collection(db, 'images'), id), {
-				url
-			});
+
+			if (id) {
+				await updateImage(id, url);
+			} else {
+				await addNewImage(url, section!);
+			}
 		} catch (error) {
 			Swal.fire(
 				'Error',
@@ -66,4 +69,26 @@ export const useUploadImage = (): [(data: UploadImageProps) => Promise<void>, bo
 	}
 
 	return [handleUploadImage, loading];
+}
+
+export const useDeleteImage = (): [(id: string) => Promise<void>, boolean] => {
+	const [loading, setLoading] = useState(false);
+
+	async function handleDeleteImage(id: string) {
+		try {
+			setLoading(true);
+			await removeImage(id);
+		} catch (error) {
+			Swal.fire(
+				'Error',
+				'No se ha podido eliminar la imagen, por favor intentelo mas tarde',
+				'error'
+			);
+			console.error(error);
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	return [handleDeleteImage, loading];
 }
