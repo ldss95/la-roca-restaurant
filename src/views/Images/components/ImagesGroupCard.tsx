@@ -7,16 +7,19 @@ import { useDeleteImage, useUploadImage } from '@/hooks/useImages';
 import RenderIf from '@/components/RenderIf';
 import { DBImageProps } from '@/types/image';
 import { DeleteOutlined, EditOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { SectionType } from '@/types/section';
 
 interface ContactCardProps {
 	images: DBImageProps[];
+	section: SectionType;
+	title: string;
 }
 
-const AboutUsCard = ({ images }: ContactCardProps) => {
+const ImagesGroupCard = ({ images, title, section }: ContactCardProps) => {
 	return (
 		<Card css={{ w: '100%', h: '500px', overflow: 'hidden' }}>
 			<Card.Header css={styles.header}>
-				<Text size={16} b>Nosotros</Text>
+				<Text size={16} b>{title}</Text>
 			</Card.Header>
 			<Card.Body css={{ p: 0 }}>
 				<Swiper
@@ -35,7 +38,7 @@ const AboutUsCard = ({ images }: ContactCardProps) => {
 								autoResize
 							/>
 
-							<Footer id={id} />
+							<Footer id={id} section={section} />
 						</SwiperSlide>
 					))}
 				</Swiper>
@@ -44,9 +47,9 @@ const AboutUsCard = ({ images }: ContactCardProps) => {
 	);
 };
 
-export default memo(AboutUsCard);
+export default memo(ImagesGroupCard);
 
-const Footer = ({ id }: { id: string }) => {
+const Footer = ({ id, section }: { id: string; section: SectionType }) => {
 	const [deleteImage, deleting] = useDeleteImage();
 	const [uploadImage, uploading] = useUploadImage();
 	const newImageInputRef = useRef<any>(null);
@@ -62,7 +65,7 @@ const Footer = ({ id }: { id: string }) => {
 		uploadImage({
 			id,
 			file: files[0],
-			path: 'images/about_us'
+			path: 'images/' + section
 		})
 	}
 
@@ -75,8 +78,8 @@ const Footer = ({ id }: { id: string }) => {
 
 		uploadImage({
 			file: files[0],
-			path: 'images/about_us',
-			section: 'about_us'
+			path: 'images/' + section,
+			section
 		})
 	}
 
@@ -99,10 +102,10 @@ const Footer = ({ id }: { id: string }) => {
 			<Card.Footer isBlurred css={styles.footer}>
 				<Row justify='space-between' align='center'>
 					<Button
-						ghost
+						flat
 						auto
 						rounded
-						color='error'
+						color='secondary'
 						onClick={() => deleteImage(id)}
 					>
 						<RenderIf condition={deleting}>

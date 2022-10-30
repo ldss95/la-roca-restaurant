@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { db } from '@/firebase';
 import { DBImageProps } from '@/types/image';
 import { addNewImage, removeImage, updateImage, uploadImage } from '@/services/images';
+import { SectionType } from '@/types/section';
 
 export const useFetchImages = (): [DBImageProps[], boolean] => {
 	const [loading, setLoading] = useState(true);
@@ -39,7 +40,7 @@ interface UploadImageProps {
 	id?: string;
 	file: File;
 	order?: number;
-	section?: 'about_us' | 'main' | 'contact';
+	section?: SectionType;
 	path: string;
 }
 
