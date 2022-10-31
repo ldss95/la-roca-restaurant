@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 
-import { createCategory } from '@/services/categories';
+import { createCategory, updateCategory } from '@/services/categories';
 import { CategoryProps } from '@/types/category';
 import { db } from '@/firebase';
 
@@ -21,6 +21,23 @@ export const useCreateCategory = (): [(category: CategoryProps) => Promise<void>
 	}
 
 	return [handleCreateCategory, loading];
+}
+
+export const useUpdateCategory = (): [(id: string, name: { es: string; en: string; }) => Promise<void>, boolean] => {
+	const [loading, setLoading] = useState(false);
+
+	async function handleUpdateCategory(id: string, name: { en: string; es: string; }) {
+		try {
+			setLoading(true);
+			await updateCategory(id, { name })
+		} catch (error) {
+			Swal.fire('Oops!', 'something went wrong, please try again later', 'error');
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	return [handleUpdateCategory, loading];
 }
 
 export const useFetchCategories = (): [CategoryProps[], boolean] => {

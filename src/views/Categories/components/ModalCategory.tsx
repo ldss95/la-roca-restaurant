@@ -6,7 +6,7 @@ import { filter } from 'rxjs';
 import { ModalOpener$ } from '@/utils/helpers';
 import { SaveOutlined } from '@ant-design/icons';
 import { CategoryProps } from '@/types/category';
-import { useCreateCategory } from '@/hooks/useCategories';
+import { useCreateCategory, useUpdateCategory } from '@/hooks/useCategories';
 import RenderIf from '@/components/RenderIf';
 
 const initialValues = {
@@ -19,6 +19,7 @@ const initialValues = {
 const ModalCategory = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [createCategory, isLoading] = useCreateCategory();
+	const [updateCategory, isUpdating] = useUpdateCategory();
 	const [category, setCategory] = useState<CategoryProps>({} as CategoryProps);
 
 	useEffect(() => {
@@ -27,15 +28,23 @@ const ModalCategory = () => {
 			.subscribe(({ category }) => {
 				if (category) {
 					setCategory(category);
+				} else {
+					setCategory({} as CategoryProps);
 				}
+
 				setIsOpen(true);
 			});
 
 		return () => listener.unsubscribe();
 	}, []);
 
-	async function handleSave(category: CategoryProps){
-		await createCategory(category);
+	async function handleSave({ name }: CategoryProps){
+		if (category.id) {
+			await updateCategory(category.id, name);
+		} else {
+			await createCategory({ name });
+		}
+
 		setIsOpen(false);
 	}
 
@@ -64,6 +73,7 @@ const ModalCategory = () => {
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}
+								value={category?.name?.es || ''}
 								required
 								autoFocus
 							/>
@@ -77,6 +87,7 @@ const ModalCategory = () => {
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}
+								value={category?.name?.en || ''}
 								required
 							/>
 							<br />
@@ -88,11 +99,11 @@ const ModalCategory = () => {
 								type='submit'
 								disabled={isLoading}
 							>
-								<RenderIf condition={isLoading}>
-									<Loading />
+								<RenderIf condition={isLoading || isUpdating}>
+									<Loading color='currentColor' size='sm' />
 								</RenderIf>
 
-								<RenderIf condition={!isLoading}>
+								<RenderIf condition={!isLoading && !isUpdating}>
 									Guardar
 								</RenderIf>
 							</Button>
