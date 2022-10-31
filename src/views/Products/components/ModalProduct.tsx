@@ -112,13 +112,12 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 					onSubmit={handleSave}
 					enableReinitialize
 				>
-					{({ handleChange, handleBlur }) => (
+					{({ handleChange }) => (
 						<Form>
 							<Input
 								label='Nombre (Español)'
 								name='name.es'
 								onChange={handleChange}
-								onBlur={handleBlur}
 								shadow={false}
 								css={{ width: '100%' }}
 								value={product?.name?.es || ''}
@@ -132,7 +131,6 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 								label='Nombre (Ingles)'
 								name='name.en'
 								onChange={handleChange}
-								onBlur={handleBlur}
 								shadow={false}
 								css={{ width: '100%' }}
 								value={product?.name?.en || ''}
@@ -147,7 +145,6 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 								min={1}
 								onKeyDown={avoidNotNumerics}
 								onChange={handleChange}
-								onBlur={handleBlur}
 								label='Precio'
 								css={{ width: '100%' }}
 								value={product?.price || 0}

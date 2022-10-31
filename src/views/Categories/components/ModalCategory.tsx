@@ -53,16 +53,14 @@ const ModalCategory = () => {
 				<Formik
 					initialValues={category || initialValues}
 					onSubmit={handleSave}
-					validateOnChange={false}
-					validateOnBlur={false}
+					enableReinitialize
 				>
-					{({ handleChange, errors }: any) => (
+					{({ handleChange }) => (
 						<Form>
 							<Input
 								label='Nombre (Español)'
 								name='name.es'
 								onChange={handleChange}
-								helperText={errors.es}
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}
@@ -76,7 +74,6 @@ const ModalCategory = () => {
 								label='Nombre (Ingles)'
 								name='name.en'
 								onChange={handleChange}
-								helperText={errors.es}
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}
