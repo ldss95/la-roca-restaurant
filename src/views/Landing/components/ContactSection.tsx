@@ -97,7 +97,13 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 								<Spacer />
 
-								<Text css={{ fontSize: sizeCalc(19, 30), color: secondaryColor, fontFamily: 'Bitter', fontWeight: 400 }}>{copy[lang].contact_us.address}</Text>
+								<a
+									style={styles.addressAndPhone}
+									href='https://www.google.com.do/maps/place/La+Roca+Restaurant/@41.7805429,-71.4197347,15z/data=!4m5!3m4!1s0x0:0x7f5f99467e76953b!8m2!3d41.7805429!4d-71.4197347'
+									target='_blank'
+								>
+									{copy[lang].contact_us.address}
+								</a>
 							</div>
 							<br />
 
@@ -114,7 +120,12 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 								<Spacer />
 
-								<Text css={{ fontSize: sizeCalc(19, 30), color: secondaryColor, fontFamily: 'Bitter', fontWeight: 400 }}>{copy[lang].contact_us.phone}</Text>
+								<a
+									style={styles.addressAndPhone}
+									href={`tel:${copy[lang].contact_us.phone.replace(/[^0-9]/g, '')}`}
+								>
+									{copy[lang].contact_us.phone}
+								</a>
 							</div>
 						</Grid>
 
@@ -146,7 +157,7 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 									closeAt='19:00:00'
 								/>
 
-								<div style={{ width: 110, height: 5, background: primaryColor, margin: '30px 0' }} />
+								<div style={styles.scheduleDivider} />
 
 								<WeekSchedule
 									openDays={[3, 4, 5, 6]}
@@ -158,7 +169,7 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 					</Grid.Container>
 
 					<div style={{ maxWidth: 250, marginTop: 30 }}>
-						<Text css={{ fontSize: sizeCalc(11, 20), fontFamily: 'Manrope', letterSpacing: 8, color: secondaryColor }}>DELIVERY BY</Text>
+						<Text css={styles.deliveryBy}>DELIVERY BY</Text>
 						<Image
 							src={doordashLogo}
 							containerCss={{ margin: 0 }}
@@ -168,17 +179,7 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 						<br />
 
 						<a
-							style={{
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								fontWeight: 'bold',
-								background: redColor,
-								borderRadius: 5,
-								height: sizeCalc(57, 80),
-								fontSize: sizeCalc(20, 30),
-								color: '#fff'
-							}}
+							style={styles.orderButton}
 							href='https://wa.me/14019418090'
 							target='_blank'
 						>
@@ -189,6 +190,38 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 			</Grid.Container>
 		</section>
 	)
+}
+
+const styles = {
+	orderButton: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		fontWeight: 'bold',
+		background: redColor,
+		borderRadius: 5,
+		height: sizeCalc(57, 80),
+		fontSize: sizeCalc(20, 30),
+		color: '#fff'
+	},
+	scheduleDivider: {
+		width: 110,
+		height: 5,
+		background: primaryColor,
+		margin: '30px 0'
+	},
+	deliveryBy: {
+		fontSize: sizeCalc(11, 20),
+		fontFamily: 'Manrope',
+		letterSpacing: 8,
+		color: secondaryColor
+	},
+	addressAndPhone: {
+		fontSize: sizeCalc(19, 30),
+		color: secondaryColor,
+		fontFamily: 'Bitter',
+		fontWeight: 400
+	}
 }
 
 export default memo(ContactSection);
