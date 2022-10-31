@@ -2,7 +2,7 @@ import { memo, useContext } from 'react';
 import { Button, Spacer } from '@nextui-org/react'
 
 import FlagUsa from '@/assets/usa_flag.svg';
-import FlagSpain from '@/assets/spain_flag.svg';
+import FlagDom from '@/assets/dominican-republic.png';
 import RenderIf from './RenderIf';
 import LanguageContext from '@/context/language/context';
 import { redColor } from '@/contants/colors';
@@ -25,7 +25,7 @@ const LanguageToggler = () => {
 			<Spacer x={0.5} />
 
 			<RenderIf condition={lang === 'es'}>
-				<img src={FlagSpain} style={{ height: 15 }} />
+				<img src={FlagDom} style={{ height: 22 }} />
 			</RenderIf>
 
 			<RenderIf condition={lang === 'en'}>
