@@ -45,7 +45,6 @@ export const useFetchCategories = (): [CategoryProps[], boolean] => {
 			setLoading(false);
 		});
 
-
 		return () => unsubscribe();
 	}, []);
 

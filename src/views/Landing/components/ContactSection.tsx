@@ -97,7 +97,7 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 								<Spacer />
 
-								<Text css={{ fontSize: sizeCalc(19, 30), color: secondaryColor, fontFamily: 'Bitter', fontWeight: 400 }}>1150 Elmwood Ave</Text>
+								<Text css={{ fontSize: sizeCalc(19, 30), color: secondaryColor, fontFamily: 'Bitter', fontWeight: 400 }}>{copy[lang].contact_us.address}</Text>
 							</div>
 							<br />
 
@@ -114,7 +114,7 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 								<Spacer />
 
-								<Text css={{ fontSize: sizeCalc(19, 30), color: secondaryColor, fontFamily: 'Bitter', fontWeight: 400 }}>(401) 941-8090</Text>
+								<Text css={{ fontSize: sizeCalc(19, 30), color: secondaryColor, fontFamily: 'Bitter', fontWeight: 400 }}>{copy[lang].contact_us.phone}</Text>
 							</div>
 						</Grid>
 

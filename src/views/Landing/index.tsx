@@ -136,7 +136,7 @@ function LandingView() {
 			</Grid.Container>
 			<br />
 
-			<Footer />
+			<Footer copy={copy} />
 		</>
 	);
 }

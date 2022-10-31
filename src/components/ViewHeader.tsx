@@ -3,8 +3,10 @@ import { Grid, Text } from '@nextui-org/react';
 
 import NavbarContext from '@/context/navbar/context';
 import { MenuOutlined } from '@ant-design/icons';
+import RenderIf from './RenderIf';
+import LanguageToggler from './LanguageToggler';
 
-const ViewHeader = ({ title }: { title: string; }) => {
+const ViewHeader = ({ title, showLangToggler }: { title: string; showLangToggler?: boolean }) => {
 	const { toggle } = useContext(NavbarContext);
 
 	return (
@@ -22,7 +24,12 @@ const ViewHeader = ({ title }: { title: string; }) => {
 				<MenuOutlined />
 			</button>
 
-			<Text h3>{title}</Text>
+			<RenderIf condition={!!showLangToggler}>
+				<LanguageToggler />
+			</RenderIf>
+			<RenderIf condition={!showLangToggler}>
+				<Text h3>{title}</Text>
+			</RenderIf>
 		</Grid.Container>
 	);
 }

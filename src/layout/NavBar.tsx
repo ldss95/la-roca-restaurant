@@ -8,9 +8,11 @@ import LanguageToggler from '@/components/LanguageToggler';
 import '@/styles/navbar.scss';
 import { redColor, secondaryColor } from '@/contants/colors';
 import { FacebookOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
+import { useFetchLinks } from '@/hooks/useLinks';
 
 const NavBar = () => {
 	const { lang } = useContext(LanguageContext);
+	const [links] = useFetchLinks();
 	const toggleRef = useRef<any>();
 	const [logoCss, setLogoCss] = useState({
 		height: 100,
@@ -134,7 +136,7 @@ const NavBar = () => {
 					<Grid.Container>
 						<Grid xs={4} justify='center'>
 							<a
-								href='https://instagram.com'
+								href={`https://instagram.com/${links?.instagram?.username?.replace('@', '')}`}
 								onClick={() => toggleRef.current.click()}
 								target='_blannk'
 								className='social-media-link'
@@ -144,7 +146,7 @@ const NavBar = () => {
 						</Grid>
 						<Grid xs={4} justify='center'>
 							<a
-								href='https://facebook.com'
+								href={links?.facebook?.url}
 								onClick={() => toggleRef.current.click()}
 								target='_blank'
 								className='social-media-link'
@@ -154,7 +156,7 @@ const NavBar = () => {
 						</Grid>
 						<Grid xs={4} justify='center'>
 							<a
-								href='https://wa.me/14019418090'
+								href={`https://wa.me/1${links?.whatsapp?.phone?.replace(/[^0-9]/g, '')}`}
 								onClick={() => toggleRef.current.click()}
 								target='_blank'
 								className='social-media-link'

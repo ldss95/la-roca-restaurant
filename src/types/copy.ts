@@ -11,6 +11,8 @@ export interface LangProps {
 	};
 	contact_us: {
 		title: string[];
+		address: string;
+		phone: string;
 	},
 	menu: {
 		title: string[];

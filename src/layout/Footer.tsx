@@ -7,9 +7,12 @@ import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
 import { redColor10 } from '@/contants/colors';
+import { CopyProps } from '@/types/copy';
+import { useFetchLinks } from '@/hooks/useLinks';
 
-const Footer = () => {
+const Footer = ({ copy }: { copy: CopyProps }) => {
 	const { lang } = useContext(LanguageContext);
+	const [links] = useFetchLinks();
 
 	return (
 		<footer>
@@ -30,21 +33,21 @@ const Footer = () => {
 				>
 					<ul id='social_media_links'>
 						<li>
-							<a href='https://instagram.com' target='_blannk'>
+							<a href={`https://instagram.com/${links?.instagram?.username?.replace('@', '')}`} target='_blannk'>
 								<InstagramOutlined />
 								<Text>@laroca_restaurant</Text>
 							</a>
 						</li>
 						<li>
-							<a href='https://facebook.com' target='_blank'>
+							<a href={links?.facebook?.url} target='_blank'>
 								<FacebookOutlined />
 								<Text>La Roca Restaurant</Text>
 							</a>
 						</li>
 						<li>
-							<a href='https://wa.me/14019418090' target='_blank'>
+							<a href={`https://wa.me/1${links?.whatsapp?.phone?.replace(/[^0-9]/g, '')}`} target='_blank'>
 								<WhatsAppOutlined />
-								<Text>(401) 941-8090</Text>
+								<Text>{links?.whatsapp?.phone}</Text>
 							</a>
 						</li>
 					</ul>
@@ -73,7 +76,7 @@ const Footer = () => {
 					md={0}
 					justify='center'
 				>
-					<a href='https://instagram.com' target='_blannk' className='social-media-link'>
+					<a href={`https://instagram.com/${links?.instagram?.username?.replace('@', '')}`} target='_blannk' className='social-media-link'>
 						<InstagramOutlined />
 					</a>
 
