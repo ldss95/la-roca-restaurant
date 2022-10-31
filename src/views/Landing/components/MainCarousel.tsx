@@ -28,7 +28,7 @@ const MainCarousel = ({ images }: CarouselProps) => {
 				}}
 				modules={[Autoplay]}
 				autoplay={{
-					delay: 3000
+					delay: 5000
 				}}
 				loop
 			>
