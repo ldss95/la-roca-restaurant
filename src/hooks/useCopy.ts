@@ -14,7 +14,9 @@ export const useCopy = (): [CopyProps, boolean] => {
 				subtitle: ''
 			},
 			contact_us: {
-				title: ['', '']
+				title: ['', ''],
+				address: ''
+				,phone: ''
 			},
 			menu: {
 				title: ['', '']
@@ -28,7 +30,9 @@ export const useCopy = (): [CopyProps, boolean] => {
 				subtitle: ''
 			},
 			contact_us: {
-				title: ['', '']
+				title: ['', ''],
+				address: '',
+				phone: ''
 			},
 			menu: {
 				title: ['', '']
