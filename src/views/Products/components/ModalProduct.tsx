@@ -192,7 +192,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 									disabled={creating || updating}
 								>
 									<RenderIf condition={creating || updating}>
-										<Loading />
+										<Loading color='currentColor' size='sm' />
 									</RenderIf>
 
 									<RenderIf condition={!creating && !updating}>

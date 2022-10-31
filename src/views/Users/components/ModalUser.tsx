@@ -124,7 +124,7 @@ const ModalUser = () => {
 								disabled={isLoading}
 							>
 								<RenderIf condition={isLoading}>
-									<Loading />
+									<Loading color='currentColor' size='sm' />
 								</RenderIf>
 
 								<RenderIf condition={!isLoading}>
