@@ -1,5 +1,4 @@
 import { memo, useContext } from 'react';
-import { motion } from 'framer-motion';
 import { Grid, Text } from '@nextui-org/react';
 
 import Carousel from './AboutUsCarousel';
@@ -14,19 +13,9 @@ const AboutUsSection = ({ copy, images }: { copy: CopyProps, images: DBImageProp
 	const { lang } = useContext(LanguageContext);
 
 	return (
-		<motion.section
+		<section
 			id='about_us'
 			style={{ overflow: 'hidden' }}
-			initial={{ x: '-100vw' }}
-			whileInView={{
-				x: 0,
-				transition: {
-					type: 'spring',
-					duration: 1,
-					bounce: 0.3
-				}
-			}}
-			viewport={{ once: false }}
 		>
 			<Grid.Container>
 				<Grid xs={12} md={6} css={{ position: 'relative' }}>
@@ -71,7 +60,7 @@ const AboutUsSection = ({ copy, images }: { copy: CopyProps, images: DBImageProp
 
 				</Grid>
 			</Grid.Container>
-		</motion.section>
+		</section>
 	)
 }
 

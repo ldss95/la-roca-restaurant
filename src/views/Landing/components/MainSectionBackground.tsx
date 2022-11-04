@@ -1,10 +1,9 @@
 import { memo } from 'react'
-import { motion } from 'framer-motion';
+import { Grid } from '@nextui-org/react';
 
 import Decoration from '@/assets/decoration.svg';
 import DecorationCircle from '@/views/Landing/components/DecorationCircle';
 import { lightPrimaryColor } from '@/contants/colors';
-import { Grid } from '@nextui-org/react';
 import { sizeCalc } from '@/utils/helpers';
 
 const MainSectionBackground = () => (
@@ -16,14 +15,14 @@ const MainSectionBackground = () => (
 			zIndex: 1
 		}}
 	>
-		<motion.div
+		<div
 			style={{
 				background: lightPrimaryColor,
 				width: '100%',
 				overflow: 'hidden',
-				position: 'relative'
+				position: 'relative',
+				height: sizeCalc(650, 700)
 			}}
-			animate={{ height: sizeCalc(650, 700) }}
 		>
 			<DecorationCircle
 				left={-500}
@@ -34,7 +33,7 @@ const MainSectionBackground = () => (
 				right={-200}
 				top={-200}
 			/>
-		</motion.div>
+		</div>
 
 		<Grid.Container>
 			<Grid xs={0} sm={12} css={{ overflow: 'hidden' }}>

@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { motion } from 'framer-motion';
+
 import { sizeCalc } from '@/utils/helpers';
 
 interface ImageCardProps {
@@ -18,7 +18,7 @@ interface ImageCardProps {
 
 const ImageCard = ({ url, minHeight, maxHeight, backgroundPosition = 'center', borderRadius, animationType = 'onLoad' }: ImageCardProps) => {
 	return (
-		<motion.div
+		<div
 			style={{
 				backgroundColor: '#cdcdcd',
 				backgroundImage: `url(${url})`,
@@ -33,28 +33,6 @@ const ImageCard = ({ url, minHeight, maxHeight, backgroundPosition = 'center', b
 				borderBottomLeftRadius: borderRadius?.bottomLeft ?? 10,
 				overflow: 'hidden'
 			}}
-			initial={{ x: '100vw' }}
-			animate={{
-				...(animationType === 'onLoad' && {
-					x: 0,
-					transition: {
-						type: 'spring',
-						duration: 1,
-						bounce: 0.3
-					}
-				})
-			}}
-			whileInView={{
-				...(animationType === 'onShow' && {
-					x: 0,
-					transition: {
-						type: 'spring',
-						duration: 1,
-						bounce: 0.3
-					}
-				})
-			}}
-			viewport={{ once: animationType === 'onLoad' }}
 		/>
 	)
 }
