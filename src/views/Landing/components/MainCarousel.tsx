@@ -1,7 +1,7 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
-import { Button, Image } from '@nextui-org/react';
+import { Image } from '@nextui-org/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,7 +13,6 @@ interface CarouselProps {
 }
 
 const MainCarousel = ({ images }: CarouselProps) => {
-
 	return (
 		<>
 			<Swiper

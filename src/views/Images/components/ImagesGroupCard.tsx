@@ -1,12 +1,12 @@
-import { memo, useRef, useState, useMemo, useEffect } from 'react';
+import { memo, useRef } from 'react';
 import { Card, Row, Text, Button, Loading, Image } from '@nextui-org/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import { DeleteOutlined, EditOutlined, PlusCircleOutlined } from '@ant-design/icons';
 
 import { useDeleteImage, useUploadImage } from '@/hooks/useImages';
 import RenderIf from '@/components/RenderIf';
 import { DBImageProps } from '@/types/image';
-import { DeleteOutlined, EditOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { SectionType } from '@/types/section';
 
 interface ContactCardProps {

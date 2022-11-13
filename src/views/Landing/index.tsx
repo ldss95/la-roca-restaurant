@@ -18,7 +18,6 @@ import AboutUsSection from './components/AboutUsSection';
 import MenuSection from '@/views/Landing/components/MenuSection';
 import { useFetchImages } from '@/hooks/useImages';
 import MainCarousel from './components/MainCarousel';
-import { DBImageProps } from '@/types/image';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);

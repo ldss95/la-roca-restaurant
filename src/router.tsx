@@ -5,14 +5,13 @@ import NavBarState from '@/context/navbar/state';
 import AdminNavBar from '@/layout/AdminNavBar';
 
 import Landing from '@/views/Landing';
+import Tv from '@/views/Tv';
 import Login from '@/views/Login';
 import Users from '@/views/Users';
 import Products from '@/views/Products';
 import Categories from '@/views/Categories';
 import Images from '@/views/Images';
 import Texts from '@/views/Texts';
-
-
 
 const Router = () => {
 	const location = useLocation();
@@ -46,6 +45,7 @@ const Router = () => {
 	return (
 		<Routes>
 			<Route path='/login' element={<Login />} />
+			<Route path='/tv' element={<Tv />} />
 			<Route path='/*' element={<Landing />} />
 		</Routes>
 	);
