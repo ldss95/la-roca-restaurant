@@ -6,18 +6,23 @@ import Logo from '@/assets/logo.png'
 import { useFetchAllTvProducts } from '@/hooks/useTvProducts';
 import ProductsList from './components/ProductsList';
 import TvCarousel from './components/TvCarousel';
+import * as icons from './components/icons';
+
 import './Tv.scss'
+import { secondaryColor } from '@/contants/colors';
+import { useFetchLinks } from '@/hooks/useLinks';
 
 function TvScreen() {
 	const [products] = useFetchAllTvProducts();
+	const [links] = useFetchLinks();
 
 	return (
 		<div id='tv_container'>
 			<header>
 				<div>
-					<img src={Icon} />
+					<img src={Icon} style={{ height: 60 }} />
 					<Spacer />
-					<Text h1>Especial del Día</Text>
+					<img src={icons.title} style={{ height: 90 }} />
 				</div>
 
 				<img src={Logo} style={{ height: '60%' }} />
@@ -49,7 +54,37 @@ function TvScreen() {
 			<br />
 
 			<footer>
+				<Grid.Container>
+					<Grid xs={3} alignItems='center'>
+						<img src={icons.globe} />
+						<Spacer />
+						<Text>larocarestaurante.com</Text>
+					</Grid>
 
+					<Grid xs={3} alignItems='center' justify='center'>
+						<Text>follow us:</Text>
+						<Spacer />
+						<img src={icons.instagram} />
+						<Spacer />
+						<img src={icons.facebook} />
+					</Grid>
+
+					<Grid xs={3} direction='column' alignItems='center'>
+						<div>
+							<Text className='delivery'>DELIVERY BY</Text>
+							<img
+								src={icons.doordash}
+								style={{ height: 20 }}
+							/>
+						</div>
+					</Grid>
+
+					<Grid xs={3} alignItems='center' justify='flex-end'>
+						<img src={icons.whatsapp}/>
+						<Spacer />
+						<Text>{links?.whatsapp?.phone}</Text>
+					</Grid>
+				</Grid.Container>
 			</footer>
 		</div>
 	)

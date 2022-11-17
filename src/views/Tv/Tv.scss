@@ -70,7 +70,24 @@
 
 	footer {
 		height: 80px;
-		background: $color_primary;
-		opacity: 40%;
+		padding: 0 40px;
+		background: $color_primary_40;
+		display: flex;
+		align-items: center;
+
+		p:not(.delivery) {
+			color: $color_secondary;
+			font-family: Bitter;
+			font-weight: 500;
+			font-style: italic;
+			font-size: 20px;
+		}
+
+		p.delivery {
+			font-size: 10px;
+			font-family: Manrope;
+			letter-spacing: 4px;
+			color: $color_secondary;
+		}
 	}
 }

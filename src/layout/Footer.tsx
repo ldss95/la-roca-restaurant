@@ -7,10 +7,9 @@ import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
 import { redColor10 } from '@/contants/colors';
-import { CopyProps } from '@/types/copy';
 import { useFetchLinks } from '@/hooks/useLinks';
 
-const Footer = ({ copy }: { copy: CopyProps }) => {
+const Footer = () => {
 	const { lang } = useContext(LanguageContext);
 	const [links] = useFetchLinks();
 
