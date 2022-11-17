@@ -9,8 +9,9 @@ import TvCarousel from './components/TvCarousel';
 import * as icons from './components/icons';
 
 import './Tv.scss'
-import { secondaryColor } from '@/contants/colors';
+import { redColor, secondaryColor } from '@/contants/colors';
 import { useFetchLinks } from '@/hooks/useLinks';
+import { FacebookOutlined } from '@ant-design/icons';
 
 function TvScreen() {
 	const [products] = useFetchAllTvProducts();
@@ -66,7 +67,8 @@ function TvScreen() {
 						<Spacer />
 						<img src={icons.instagram} />
 						<Spacer />
-						<img src={icons.facebook} />
+						<FacebookOutlined style={{ fontSize: 36, color: redColor }} />
+						{/* <img src={icons.facebook} /> */}
 					</Grid>
 
 					<Grid xs={3} direction='column' alignItems='center'>
