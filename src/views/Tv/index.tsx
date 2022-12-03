@@ -30,7 +30,7 @@ function TvScreen() {
 			</header>
 			<br />
 
-			<Grid.Container style={{ height: 'calc(100% - 275px)' }}>
+			<Grid.Container style={{ height: 'calc(100% - 295px)' }}>
 				<Grid xs={3}>
 					<TvCarousel />
 				</Grid>
