@@ -16,7 +16,7 @@ interface ModalProductProps {
 }
 
 const defaultValues = {
-	price: 0,
+	prices: [0, 0],
 	name: {
 		en: '',
 		es: ''
@@ -67,7 +67,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 		return () => listener.unsubscribe();
 	}, []);
 
-	async function handleSave({ name, price }: ProductProps) {
+	async function handleSave({ name, prices }: ProductProps) {
 		if (!categorySelected) {
 			return Swal.fire('Oops!', 'Debes seleccionar una categoria', 'warning')
 		}
@@ -75,7 +75,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 		if (product?.id) {
 			await updateProduct(product.id, {
 				name,
-				price,
+				prices,
 				category: categorySelected,
 				order: product.order
 			});
@@ -83,7 +83,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 			console.log()
 			await createProduct({
 				name,
-				price,
+				prices,
 				category: categorySelected,
 				order: product.order
 			})
@@ -112,7 +112,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 					onSubmit={handleSave}
 					enableReinitialize
 				>
-					{({ handleChange }) => (
+					{({ handleChange, values }) => (
 						<Form>
 							<Input
 								label='Nombre (Español)'
@@ -120,7 +120,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 								onChange={handleChange}
 								shadow={false}
 								css={{ width: '100%' }}
-								value={product?.name?.es || ''}
+								value={values?.name?.es || ''}
 								autoFocus
 								required
 							/>
@@ -133,7 +133,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 								onChange={handleChange}
 								shadow={false}
 								css={{ width: '100%' }}
-								value={product?.name?.en || ''}
+								value={values?.name?.en || ''}
 								required
 							/>
 							<br />
@@ -141,13 +141,28 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 
 							<Input
 								type='number'
-								name='price'
+								name='prices[0]'
 								min={1}
 								onKeyDown={avoidNotNumerics}
 								onChange={handleChange}
-								label='Precio'
+								label='Precio 1'
 								css={{ width: '100%' }}
-								value={product?.price || 0}
+								value={values?.prices && values.prices[0] || values.price || 0}
+								step={0.01}
+								shadow={false}
+							/>
+							<br />
+							<br />
+
+							<Input
+								type='number'
+								name='prices[1]'
+								min={1}
+								onKeyDown={avoidNotNumerics}
+								onChange={handleChange}
+								label='Precio 2'
+								css={{ width: '100%' }}
+								value={values?.prices && values.prices[1] || 0}
 								step={0.01}
 								shadow={false}
 							/>

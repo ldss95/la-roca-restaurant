@@ -4,7 +4,8 @@ export interface ProductProps {
 		en: string;
 		es: string;
 	};
-	price: number;
+	price?: number;
+	prices?: number[];
 	category: string;
 	order: number;
 }

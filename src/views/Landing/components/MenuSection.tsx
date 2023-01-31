@@ -92,7 +92,7 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 					{products
 						.filter(({ category }) => category === selectedCategory)
 						.filter((_, index) => (index + 1) <= (currentPage * 7) && (index + 1) >= ((currentPage - 1) * 7))
-						.map(({ name, price }) => (
+						.map(({ name, price, prices }) => (
 							<div
 								className='product'
 								style={{
@@ -101,7 +101,7 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 								}}
 							>
 								<Text className='name'>{name[lang]}</Text>
-								<Text className='price'>$ {price}</Text>
+								<Text className='price'>$ {prices?.join(' - ') || price}</Text>
 							</div>
 						))
 					}

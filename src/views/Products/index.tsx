@@ -98,7 +98,7 @@ function ProductsView () {
 				<Table.Body>
 					{products
 						.filter(({ category }) => !categorySelected || categorySelected === category)
-						.map(({ id, name, price }) => (
+						.map(({ id, name, prices, price }) => (
 							<Table.Row key={id}>
 								<Table.Cell
 									css={{
@@ -115,7 +115,7 @@ function ProductsView () {
 										textAlign: 'right'
 									}}
 								>
-									{price}
+									{prices?.join(' - ') || price}
 								</Table.Cell>
 							</Table.Row>
 						))
