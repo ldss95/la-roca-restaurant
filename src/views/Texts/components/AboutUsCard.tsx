@@ -1,5 +1,5 @@
 import { memo, useContext, useState } from 'react';
-import { Card, Text, Input, Button, Row, Loading } from '@nextui-org/react';
+import { Card, Text, Input, Button, Row, Loading, Textarea } from '@nextui-org/react';
 import Swal from 'sweetalert2';
 import { collection, doc, updateDoc } from 'firebase/firestore';
 
@@ -60,7 +60,7 @@ const AboutUsCard = () => {
 					}}
 				/>
 				<br />
-				<Input.Textarea
+				<Textarea
 					label='Subtitulo'
 					value={copy[lang].about_us.subtitle}
 					onChange={({ target }) => {
