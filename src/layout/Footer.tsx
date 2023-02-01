@@ -81,7 +81,7 @@ const Footer = () => {
 
 					<Spacer x={2} />
 
-					<a href='https://facebook.com' target='_blank' className='social-media-link'>
+					<a href={links?.facebook?.url} target='_blank' className='social-media-link'>
 						<FacebookOutlined />
 					</a>
 
