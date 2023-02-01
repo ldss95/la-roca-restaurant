@@ -94,7 +94,7 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 				>
 					{products
 						.filter(({ category }) => category === selectedCategory)
-						.filter((_, index) => (index + 1) <= (currentPage * 7) && (index + 1) >= ((currentPage - 1) * 7))
+						.filter((_, index) => (index + 1) <= (currentPage * 7) && (index + 1) > ((currentPage - 1) * 7))
 						.map(({ name, price, prices }) => (
 							<div
 								className='product'
