@@ -95,13 +95,14 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 					{products
 						.filter(({ category }) => category === selectedCategory)
 						.filter((_, index) => (index + 1) <= (currentPage * 7) && (index + 1) > ((currentPage - 1) * 7))
-						.map(({ name, price, prices }) => (
+						.map(({ name, price, prices, id }) => (
 							<div
 								className='product'
 								style={{
 									padding: `${sizeCalc(10, 30)}px 0`,
 									fontSize: sizeCalc(20, 30),
 								}}
+								key={id}
 							>
 								<Text className='name'>{name[lang]}</Text>
 								<Text className='price'>$ {prices?.join(' - ') || price}</Text>
