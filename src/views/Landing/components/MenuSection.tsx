@@ -14,7 +14,7 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 	const { lang } = useContext(LanguageContext);
 	const [categories] = useFetchCategories();
 	const [products] = useFetchProducts();
-	const [selectedCategory, setSelectedCategory] = useState<string>('Chicken');
+	const [selectedCategory, setSelectedCategory] = useState<string>('Meat Pies');
 	const [currentPage, setCurrentPage] = useState(1);
 
 
