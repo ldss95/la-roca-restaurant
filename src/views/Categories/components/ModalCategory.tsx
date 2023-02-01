@@ -64,7 +64,7 @@ const ModalCategory = () => {
 					onSubmit={handleSave}
 					enableReinitialize
 				>
-					{({ handleChange }) => (
+					{({ handleChange, values }) => (
 						<Form>
 							<Input
 								label='Nombre (Español)'
@@ -73,7 +73,7 @@ const ModalCategory = () => {
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}
-								value={category?.name?.es || ''}
+								value={values?.name?.es || ''}
 								required
 								autoFocus
 							/>
@@ -87,7 +87,7 @@ const ModalCategory = () => {
 								helperColor='error'
 								css={{ width: '100%' }}
 								shadow={false}
-								value={category?.name?.en || ''}
+								value={values?.name?.en || ''}
 								required
 							/>
 							<br />
