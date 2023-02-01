@@ -157,7 +157,6 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 							<Input
 								type='number'
 								name='prices[1]'
-								min={1}
 								onKeyDown={avoidNotNumerics}
 								onChange={handleChange}
 								label='Precio 2'
