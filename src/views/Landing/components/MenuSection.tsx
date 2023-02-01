@@ -75,7 +75,10 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 									fontSize: sizeCalc(14, 30)
 								}}
 								key={'category-selector-' + id}
-								onClick={() => setSelectedCategory(name.en)}
+								onClick={() => {
+									setSelectedCategory(name.en);
+									setCurrentPage(1);
+								}}
 							>
 								{name[lang]}
 							</button>
