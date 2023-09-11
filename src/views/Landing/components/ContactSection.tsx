@@ -152,17 +152,17 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 							<div style={{ width: '100%', maxWidth: 300 }}>
 								<WeekSchedule
-									openDays={[0, 1, 2]}
+									openDays={[0, 1, 2, 3, 4]}
 									openAt='11:00:00'
-									closeAt='19:00:00'
+									closeAt='20:00:00'
 								/>
 
 								<div style={styles.scheduleDivider} />
 
 								<WeekSchedule
-									openDays={[3, 4, 5, 6]}
+									openDays={[5, 6]}
 									openAt='11:00:00'
-									closeAt='20:00:00'
+									closeAt='22:00:00'
 								/>
 							</div>
 						</Grid>
