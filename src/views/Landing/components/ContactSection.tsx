@@ -162,7 +162,7 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 								<WeekSchedule
 									openDays={[5, 6]}
 									openAt='11:00:00'
-									closeAt='22:00:00'
+									closeAt='00:30:00'
 								/>
 							</div>
 						</Grid>
