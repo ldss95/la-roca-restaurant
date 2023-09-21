@@ -1,6 +1,15 @@
 import { memo, useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { PoweroffOutlined, ArrowLeftOutlined, FileTextOutlined, TagsOutlined, UsergroupAddOutlined, FileImageOutlined, FontColorsOutlined, ReadOutlined } from '@ant-design/icons';
+import {
+	PoweroffOutlined,
+	ArrowLeftOutlined,
+	TagsOutlined,
+	UsergroupAddOutlined,
+	FileImageOutlined,
+	FontColorsOutlined,
+	ReadOutlined,
+	ClockCircleOutlined
+} from '@ant-design/icons';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -52,6 +61,12 @@ const AdminNavBar = () => {
 					<NavLink to='/texts'>
 						<FontColorsOutlined />
 						Textos
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to='/schedule'>
+						<ClockCircleOutlined />
+						Horario
 					</NavLink>
 				</li>
 				<li>

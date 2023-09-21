@@ -10,9 +10,11 @@ import RenderIf from '@/components/RenderIf';
 import { primaryColor, redColor, secondaryColor } from '@/contants/colors';
 import { sizeCalc } from '@/utils/helpers';
 import ImageCard from '@/components/ImageCard';
+import { useGetSchedule } from '@/hooks/useSchedule';
 
 const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string }) => {
 	const { lang } = useContext(LanguageContext);
+	const [schedule, loading, error] = useGetSchedule();
 
 	return (
 		<section id='contact' style={{ overflow: 'hidden' }}>
@@ -152,17 +154,17 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 							<div style={{ width: '100%', maxWidth: 300 }}>
 								<WeekSchedule
-									openDays={[0, 1, 2, 3, 4]}
-									openAt='11:00:00'
-									closeAt='20:00:00'
+									openDays={schedule?.top?.days || []}
+									openAt={schedule?.top?.openAt || ''}
+									closeAt={schedule?.top?.closeAt || ''}
 								/>
 
 								<div style={styles.scheduleDivider} />
 
 								<WeekSchedule
-									openDays={[5, 6]}
-									openAt='11:00:00'
-									closeAt='00:30:00'
+									openDays={schedule?.bottom?.days || []}
+									openAt={schedule?.bottom?.openAt || ''}
+									closeAt={schedule?.bottom?.closeAt || ''}
 								/>
 							</div>
 						</Grid>

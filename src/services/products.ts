@@ -1,4 +1,4 @@
-import { addDoc, collection, updateDoc, doc, deleteDoc, query, where, getDoc, getDocs, orderBy, limit } from 'firebase/firestore';
+import { addDoc, collection, updateDoc, doc, deleteDoc, query, where, getDocs, orderBy, limit } from 'firebase/firestore';
 
 import { db } from '@/firebase';
 import { ProductProps } from '@/types/product';

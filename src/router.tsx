@@ -12,12 +12,13 @@ import Products from '@/views/Products';
 import Categories from '@/views/Categories';
 import Images from '@/views/Images';
 import Texts from '@/views/Texts';
+import Schedule from '@/views/Schedule';
 
 const Router = () => {
 	const location = useLocation();
 	const path = location.pathname;
 
-	if (['/users', '/products', '/categories', '/images', '/texts'].includes(path)) {
+	if (['/users', '/products', '/categories', '/images', '/texts', '/schedule'].includes(path)) {
 		return (
 			<NavBarState>
 				<div style={{ minHeight: '100vh', background: '#EEE1D4' }}>
@@ -29,6 +30,7 @@ const Router = () => {
 								<Route path='/categories' element={<Categories />} />
 								<Route path='/images' element={<Images />} />
 								<Route path='/texts' element={<Texts />} />
+								<Route path='/schedule' element={<Schedule />} />
 							</Routes>
 						</div>
 						<div style={{ textAlign: 'center' }}>

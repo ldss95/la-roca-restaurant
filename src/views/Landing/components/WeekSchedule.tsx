@@ -5,13 +5,12 @@ import moment from 'moment';
 import LanguageContext from '@/context/language/context';
 import { lightGreyColor, redColor, secondaryColor } from '@/contants/colors';
 import { sizeCalc } from '@/utils/helpers';
+import { DayIndex } from '@/types/schedule';
 
 const days = {
 	en: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 	es: ['D', 'L', 'M', 'X', 'J', 'V', 'S']
 }
-
-type DayIndex = 0 |1 | 2 | 3 | 4 | 5 | 6;
 
 interface WeekScheduleProps {
 	openDays: DayIndex[],
