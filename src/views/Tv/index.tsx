@@ -26,11 +26,11 @@ function TvScreen() {
 					<img src={icons.title} style={{ height: 90 }} />
 				</div>
 
-				<img src={Logo} style={{ height: '60%' }} />
+				<img src={Logo} style={{ height: '90%' }} />
 			</header>
 			<br />
 
-			<Grid.Container style={{ height: 'calc(100% - 295px)' }}>
+			<Grid.Container style={{ height: 'calc(100% - 345px)' }}>
 				<Grid xs={3}>
 					<TvCarousel />
 				</Grid>

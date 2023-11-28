@@ -15,21 +15,24 @@ const NavBar = () => {
 	const [links] = useFetchLinks();
 	const toggleRef = useRef<any>();
 	const [logoCss, setLogoCss] = useState({
-		height: 100,
-		marginTop: 60
+		height: 150,
+		marginTop: 80
 	})
 
 	useEffect(() => {
 		document.addEventListener('scroll', handleLogoSize);
 		function handleLogoSize() {
-			const height = 100 - (window.pageYOffset / 10);
-			const marginTop = 40 - (window.pageYOffset / 8)
+			const height = 150 - (window.pageYOffset / 10);
+			const marginTop = 80 - (window.pageYOffset / 8)
 
 			if (height < 60) {
 				return;
 			}
 
-			setLogoCss({ height, marginTop });
+			setLogoCss((state) => ({
+				height,
+				marginTop: marginTop >= 0 ? marginTop : state.marginTop
+			}));
 		}
 
 		return () => document.removeEventListener('scroll', handleLogoSize)
