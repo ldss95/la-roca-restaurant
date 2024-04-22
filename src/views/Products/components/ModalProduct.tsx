@@ -147,7 +147,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 								onChange={handleChange}
 								label='Precio 1'
 								css={{ width: '100%' }}
-								value={values?.prices && values.prices[0] || values.price || 0}
+								initialValue={values?.prices && values.prices[0]?.toString() || values.price?.toString() || '0'}
 								step={0.01}
 								shadow={false}
 							/>
@@ -161,7 +161,7 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 								onChange={handleChange}
 								label='Precio 2'
 								css={{ width: '100%' }}
-								value={values?.prices && values.prices[1] || 0}
+								initialValue={values?.prices && values.prices[1]?.toString() || '0'}
 								step={0.01}
 								shadow={false}
 							/>
