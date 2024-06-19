@@ -52,7 +52,10 @@ const TvCarousel = () => {
 				{images.map(({ id, url }) => (
 					<SwiperSlide key={id}>
 						<CarouselMenu
-							onDelete={() => removeTvImage(id)}
+							onDelete={(id !== 'placeholder')
+								? () => removeTvImage(id)
+								: undefined
+							}
 							onClickAddImage={() => newImageInputRef.current?.click()}
 						/>
 

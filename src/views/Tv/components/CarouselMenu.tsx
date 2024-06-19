@@ -9,9 +9,10 @@ import {
 } from '@ant-design/icons';
 
 import './CarouselMenu.scss';
+import RenderIf from '@/components/RenderIf';
 
 interface CarouselMenuProps {
-	onDelete: () => void;
+	onDelete?: () => void;
 	onClickAddImage: () => void;
 }
 const CarouselMenu = ({ onDelete, onClickAddImage }: CarouselMenuProps) => {
@@ -41,21 +42,22 @@ const CarouselMenu = ({ onDelete, onClickAddImage }: CarouselMenuProps) => {
 					Agregar
 				</Button>
 
-				<Spacer />
-
-				<Button
-					size='lg'
-					css={{
-						background: '#fff',
-						color: '#000'
-					}}
-					icon={<DeleteOutlined />}
-					onClick={onDelete}
-					auto
-					rounded
-				>
-					Eliminar
-				</Button>
+				<RenderIf condition={onDelete !== undefined}>
+					<Spacer />
+					<Button
+						size='lg'
+						css={{
+							background: '#fff',
+							color: '#000'
+						}}
+						icon={<DeleteOutlined />}
+						onClick={onDelete}
+						auto
+						rounded
+					>
+						Eliminar
+					</Button>
+				</RenderIf>
 			</div>
 
 			<Button
