@@ -10,7 +10,7 @@ export const useUploadImage = (): [(file: File) => Promise<void>, boolean] => {
 	async function handleUploadImage(file: File) {
 		try {
 			setLoading(true);
-			const url = await uploadImage(file, 'images/tv/' + file.name);
+			const url = await uploadImage(file, 'images/tv/');
 			await addTvImage(url);
 			Swal.fire('Listo', 'Imagen agregada', 'success')
 		} catch (error) {
