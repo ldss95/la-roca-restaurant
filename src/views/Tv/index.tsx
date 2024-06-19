@@ -1,4 +1,5 @@
 import { Grid, Spacer, Text } from '@nextui-org/react';
+import { FacebookOutlined } from '@ant-design/icons';
 
 import Decoration from '@/assets/tv_decoration.svg';
 import Icon from '@/assets/tv_header_icon.svg';
@@ -9,9 +10,8 @@ import TvCarousel from './components/TvCarousel';
 import * as icons from './components/icons';
 
 import './Tv.scss'
-import { redColor, secondaryColor } from '@/contants/colors';
+import { redColor } from '@/contants/colors';
 import { useFetchLinks } from '@/hooks/useLinks';
-import { FacebookOutlined } from '@ant-design/icons';
 
 function TvScreen() {
 	const [products] = useFetchAllTvProducts();
