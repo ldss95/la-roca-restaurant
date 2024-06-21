@@ -1,0 +1,1 @@
+export const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Ftv%2FCucharas%20de%20colores.jpg?alt=media&token=12ad61c5-88df-48dd-971a-69de33f25331';

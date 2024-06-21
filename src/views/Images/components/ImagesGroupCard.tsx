@@ -1,4 +1,4 @@
-import { memo, useRef } from 'react';
+import { memo, useMemo, useRef } from 'react';
 import { Card, Row, Text, Button, Loading, Image } from '@nextui-org/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -8,6 +8,7 @@ import { useDeleteImage, useUploadImage } from '@/hooks/useImages';
 import RenderIf from '@/components/RenderIf';
 import { DBImageProps } from '@/types/image';
 import { SectionType } from '@/types/section';
+import * as placeholders from '@/constants/placeholders';
 
 interface ContactCardProps {
 	images: DBImageProps[];
@@ -15,11 +16,22 @@ interface ContactCardProps {
 	title: string;
 }
 
-const ImagesGroupCard = ({ images, title, section }: ContactCardProps) => {
+const ImagesGroupCard = (props: ContactCardProps) => {
+	const images = useMemo(() => {
+		if (props.images.length === 0) {
+			return [{
+				id: 'placeholder',
+				url: placeholders.imageUrl
+			}];
+		}
+
+		return props.images;
+	}, [props.images]);
+
 	return (
 		<Card css={{ w: '100%', h: '500px', overflow: 'hidden' }}>
 			<Card.Header css={styles.header}>
-				<Text size={16} b>{title}</Text>
+				<Text size={16} b>{props.title}</Text>
 			</Card.Header>
 			<Card.Body css={{ p: 0 }}>
 				<Swiper
@@ -38,7 +50,7 @@ const ImagesGroupCard = ({ images, title, section }: ContactCardProps) => {
 								autoResize
 							/>
 
-							<Footer id={id} section={section} />
+							<Footer id={id} section={props.section} />
 						</SwiperSlide>
 					))}
 				</Swiper>

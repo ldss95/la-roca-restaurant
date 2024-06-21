@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { collection, DocumentData, onSnapshot, QuerySnapshot } from 'firebase/firestore';
 
-import { TvProductProps } from '@/types/tvProduct';
 import { db } from '@/firebase';
+import { TvProductProps } from '@/types/tvProduct';
 import { TvImageProps } from '@/types/tvImage';
+import * as placeholders from '@/constants/placeholders';
 
 export const useFetchAllTvProducts = (): [TvProductProps[], boolean]  => {
 	const [products, setProducts] = useState<TvProductProps[]>([]);
@@ -53,7 +54,7 @@ export const useFetchAllTvImages = (): [TvImageProps[], boolean]  => {
 				? data
 				: [{
 					id: 'placeholder',
-					url: 'https://firebasestorage.googleapis.com/v0/b/la-roca-restaurant-d68d4.appspot.com/o/images%2Ftv%2FCucharas%20de%20colores.jpg?alt=media&token=12ad61c5-88df-48dd-971a-69de33f25331'
+					url: placeholders.imageUrl
 				}]
 		);
 		setLoading(false);
