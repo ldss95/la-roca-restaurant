@@ -1,4 +1,4 @@
-import { redColor } from '@/contants/colors';
+import { redColor } from '@/constants/colors';
 import { Button, Text } from '@nextui-org/react';
 import { memo } from 'react'
 

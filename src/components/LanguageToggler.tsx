@@ -5,7 +5,7 @@ import FlagUsa from '@/assets/usa_flag.svg';
 import FlagDom from '@/assets/dominican-republic.png';
 import RenderIf from './RenderIf';
 import LanguageContext from '@/context/language/context';
-import { redColor } from '@/contants/colors';
+import { redColor } from '@/constants/colors';
 
 const LanguageToggler = () => {
 	const { lang, setLang } = useContext(LanguageContext);

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Lottie from 'lottie-react';
 import { Text } from '@nextui-org/react';
 
-import { primaryColor, secondaryColor } from '@/contants/colors';
+import { primaryColor, secondaryColor } from '@/constants/colors';
 import loadingAnimation from '@/assets/loading.json';
 import LanguageContext from '@/context/language/context';
 

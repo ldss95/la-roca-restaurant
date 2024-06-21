@@ -6,7 +6,7 @@ import logo from '@/assets/logo.png';
 import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
-import { redColor10 } from '@/contants/colors';
+import { redColor10 } from '@/constants/colors';
 import { useFetchLinks } from '@/hooks/useLinks';
 
 const Footer = () => {

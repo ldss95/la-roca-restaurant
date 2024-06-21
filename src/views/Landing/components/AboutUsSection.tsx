@@ -6,7 +6,7 @@ import dictionary from '@/dictionary';
 import { sizeCalc } from '@/utils/helpers';
 import LanguageContext from '@/context/language/context';
 import { CopyProps } from '@/types/copy';
-import { primaryColor } from '@/contants/colors';
+import { primaryColor } from '@/constants/colors';
 import { DBImageProps } from '@/types/image';
 
 const AboutUsSection = ({ copy, images }: { copy: CopyProps, images: DBImageProps[]; }) => {

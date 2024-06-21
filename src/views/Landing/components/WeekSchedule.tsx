@@ -3,7 +3,7 @@ import { Text } from '@nextui-org/react';
 import moment from 'moment';
 
 import LanguageContext from '@/context/language/context';
-import { lightGreyColor, redColor, secondaryColor } from '@/contants/colors';
+import { lightGreyColor, redColor, secondaryColor } from '@/constants/colors';
 import { sizeCalc } from '@/utils/helpers';
 import { DayIndex } from '@/types/schedule';
 

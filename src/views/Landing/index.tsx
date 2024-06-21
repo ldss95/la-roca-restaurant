@@ -10,7 +10,7 @@ import MainSectionBackground from './components/MainSectionBackground';
 import stamp from '@/assets/stamp.svg';
 import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
-import { primaryColor, redColor } from '@/contants/colors';
+import { primaryColor, redColor } from '@/constants/colors';
 import LoadingPage from '@/views/Loading';
 import { sizeCalc } from '@/utils/helpers';
 import Decoration from '@/assets/mobile_decoration.svg';

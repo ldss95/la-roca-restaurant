@@ -3,7 +3,7 @@ import { Button, Grid, Table } from '@nextui-org/react';
 
 import { useFetchUsers } from '@/hooks/useUsers';
 import { ModalOpener$ } from '@/utils/helpers';
-import { redColor50 } from '@/contants/colors';
+import { redColor50 } from '@/constants/colors';
 import ModalUser from './components/ModalUser';
 import { resetPassword } from '@/services/users';
 import ViewHeader from '@/components/ViewHeader';

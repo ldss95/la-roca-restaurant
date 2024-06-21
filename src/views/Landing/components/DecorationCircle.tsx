@@ -1,4 +1,4 @@
-import { redColor40 } from '@/contants/colors';
+import { redColor40 } from '@/constants/colors';
 import { memo } from 'react';
 
 interface PositionProps {

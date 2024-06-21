@@ -7,7 +7,7 @@ import LanguageContext from '@/context/language/context';
 import WeekSchedule from './WeekSchedule';
 import { CopyProps } from '@/types/copy';
 import RenderIf from '@/components/RenderIf';
-import { primaryColor, redColor, secondaryColor } from '@/contants/colors';
+import { primaryColor, redColor, secondaryColor } from '@/constants/colors';
 import { sizeCalc } from '@/utils/helpers';
 import ImageCard from '@/components/ImageCard';
 import { useGetSchedule } from '@/hooks/useSchedule';

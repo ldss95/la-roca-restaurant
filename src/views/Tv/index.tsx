@@ -10,7 +10,7 @@ import TvCarousel from './components/TvCarousel';
 import * as icons from './components/icons';
 
 import './Tv.scss'
-import { redColor } from '@/contants/colors';
+import { redColor } from '@/constants/colors';
 import { useFetchLinks } from '@/hooks/useLinks';
 
 function TvScreen() {

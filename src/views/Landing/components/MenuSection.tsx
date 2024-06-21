@@ -6,7 +6,7 @@ import { useFetchProducts } from '@/hooks/useProducts';
 import LanguageContext from '@/context/language/context';
 import dictionary from '@/dictionary';
 import { CopyProps } from '@/types/copy';
-import { redColor } from '@/contants/colors';
+import { redColor } from '@/constants/colors';
 import { sizeCalc } from '@/utils/helpers';
 import './Menu.scss';
 

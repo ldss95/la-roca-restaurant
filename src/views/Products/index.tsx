@@ -7,7 +7,7 @@ import { ModalOpener$ } from '@/utils/helpers';
 import { useFetchProducts } from '@/hooks/useProducts';
 import { useFetchCategories } from '@/hooks/useCategories';
 import Loading from '../Loading';
-import { redColor, redColor50 } from '@/contants/colors';
+import { redColor, redColor50 } from '@/constants/colors';
 import ModalProductOptions from './components/ModalProductOptions';
 import ViewHeader from '@/components/ViewHeader';
 

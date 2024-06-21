@@ -6,7 +6,7 @@ import dictionary from '@/dictionary';
 import LanguageContext from '@/context/language/context';
 import LanguageToggler from '@/components/LanguageToggler';
 import '@/styles/navbar.scss';
-import { redColor, secondaryColor } from '@/contants/colors';
+import { redColor, secondaryColor } from '@/constants/colors';
 import { FacebookOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
 import { useFetchLinks } from '@/hooks/useLinks';
 

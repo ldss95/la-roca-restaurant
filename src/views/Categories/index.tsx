@@ -5,7 +5,7 @@ import { Table, Button, Grid } from '@nextui-org/react';
 import { useFetchCategories } from '@/hooks/useCategories';
 import { ModalOpener$ } from '@/utils/helpers';
 import ModalCategory from './components/ModalCategory';
-import { redColor50 } from '@/contants/colors';
+import { redColor50 } from '@/constants/colors';
 import ModalCategoryOptions from './components/ModalCategoryOptions';
 import ViewHeader from '@/components/ViewHeader';
 

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Text } from '@nextui-org/react';
 
-import { lightPrimaryColor, primaryColor } from '@/contants/colors';
+import { lightPrimaryColor, primaryColor } from '@/constants/colors';
 
 interface DayButtonProps {
 	day: string;
