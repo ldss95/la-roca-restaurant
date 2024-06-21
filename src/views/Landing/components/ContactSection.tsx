@@ -1,8 +1,10 @@
 import { memo, useContext } from 'react';
-import { Grid, Image, Text, Spacer } from '@nextui-org/react';
+import { Grid, Image, Text, Spacer, Col } from '@nextui-org/react';
 
 import dictionary from '@/dictionary';
-import doordashLogo from '@/assets/doordash_logo.png';
+import doordashLogo from '@/assets/doordash_icon.webp';
+import uberEatsLogo from '@/assets/uber-eats-icon.png';
+import grubHubLogo from '@/assets/grubhub.png';
 import LanguageContext from '@/context/language/context';
 import WeekSchedule from './WeekSchedule';
 import { CopyProps } from '@/types/copy';
@@ -14,7 +16,7 @@ import { useGetSchedule } from '@/hooks/useSchedule';
 
 const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string }) => {
 	const { lang } = useContext(LanguageContext);
-	const [schedule, loading, error] = useGetSchedule();
+	const [schedule] = useGetSchedule();
 
 	return (
 		<section id='contact' style={{ overflow: 'hidden' }}>
@@ -172,21 +174,30 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 					<div style={{ maxWidth: 250, marginTop: 30 }}>
 						<Text css={styles.deliveryBy}>DELIVERY BY</Text>
-						<Image
-							src={doordashLogo}
-							containerCss={{ margin: 0 }}
-							autoResize
-						/>
-						<br />
-						<br />
-
-						<a
-							style={styles.orderButton}
-							href='https://wa.me/14019418090'
-							target='_blank'
-						>
-							{lang === 'es' ? 'Ordenar' : 'Order Now'}
-						</a>
+						<Grid.Container gap={1}>
+							<Grid xs={4}>
+								<Image
+									src={doordashLogo}
+									containerCss={{ margin: 0 }}
+									autoResize
+								/>
+							</Grid>
+							<Grid xs={4}>
+								<Image
+									src={uberEatsLogo}
+									containerCss={{ margin: 0 }}
+									autoResize
+								/>
+							</Grid>
+							<Grid xs={4}>
+								<Image
+									src={grubHubLogo}
+									style={{ borderRadius: 15 }}
+									containerCss={{ margin: 0 }}
+									autoResize
+								/>
+							</Grid>
+						</Grid.Container>
 					</div>
 				</Grid>
 			</Grid.Container>
