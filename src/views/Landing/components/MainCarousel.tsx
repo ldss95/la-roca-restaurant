@@ -27,10 +27,9 @@ const MainCarousel = ({ images }: CarouselProps) => {
 					borderRadius: 10
 				}}
 				modules={[Autoplay]}
-				autoplay={{
-					delay: 5000
-				}}
-				loop
+				// autoplay={{ delay: 5000 }}
+				lazy={true}
+				// loop
 			>
 				{images.map((image, index) => (
 					<SwiperSlide key={'slide-' + index}>
