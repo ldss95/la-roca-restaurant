@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -14,6 +14,16 @@ interface CarouselProps {
 }
 
 const MainCarousel = ({ images }: CarouselProps) => {
+	const [items, setItems] = useState<string[]>([]);
+
+	useEffect(() => {
+		if (images.length > 4) {
+			setItems(images.slice(0, 4));
+		} else {
+			setItems(images);
+		}
+	}, [images]);
+
 	return (
 		<>
 			<Swiper
@@ -27,11 +37,26 @@ const MainCarousel = ({ images }: CarouselProps) => {
 					borderRadius: 10
 				}}
 				modules={[Autoplay]}
-				// autoplay={{ delay: 5000 }}
+				autoplay={{ delay: 5000 }}
 				lazy={true}
-				// loop
+				onActiveIndexChange={({ activeIndex }) => {
+					if (activeIndex !== items.length - 1) {
+						return;
+					}
+
+					if (items.length === images.length) {
+						return;
+					}
+
+					if (images.length - items.length > 4) {
+						return setItems(images.slice(0, items.length + 4));
+					}
+
+					setItems(images);
+				}}
+				loop
 			>
-				{images.map((image, index) => (
+				{items.map((image, index) => (
 					<SwiperSlide key={'slide-' + index}>
 						<LazyLoadImage
 							src={image}
