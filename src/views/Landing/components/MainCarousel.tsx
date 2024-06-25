@@ -40,6 +40,8 @@ const MainCarousel = ({ images }: CarouselProps) => {
 								borderRadius: 10,
 								height: '100%'
 							}}
+							effect='blur'
+							placeholderSrc='/placeholder.webp'
 						/>
 					</SwiperSlide>
 				))}
