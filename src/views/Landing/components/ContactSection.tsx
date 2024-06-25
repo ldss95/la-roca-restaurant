@@ -1,6 +1,7 @@
 import { memo, useContext } from 'react';
 import { Grid, Image, Text, Spacer } from '@nextui-org/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import dictionary from '@/dictionary';
 import doordashLogo from '@/assets/doordash_icon.webp';
@@ -28,28 +29,33 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 				<Grid xs={0} md={5} css={{ padding: `0 ${sizeCalc(10, 90)}px` }}>
 					<LazyLoadImage
 						src={imageUrl}
+						height={sizeCalc(760, 760)}
+						width='100%'
 						style={{
 							objectFit: 'cover',
 							borderRadius: 10,
-							height: sizeCalc(760, 760),
 							width: '100%',
 							backgroundPosition: 'center'
 						}}
+						effect='blur'
+						placeholderSrc='/placeholder.webp'
 					/>
 				</Grid>
 
 				<Grid xs={3} md={0}>
 					<LazyLoadImage
 						src={imageUrl}
+						height={sizeCalc(760, 760)}
+						width='100%'
 						style={{
 							objectFit: 'cover',
 							borderRadius: 10,
 							borderBottomLeftRadius: 0,
 							borderTopLeftRadius: 0,
-							height: sizeCalc(760, 760),
-							width: '100%',
 							backgroundPosition: '75% center'
 						}}
+						effect='blur'
+						placeholderSrc='/placeholder.webp'
 					/>
 				</Grid>
 

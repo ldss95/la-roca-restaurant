@@ -2,6 +2,7 @@ import { memo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Button } from '@nextui-org/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -45,6 +46,8 @@ const AboutUsCarousel = ({ images }: CarouselProps) => {
 										opacity: 0.2,
 									})
 								}}
+								effect='blur'
+								placeholderSrc='/placeholder.webp'
 							/>
 						)}
 					</SwiperSlide>

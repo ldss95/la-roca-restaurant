@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -38,8 +39,8 @@ const MainCarousel = ({ images }: CarouselProps) => {
 							style={{
 								objectFit: 'cover',
 								borderRadius: 10,
-								height: '100%'
 							}}
+							height='100%'
 							effect='blur'
 							placeholderSrc='/placeholder.webp'
 						/>
