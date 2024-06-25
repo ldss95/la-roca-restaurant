@@ -1,8 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Image } from '@nextui-org/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -38,7 +37,6 @@ const MainCarousel = ({ images }: CarouselProps) => {
 				}}
 				modules={[Autoplay]}
 				autoplay={{ delay: 5000 }}
-				lazy={true}
 				onActiveIndexChange={({ activeIndex }) => {
 					if (activeIndex !== items.length - 1) {
 						return;
@@ -58,15 +56,12 @@ const MainCarousel = ({ images }: CarouselProps) => {
 			>
 				{items.map((image, index) => (
 					<SwiperSlide key={'slide-' + index}>
-						<LazyLoadImage
+						<Image
 							src={image}
-							style={{
-								objectFit: 'cover',
-								borderRadius: 10,
-							}}
 							height='100%'
-							effect='blur'
-							placeholderSrc='/placeholder.webp'
+							objectFit='cover'
+							containerCss={{ borderRadius: 10 }}
+							autoResize
 						/>
 					</SwiperSlide>
 				))}
