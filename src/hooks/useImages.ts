@@ -9,7 +9,44 @@ import { SectionType } from '@/types/section';
 
 export const useFetchImages = (): [DBImageProps[], boolean] => {
 	const [loading, setLoading] = useState(true);
-	const [images, setImages] = useState<DBImageProps[]>([]);
+	const [images, setImages] = useState<DBImageProps[]>([
+		{
+			id: 'img-1',
+			url: '/placeholder.webp',
+			section: 'main',
+			order: 1
+		},
+		{
+			id: 'img-2',
+			url: '/placeholder.webp',
+			section: 'main',
+			order: 2
+		},
+		{
+			id: 'img-3',
+			url: '/placeholder.webp',
+			section: 'main',
+			order: 3
+		},
+		{
+			id: 'img-4',
+			url: '/placeholder.webp',
+			section: 'about_us',
+			order: 1
+		},
+		{
+			id: 'img-5',
+			url: '/placeholder.webp',
+			section: 'about_us',
+			order: 2
+		},
+		{
+			id: 'img-6',
+			url: '/placeholder.webp',
+			section: 'contact',
+			order: 1
+		}
+	]);
 
 	useEffect(() => {
 		const ref = collection(db, 'images');
