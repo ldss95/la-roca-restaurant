@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import NavBarState from '@/context/navbar/state';
 import AdminNavBar from '@/layout/AdminNavBar';
@@ -34,7 +34,7 @@ const Router = () => {
 							</Routes>
 						</div>
 						<div style={{ textAlign: 'center' }}>
-							La Roca Restaurant ©{moment().format('YYYY')} All rights reserved
+							La Roca Restaurant ©{dayjs().format('YYYY')} All rights reserved
 						</div>
 					</div>
 

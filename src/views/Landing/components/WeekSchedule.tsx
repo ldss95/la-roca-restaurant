@@ -1,6 +1,6 @@
 import { memo, useContext } from 'react';
 import { Text } from '@nextui-org/react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import LanguageContext from '@/context/language/context';
 import { lightGreyColor, redColor, secondaryColor } from '@/constants/colors';
@@ -50,13 +50,13 @@ const WeekSchedule = ({ openDays, openAt, closeAt }: WeekScheduleProps) => {
 					fontFamily: 'Bitter'
 				}}
 			>
-				<Text css={{ color: secondaryColor, fontWeight: 'bold', fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + openAt).format('hh:mm')}</Text>
-				<Text css={{ color: redColor, fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + openAt).format('A')}</Text>
+				<Text css={{ color: secondaryColor, fontWeight: 'bold', fontSize: 'inherit', fontFamily: 'inherit' }}>{dayjs('2022-01-01 ' + openAt).format('hh:mm')}</Text>
+				<Text css={{ color: redColor, fontSize: 'inherit', fontFamily: 'inherit' }}>{dayjs('2022-01-01 ' + openAt).format('A')}</Text>
 
 				-
 
-				<Text css={{ color: secondaryColor, fontWeight: 'bold', fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + closeAt).format('hh:mm')}</Text>
-				<Text css={{ color: redColor, fontSize: 'inherit', fontFamily: 'inherit' }}>{moment('2022-01-01 ' + closeAt).format('A')}</Text>
+				<Text css={{ color: secondaryColor, fontWeight: 'bold', fontSize: 'inherit', fontFamily: 'inherit' }}>{dayjs('2022-01-01 ' + closeAt).format('hh:mm')}</Text>
+				<Text css={{ color: redColor, fontSize: 'inherit', fontFamily: 'inherit' }}>{dayjs('2022-01-01 ' + closeAt).format('A')}</Text>
 			</div>
 		</div>
 	)

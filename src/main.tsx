@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
 import { NextUIProvider } from '@nextui-org/react';
 import reportWebVitals from './reportWebVitals';
-import 'moment/dist/locale/es';
+import 'dayjs/locale/es-do';
 
 import Router from './router';
 import 'sweetalert2/dist/sweetalert2.min.css';
