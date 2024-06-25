@@ -1,5 +1,6 @@
 import { memo, useRef, useState, useMemo, useEffect } from 'react';
-import { Card, Row, Text, Button, Loading } from '@nextui-org/react';
+import { Card, Text, Button, Loading } from '@nextui-org/react';
+
 import { useUploadImage } from '@/hooks/useImages';
 import RenderIf from '@/components/RenderIf';
 

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
-import { Image } from '@nextui-org/react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -33,12 +33,13 @@ const MainCarousel = ({ images }: CarouselProps) => {
 			>
 				{images.map((image, index) => (
 					<SwiperSlide key={'slide-' + index}>
-						<Image
+						<LazyLoadImage
 							src={image}
-							height='100%'
-							objectFit='cover'
-							containerCss={{ borderRadius: 10 }}
-							autoResize
+							style={{
+								objectFit: 'cover',
+								borderRadius: 10,
+								height: '100%'
+							}}
 						/>
 					</SwiperSlide>
 				))}

@@ -13,10 +13,9 @@ interface ImageCardProps {
 		bottomLeft?: number;
 		bottomRight?: number;
 	};
-	animationType?: 'onShow' | 'onLoad'
 }
 
-const ImageCard = ({ url, minHeight, maxHeight, backgroundPosition = 'center', borderRadius, animationType = 'onLoad' }: ImageCardProps) => {
+const ImageCard = ({ url, minHeight, maxHeight, backgroundPosition = 'center', borderRadius }: ImageCardProps) => {
 	return (
 		<div
 			style={{

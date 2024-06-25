@@ -1,5 +1,6 @@
 import { memo, useContext } from 'react';
-import { Grid, Image, Text, Spacer, Col } from '@nextui-org/react';
+import { Grid, Image, Text, Spacer } from '@nextui-org/react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import dictionary from '@/dictionary';
 import doordashLogo from '@/assets/doordash_icon.webp';
@@ -11,7 +12,6 @@ import { CopyProps } from '@/types/copy';
 import RenderIf from '@/components/RenderIf';
 import { primaryColor, redColor, secondaryColor } from '@/constants/colors';
 import { sizeCalc } from '@/utils/helpers';
-import ImageCard from '@/components/ImageCard';
 import { useGetSchedule } from '@/hooks/useSchedule';
 
 const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string }) => {
@@ -26,24 +26,30 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 
 			<Grid.Container>
 				<Grid xs={0} md={5} css={{ padding: `0 ${sizeCalc(10, 90)}px` }}>
-					<ImageCard
-						url={imageUrl}
-						minHeight={760}
-						maxHeight={760}
+					<LazyLoadImage
+						src={imageUrl}
+						style={{
+							objectFit: 'cover',
+							borderRadius: 10,
+							height: sizeCalc(760, 760),
+							width: '100%',
+							backgroundPosition: 'center'
+						}}
 					/>
 				</Grid>
 
 				<Grid xs={3} md={0}>
-					<ImageCard
-						url={imageUrl}
-						minHeight={760}
-						maxHeight={760}
-						borderRadius={{
-							bottomLeft: 0,
-							topLeft: 0
+					<LazyLoadImage
+						src={imageUrl}
+						style={{
+							objectFit: 'cover',
+							borderRadius: 10,
+							borderBottomLeftRadius: 0,
+							borderTopLeftRadius: 0,
+							height: sizeCalc(760, 760),
+							width: '100%',
+							backgroundPosition: '75% center'
 						}}
-						backgroundPosition='75% center'
-						animationType='onShow'
 					/>
 				</Grid>
 
