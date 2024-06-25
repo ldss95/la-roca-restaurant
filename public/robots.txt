@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://larocarestaurante.com/sitemap.xml
