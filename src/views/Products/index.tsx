@@ -1,12 +1,11 @@
 import { useMemo, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { Grid, Button, Table, Spacer, Dropdown, Text } from '@nextui-org/react';
+import { Grid, Button, Table, Spacer, Dropdown } from '@nextui-org/react';
 
 import ModalProduct from '@/views/Products/components/ModalProduct';
 import { ModalOpener$ } from '@/utils/helpers';
 import { useFetchProducts } from '@/hooks/useProducts';
 import { useFetchCategories } from '@/hooks/useCategories';
-import Loading from '../Loading';
 import { redColor, redColor50 } from '@/constants/colors';
 import ModalProductOptions from './components/ModalProductOptions';
 import ViewHeader from '@/components/ViewHeader';
@@ -30,9 +29,7 @@ function ProductsView () {
 	}, [categorySelected, categories]);
 
 	if (isLoading) {
-		return (
-			<Loading />
-		)
+		return null;
 	}
 
 	return (

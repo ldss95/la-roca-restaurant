@@ -11,7 +11,6 @@ import stamp from '@/assets/stamp.svg';
 import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
 import { primaryColor, redColor } from '@/constants/colors';
-import LoadingPage from '@/views/Loading';
 import { sizeCalc } from '@/utils/helpers';
 import Decoration from '@/assets/mobile_decoration.svg';
 import AboutUsSection from './components/AboutUsSection';
@@ -37,7 +36,7 @@ function LandingView() {
 	}, [loading]);
 
 	if (loading) {
-		return <LoadingPage />
+		return null;
 	}
 
 	return (

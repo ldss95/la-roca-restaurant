@@ -3,7 +3,6 @@ import { Button, Grid, Card, Text, Input, Loading as LoadingIndicator } from '@n
 
 import ViewHeader from '@/components/ViewHeader';
 import { useGetSchedule, useUpdateSchedule } from '@/hooks/useSchedule';
-import Loading from '../Loading';
 import { DayIndex } from '@/types/schedule';
 import DayButton from './components/DayButton';
 import RenderIf from '@/components/RenderIf';
@@ -25,7 +24,7 @@ function ScheduleView () {
 	}, [schedule]);
 
 	if (loading) {
-		return <Loading />
+		return null;
 	}
 
 	return (
