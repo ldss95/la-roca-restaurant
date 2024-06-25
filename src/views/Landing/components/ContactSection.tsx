@@ -175,28 +175,17 @@ const ContactSection = ({ copy, imageUrl }: { copy: CopyProps, imageUrl: string 
 					<div style={{ maxWidth: 250, marginTop: 30 }}>
 						<Text css={styles.deliveryBy}>DELIVERY BY</Text>
 						<Grid.Container gap={1}>
-							<Grid xs={4}>
-								<Image
-									src={doordashLogo}
-									containerCss={{ margin: 0 }}
-									autoResize
-								/>
-							</Grid>
-							<Grid xs={4}>
-								<Image
-									src={uberEatsLogo}
-									containerCss={{ margin: 0 }}
-									autoResize
-								/>
-							</Grid>
-							<Grid xs={4}>
-								<Image
-									src={grubHubLogo}
-									style={{ borderRadius: 15 }}
-									containerCss={{ margin: 0 }}
-									autoResize
-								/>
-							</Grid>
+							{deliveryApps.map(({ image, orderUrl }, index) => (
+								<Grid xs={4} key={'delivery-app-' + index}>
+									<a href={orderUrl} target='_blank' style={{ textDecoration: 'none' }}>
+										<Image
+											src={image}
+											containerCss={{ margin: 0, borderRadius: 15 }}
+											autoResize
+										/>
+									</a>
+								</Grid>
+							))}
 						</Grid.Container>
 					</div>
 				</Grid>
@@ -236,5 +225,20 @@ const styles = {
 		fontWeight: 400
 	}
 }
+
+const deliveryApps = [
+	{
+		image: doordashLogo,
+		orderUrl: 'https://www.doordash.com/store/277939?utm_source=mx_share_android'
+	},
+	{
+		image: uberEatsLogo,
+		orderUrl: 'https://www.order.store/store/la-roca-restaurant/PJY-7Fn9VrmN8HjLZoYHeQ'
+	},
+	{
+		image: grubHubLogo,
+		orderUrl: 'https://larocarestaurant.dine.online'
+	}
+];
 
 export default memo(ContactSection);
