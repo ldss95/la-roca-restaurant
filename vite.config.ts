@@ -20,7 +20,6 @@ export default defineConfig({
 					router: ['react-router-dom'],
 					nextUi: ['@nextui-org/react'],
 					swiper: ['swiper'],
-					sentry: ['@sentry/react'],
 				}
 			}
 		}
