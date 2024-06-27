@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import { Card, Text, Input, Button, Row, Loading } from '@nextui-org/react';
 import Swal from 'sweetalert2';
 import { collection, doc, updateDoc } from 'firebase/firestore';
@@ -94,4 +94,4 @@ const LinksCard = () => {
 	)
 }
 
-export default memo(LinksCard);
+export default LinksCard;

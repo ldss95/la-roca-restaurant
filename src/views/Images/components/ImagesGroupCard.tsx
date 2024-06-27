@@ -1,7 +1,7 @@
-import { memo, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { Card, Row, Text, Button, Loading, Image } from '@nextui-org/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation } from 'swiper/modules';
 import { DeleteOutlined, EditOutlined, PlusCircleOutlined } from '@ant-design/icons';
 
 import { useDeleteImage, useUploadImage } from '@/hooks/useImages';
@@ -59,7 +59,7 @@ const ImagesGroupCard = (props: ContactCardProps) => {
 	);
 };
 
-export default memo(ImagesGroupCard);
+export default ImagesGroupCard;
 
 const Footer = ({ id, section }: { id: string; section: SectionType }) => {
 	const [deleteImage, deleting] = useDeleteImage();

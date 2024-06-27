@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 const RenderIf = ({ children, condition }: { children: any, condition: boolean }) => {
 	if (!condition) {
 		return <></>;
@@ -8,4 +6,4 @@ const RenderIf = ({ children, condition }: { children: any, condition: boolean }
 	return children;
 }
 
-export default memo(RenderIf);
+export default RenderIf;

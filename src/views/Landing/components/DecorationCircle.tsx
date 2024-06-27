@@ -1,5 +1,4 @@
 import { redColor40 } from '@/constants/colors';
-import { memo } from 'react';
 
 interface PositionProps {
 	left?: number;
@@ -22,4 +21,4 @@ const DecorationCircle = (position: PositionProps) => (
 	/>
 );
 
-export default memo(DecorationCircle);
+export default DecorationCircle;

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Text } from '@nextui-org/react';
 
 import { lightPrimaryColor, primaryColor } from '@/constants/colors';
@@ -34,4 +33,4 @@ const DayButton = ({ day, isActive, onClick }: DayButtonProps) => {
 	)
 }
 
-export default memo(DayButton);
+export default DayButton;

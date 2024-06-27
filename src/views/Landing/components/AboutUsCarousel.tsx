@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Button } from '@nextui-org/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -76,4 +76,4 @@ const AboutUsCarousel = ({ images }: CarouselProps) => {
 	)
 }
 
-export default memo(AboutUsCarousel);
+export default AboutUsCarousel;

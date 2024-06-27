@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { useContext } from 'react';
 import { Grid, Image, Text, Spacer } from '@nextui-org/react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -253,4 +253,4 @@ const deliveryApps = [
 	}
 ];
 
-export default memo(ContactSection);
+export default ContactSection;

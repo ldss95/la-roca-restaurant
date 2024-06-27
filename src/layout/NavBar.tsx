@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { Grid, Link, Navbar } from '@nextui-org/react';
 
 import logo from '@/assets/logo.png';
@@ -174,4 +174,4 @@ const NavBar = () => {
 	);
 };
 
-export default memo(NavBar);
+export default NavBar;

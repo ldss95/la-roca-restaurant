@@ -1,4 +1,4 @@
-import { memo, useContext, useState, useMemo } from 'react';
+import { useContext, useState, useMemo } from 'react';
 import { Text, Grid, Pagination, Spacer } from '@nextui-org/react';
 
 import { useFetchCategories } from '@/hooks/useCategories';
@@ -126,4 +126,4 @@ const Menu = ({ copy }: { copy: CopyProps }) => {
 	);
 }
 
-export default memo(Menu);
+export default Menu;

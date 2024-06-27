@@ -5,6 +5,26 @@ import * as path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],
+	build: {
+		outDir: 'dist',
+		sourcemap: false,
+		modulePreload: {
+			resolveDependencies: (url, deps, context) => {
+				return [];
+			}
+		},
+		rollupOptions: {
+			output: {
+				sourcemap: false,
+				manualChunks: {
+					router: ['react-router-dom'],
+					nextUi: ['@nextui-org/react'],
+					swiper: ['swiper'],
+					sentry: ['@sentry/react'],
+				}
+			}
+		}
+	},
 	css: {
 		preprocessorOptions:{
 		less: {

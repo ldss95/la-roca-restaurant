@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Input } from '@nextui-org/react';
 
 import { TvProductProps } from '@/types/tvProduct';
@@ -23,4 +22,4 @@ const ProductsList = ({ products }: { products: TvProductProps[] }) => {
 	)
 }
 
-export default memo(ProductsList);
+export default ProductsList;

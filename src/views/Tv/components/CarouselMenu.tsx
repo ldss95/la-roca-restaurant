@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Button, Spacer } from '@nextui-org/react';
 import { useSwiper } from 'swiper/react';
 import {
@@ -71,4 +70,4 @@ const CarouselMenu = ({ onDelete, onClickAddImage }: CarouselMenuProps) => {
 	)
 }
 
-export default memo(CarouselMenu);
+export default CarouselMenu;

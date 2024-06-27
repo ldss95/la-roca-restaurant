@@ -7,16 +7,16 @@ import NavBar from '@/layout/NavBar';
 import LanguageContext from '@/context/language/context';
 import Footer from '@/layout/Footer';
 import MainSectionBackground from './components/MainSectionBackground';
-import stamp from '@/assets/stamp.svg';
 import { useCopy } from '@/hooks/useCopy';
 import ContactSection from './components/ContactSection';
 import { primaryColor, redColor } from '@/constants/colors';
 import { sizeCalc } from '@/utils/helpers';
-import Decoration from '@/assets/mobile_decoration.svg';
 import AboutUsSection from './components/AboutUsSection';
 import MenuSection from '@/views/Landing/components/MenuSection';
 import { useFetchImages } from '@/hooks/useImages';
 import MainCarousel from './components/MainCarousel';
+import { MobileDecoration } from './components/MobileDecoration';
+import { Stamp } from './components/Stamp';
 
 function LandingView() {
 	const { lang } = useContext(LanguageContext);
@@ -75,8 +75,7 @@ function LandingView() {
 							}
 						/>
 
-						<img
-							src={stamp}
+						<div
 							style={{
 								position: 'absolute',
 								width: sizeCalc(100, 200),
@@ -84,14 +83,13 @@ function LandingView() {
 								right: sizeCalc(50, 120),
 								zIndex: 100
 							}}
-						/>
+						>
+							<Stamp width={sizeCalc(100, 200)} height={sizeCalc(100, 200)} />
+						</div>
 					</Grid>
-					<Grid.Container>
+					<Grid.Container style={{ marginTop: 20 }}>
 						<Grid xs={12} sm={0} justify='center'>
-							<br />
-							<br />
-							<br />
-							<img src={Decoration} />
+							<MobileDecoration />
 						</Grid>
 					</Grid.Container>
 				</Grid.Container>

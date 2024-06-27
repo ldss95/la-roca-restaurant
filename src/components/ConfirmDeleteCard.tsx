@@ -1,6 +1,5 @@
 import { redColor } from '@/constants/colors';
 import { Button, Text } from '@nextui-org/react';
-import { memo } from 'react'
 
 const ConfirmDeleteCard = ({ onConfirm, message }: { onConfirm: () => void; message: string; }) => {
 	return (
@@ -25,4 +24,4 @@ const ConfirmDeleteCard = ({ onConfirm, message }: { onConfirm: () => void; mess
 	)
 }
 
-export default memo(ConfirmDeleteCard);
+export default ConfirmDeleteCard;

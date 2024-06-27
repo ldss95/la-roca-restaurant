@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Grid, Modal, Popover, Spacer, Text } from '@nextui-org/react';
 import { filter } from 'rxjs';
 import { ArrowDownOutlined, ArrowUpOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
@@ -130,4 +130,4 @@ const ModalProductOptions = () => {
 	);
 }
 
-export default memo(ModalProductOptions);
+export default ModalProductOptions;

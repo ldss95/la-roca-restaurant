@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
 	PoweroffOutlined,
@@ -86,4 +86,4 @@ const AdminNavBar = () => {
 	)
 }
 
-export default memo(AdminNavBar);
+export default AdminNavBar;

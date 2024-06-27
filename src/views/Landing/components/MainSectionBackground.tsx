@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { Grid } from '@nextui-org/react';
 
 import Decoration from '@/assets/decoration.svg';
@@ -43,4 +42,4 @@ const MainSectionBackground = () => (
 	</div>
 );
 
-export default memo(MainSectionBackground);
+export default MainSectionBackground;

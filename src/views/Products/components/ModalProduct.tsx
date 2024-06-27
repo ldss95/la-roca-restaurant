@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Modal, Input, Button, Text, Row, Dropdown, Loading } from '@nextui-org/react';
 import { Form, Formik } from 'formik';
 import { SaveOutlined } from '@ant-design/icons';
@@ -219,4 +219,4 @@ const ModalProduct = ({ onFinish }: ModalProductProps) => {
 	)
 }
 
-export default memo(ModalProduct);
+export default ModalProduct;

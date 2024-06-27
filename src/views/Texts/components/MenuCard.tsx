@@ -1,4 +1,4 @@
-import { memo, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Card, Text, Input, Button, Row, Loading } from '@nextui-org/react';
 import Swal from 'sweetalert2';
 import { collection, doc, updateDoc } from 'firebase/firestore';
@@ -75,4 +75,4 @@ const MenuCard = () => {
 	)
 }
 
-export default memo(MenuCard);
+export default MenuCard;

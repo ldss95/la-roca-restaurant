@@ -1,4 +1,4 @@
-import { memo, useRef, useState, useMemo, useEffect } from 'react';
+import { useRef, useState, useMemo, useEffect } from 'react';
 import { Card, Text, Button, Loading } from '@nextui-org/react';
 
 import { useUploadImage } from '@/hooks/useImages';
@@ -110,4 +110,4 @@ const ContactCard = ({ url, id }: ContactCardProps) => {
 	);
 };
 
-export default memo(ContactCard);
+export default ContactCard;

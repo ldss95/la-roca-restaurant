@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { useContext } from 'react';
 import { Button, Spacer } from '@nextui-org/react'
 
 import FlagUsa from '@/assets/usa_flag.svg';
@@ -35,4 +35,4 @@ const LanguageToggler = () => {
 	)
 }
 
-export default memo(LanguageToggler);
+export default LanguageToggler;

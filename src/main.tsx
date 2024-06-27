@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import {
+	BrowserRouter,
+	useLocation,
+	useNavigationType,
+	createRoutesFromChildren,
+	matchRoutes
+} from 'react-router-dom';
 import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing';
 import { NextUIProvider } from '@nextui-org/react';
-import reportWebVitals from './reportWebVitals';
 import 'dayjs/locale/es-do';
 
 import Router from './router';
@@ -14,7 +19,16 @@ import LanguageState from './context/language/state';
 
 Sentry.init({
 	dsn: import.meta.env.VITE_SENTRY_DSN,
-	integrations: [new BrowserTracing()],
+	integrations: [
+		Sentry.reactRouterV6BrowserTracingIntegration({
+			useEffect,
+			useLocation,
+			useNavigationType,
+			createRoutesFromChildren,
+			matchRoutes,
+		}),
+		Sentry.replayIntegration(),
+	],
 	tracesSampleRate: 1.0,
 	environment: import.meta.env.DEV ? 'development' : 'production'
 });
@@ -32,5 +46,3 @@ root.render(
 		</BrowserRouter>
 	</Sentry.ErrorBoundary>
 );
-
-reportWebVitals();

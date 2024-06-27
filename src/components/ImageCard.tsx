@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import { sizeCalc } from '@/utils/helpers';
 
 interface ImageCardProps {
@@ -36,4 +34,4 @@ const ImageCard = ({ url, minHeight, maxHeight, backgroundPosition = 'center', b
 	)
 }
 
-export default memo(ImageCard);
+export default ImageCard;

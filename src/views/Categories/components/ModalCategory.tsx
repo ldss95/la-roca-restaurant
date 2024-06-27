@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal, Input, Text, Button, Loading } from '@nextui-org/react';
 import { Formik, Form } from 'formik';
 import { filter } from 'rxjs';
@@ -115,4 +115,4 @@ const ModalCategory = () => {
 	);
 }
 
-export default memo(ModalCategory);
+export default ModalCategory;

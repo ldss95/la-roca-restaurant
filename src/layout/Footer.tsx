@@ -1,5 +1,5 @@
 import { Grid, Spacer, Text } from '@nextui-org/react';
-import { memo, useContext } from 'react';
+import { useContext } from 'react';
 import { FacebookOutlined, InstagramOutlined, WhatsAppOutlined } from '@ant-design/icons';
 
 import logo from '@/assets/logo.png';
@@ -127,4 +127,4 @@ const Footer = () => {
 	);
 }
 
-export default memo(Footer);
+export default Footer;

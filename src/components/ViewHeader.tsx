@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { useContext } from 'react';
 import { Grid, Text } from '@nextui-org/react';
 
 import NavbarContext from '@/context/navbar/context';
@@ -34,4 +34,4 @@ const ViewHeader = ({ title, showLangToggler }: { title: string; showLangToggler
 	);
 }
 
-export default memo(ViewHeader);
+export default ViewHeader;

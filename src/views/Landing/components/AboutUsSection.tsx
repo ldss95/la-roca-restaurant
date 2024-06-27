@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { useContext } from 'react';
 import { Grid, Text } from '@nextui-org/react';
 
 import Carousel from './AboutUsCarousel';
@@ -64,4 +64,4 @@ const AboutUsSection = ({ copy, images }: { copy: CopyProps, images: DBImageProp
 	)
 }
 
-export default memo(AboutUsSection);
+export default AboutUsSection;

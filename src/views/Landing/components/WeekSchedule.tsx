@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { useContext } from 'react';
 import { Text } from '@nextui-org/react';
 import dayjs from 'dayjs';
 
@@ -62,4 +62,4 @@ const WeekSchedule = ({ openDays, openAt, closeAt }: WeekScheduleProps) => {
 	)
 }
 
-export default memo(WeekSchedule);
+export default WeekSchedule;

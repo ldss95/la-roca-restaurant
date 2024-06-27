@@ -1,7 +1,7 @@
-import { memo, useRef } from 'react';
+import { useRef } from 'react';
 import { Image } from '@nextui-org/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper';
+import { Autoplay } from 'swiper/modules';
 
 import { useFetchAllTvImages } from '@/hooks/useTvProducts';
 import CarouselMenu from './CarouselMenu';
@@ -71,4 +71,4 @@ const TvCarousel = () => {
 	)
 }
 
-export default memo(TvCarousel);
+export default TvCarousel;
