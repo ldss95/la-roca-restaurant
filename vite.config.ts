@@ -20,6 +20,11 @@ export default defineConfig({
 					router: ['react-router-dom'],
 					nextUi: ['@nextui-org/react'],
 					swiper: ['swiper'],
+					icons: ['@ant-design/icons'],
+					firebase: ['firebase/firestore', 'firebase/auth', 'firebase/storage'],
+					rxjs: ['rxjs'],
+					formik: ['formik'],
+					sweetAlert: ['sweetalert2'],
 				}
 			}
 		}

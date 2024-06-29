@@ -41,24 +41,24 @@ export const useCopy = (): [CopyProps, boolean] => {
 		}
 	});
 
-	useEffect(() => {
-		const ref = collection(db, 'copy');
-		const unsubscribe = onSnapshot(ref, (snap) => {
-			if (snap.empty) {
-				return;
-			}
+	// useEffect(() => {
+	// 	const ref = collection(db, 'copy');
+	// 	const unsubscribe = onSnapshot(ref, (snap) => {
+	// 		if (snap.empty) {
+	// 			return;
+	// 		}
 
-			const copy = {} as CopyProps;
-			for (const item of snap.docs) {
-				const key = item.id as 'en' | 'es';
-				copy[key] = item.data() as LangProps;
-			}
-			setCopy(copy);
-		});
+	// 		const copy = {} as CopyProps;
+	// 		for (const item of snap.docs) {
+	// 			const key = item.id as 'en' | 'es';
+	// 			copy[key] = item.data() as LangProps;
+	// 		}
+	// 		setCopy(copy);
+	// 	});
 
 
-		return () => unsubscribe();
-	}, []);
+	// 	return () => unsubscribe();
+	// }, []);
 
 	return [copy, loading];
 }
