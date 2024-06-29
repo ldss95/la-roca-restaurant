@@ -1,9 +1,21 @@
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { addDoc, collection, deleteDoc, doc, getDocs, limit, orderBy, query, updateDoc, where } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, getStorage } from 'firebase/storage';
+import {
+	addDoc,
+	collection,
+	deleteDoc,
+	doc,
+	getDocs,
+	limit,
+	orderBy,
+	query,
+	updateDoc,
+	where
+} from 'firebase/firestore';
 
-import { db, storage } from '@/firebase';
+import { db, app } from '@/firebase';
 
 export async function uploadImage(image: File, path: string): Promise<string> {
+	const storage = getStorage(app);
 	const fileRef = ref(storage, `${path}/${image.name}`);
 	await uploadBytes(fileRef, image);
 	const url = await getDownloadURL(fileRef);

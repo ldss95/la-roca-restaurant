@@ -1,10 +1,16 @@
-import { createUserWithEmailAndPassword, sendPasswordResetEmail, updateProfile } from 'firebase/auth';
+import {
+	getAuth,
+	updateProfile,
+	sendPasswordResetEmail,
+	createUserWithEmailAndPassword,
+} from 'firebase/auth';
 import { collection, doc, setDoc } from 'firebase/firestore';
 
-import { auth, db } from '@/firebase';
+import { app, db } from '@/firebase';
 import Swal from 'sweetalert2';
 
 export async function createUser(name: string, email: string, password: string) {
+	const auth = getAuth(app);
 	const { user } = await createUserWithEmailAndPassword(auth, email, password);
 	updateProfile(user, {
 		displayName: name
@@ -19,6 +25,7 @@ export async function createUser(name: string, email: string, password: string) 
 }
 
 export async function resetPassword(email: string) {
+	const auth = getAuth(app);
 	await sendPasswordResetEmail(auth, email);
 	Swal.fire(
 		'Listo',

@@ -5,8 +5,9 @@ import { useSignInWithEmailAndPassword, useAuthState } from 'react-firebase-hook
 import { Formik, FormikErrors, Form } from 'formik';
 import Swal from 'sweetalert2';
 
-import { auth } from '@/firebase';
+import { app } from '@/firebase';
 import RenderIf from '@/components/RenderIf';
+import { getAuth } from 'firebase/auth';
 
 interface FormProps {
 	email: string;
@@ -17,6 +18,8 @@ interface FormProps {
 	email: string;
 	password: string;
 }
+
+const auth = getAuth(app);
 
 function LoginView () {
 	const [signIn, _, loading, error] = useSignInWithEmailAndPassword(auth);
